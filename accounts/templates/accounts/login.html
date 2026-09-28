@@ -1,0 +1,177 @@
+{% extends "mainWebsite/base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Login
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'accounts/css/login.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="login-page">
+    <div class="container login-container">
+
+        <div class="login-card">
+
+            <!-- Login heading -->
+            <div class="login-heading">
+                <h1>Login</h1>
+
+                <p>
+                    Enter your details to access your account
+                </p>
+            </div>
+
+
+            <!-- Account messages -->
+            {% if messages %}
+                <div class="login-messages">
+
+                    {% for message in messages %}
+                        <div
+                            class="alert
+                            {% if message.tags == 'error' %}
+                                alert-danger
+                            {% else %}
+                                alert-{{ message.tags }}
+                            {% endif %}"
+                            role="alert"
+                        >
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <!-- Login errors -->
+                {% if form.non_field_errors %}
+                    <div class="login-error-message">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+
+                <!-- Email -->
+                <div class="login-form-group">
+                    <label for="{{ form.email.id_for_label }}">
+                        Email Address
+                        <span class="required-mark">*</span>
+                    </label>
+
+                    {{ form.email }}
+
+                    {% if form.email.errors %}
+                        <div class="login-field-error">
+                            {% for error in form.email.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+
+                <!-- Password -->
+                <div class="login-form-group">
+                    <label for="{{ form.password.id_for_label }}">
+                        Password
+                        <span class="required-mark">*</span>
+                    </label>
+
+                    {{ form.password }}
+
+                    {% if form.password.errors %}
+                        <div class="login-field-error">
+                            {% for error in form.password.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+
+                <!-- Login options -->
+                <div class="login-options">
+                    <label class="remember-me-option">
+                        {{ form.remember_me }}
+                        <span>Remember me</span>
+                    </label>
+
+                    <a
+                        href="#"
+                        class="forgot-password-link"
+                    >
+                        Forgot Password?
+                    </a>
+                </div>
+
+
+                <!-- Login button -->
+                <button
+                    type="submit"
+                    class="btn login-submit-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <!-- Social login -->
+            <div class="login-divider">
+                <span></span>
+                <p>or continue with</p>
+                <span></span>
+            </div>
+
+            <div class="social-login-buttons">
+                <button
+                    type="button"
+                    class="btn social-login-button"
+                    disabled
+                >
+                    Continue with Google
+                </button>
+
+                <button
+                    type="button"
+                    class="btn social-login-button"
+                    disabled
+                >
+                    Continue with Facebook
+                </button>
+            </div>
+
+
+            <!-- Registration link -->
+            <div class="login-register-link">
+                <p>
+                    Don’t have an account?
+                    <a href="{% url 'register' %}">
+                        Register here
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block community_section %}
+{% endblock %}

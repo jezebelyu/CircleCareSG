@@ -1,0 +1,303 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Schedule Visit
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/schedule_visit.css' %}?v=3"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="schedule-visit-page">
+
+    <!-- Back link -->
+    <div class="schedule-back-row">
+        <a
+            href="{% url 'admin_visits_schedule' %}"
+            class="schedule-back-link"
+        >
+            ‹ &nbsp; Back to Visits & Schedule
+        </a>
+    </div>
+
+    <!-- Page heading -->
+    <div class="schedule-page-heading">
+        <h1>Schedule Visit</h1>
+        <p>
+            Arrange a visit between a senior and their assigned volunteer.
+        </p>
+    </div>
+
+    <!-- Schedule form -->
+    <form method="POST" class="schedule-form-card">
+        {% csrf_token %}
+
+        <!-- Senior and volunteer -->
+        <div class="schedule-form-section">
+            <h2>Senior & Volunteer</h2>
+
+            <div class="schedule-form-grid">
+                <div class="schedule-form-field full-width">
+                    <label for="assignment_id">
+                        Senior & Assigned Volunteer
+                    </label>
+
+                    <select
+                        id="assignment_id"
+                        name="assignment_id"
+                        required
+                    >
+                        <option value="">
+                            Select Senior
+                        </option>
+
+                        {% for assignment in assignments %}
+                            <option value="{{ assignment.pk }}">
+                                {{ assignment.senior.app_user.full_name }}
+                                (SEN-{{ assignment.senior.pk|stringformat:"04d" }})
+                                —
+                                {{ assignment.volunteer.app_user.full_name }}
+                                (VOL-{{ assignment.volunteer.pk|stringformat:"04d" }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visit details -->
+        <div class="schedule-form-section">
+            <h2>Visit Details</h2>
+
+            <div class="schedule-form-grid">
+                <div class="schedule-form-field">
+                    <label for="visit_type">
+                        Visit Type
+                    </label>
+
+                    <select
+                        id="visit_type"
+                        name="visit_type"
+                        required
+                    >
+                        <option value="">
+                            Select Visit Type
+                        </option>
+
+                        {% for value, label in visit_type_choices %}
+                            <option value="{{ value }}">
+                                {{ label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="schedule-form-field">
+                    <label for="visit_purpose">
+                        Visit Purpose
+                    </label>
+
+                    <select
+                        id="visit_purpose"
+                        name="visit_purpose"
+                        required
+                    >
+                        <option value="">
+                            Select Visit Purpose
+                        </option>
+
+                        {% for value, label in visit_purpose_choices %}
+                            <option value="{{ value }}">
+                                {{ label }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support required -->
+        <div class="schedule-form-section">
+            <h2>Support Required</h2>
+
+            <div class="schedule-support-grid">
+
+                <label class="support-checkbox">
+                    <input
+                        type="checkbox"
+                        name="support_types"
+                        value="regular_check_ins"
+                    >
+                    <span>Regular Check-In</span>
+                </label>
+
+                <label class="support-checkbox">
+                    <input
+                        type="checkbox"
+                        name="support_types"
+                        value="mobility_assistance"
+                    >
+                    <span>Mobility Assistance</span>
+                </label>
+
+                <label class="support-checkbox">
+                    <input
+                        type="checkbox"
+                        name="support_types"
+                        value="meal_assistance"
+                    >
+                    <span>Meal Assistance</span>
+                </label>
+
+                <label class="support-checkbox">
+                    <input
+                        type="checkbox"
+                        name="support_types"
+                        value="emotional_support"
+                    >
+                    <span>Emotional Support</span>
+                </label>
+
+                <label class="support-checkbox">
+                    <input
+                        type="checkbox"
+                        name="support_types"
+                        value="medical_assistance"
+                    >
+                    <span>Medical Assistance</span>
+                </label>
+
+                <label class="support-checkbox">
+                    <input
+                        type="checkbox"
+                        name="support_types"
+                        value="other"
+                    >
+                    <span>Other</span>
+                </label>
+
+            </div>
+
+            <div class="schedule-form-field other-support-field">
+                <label for="other_support_details">
+                    Other Support Details
+                </label>
+
+                <input
+                    type="text"
+                    id="other_support_details"
+                    name="other_support_details"
+                    placeholder="Enter other support required"
+                >
+            </div>
+        </div>
+
+        <!-- Date and time -->
+        <div class="schedule-form-section">
+            <h2>Date & Time</h2>
+
+            <div class="schedule-form-grid">
+                <div class="schedule-form-field full-width">
+                    <label for="availability_id">
+                        Volunteer Availability
+                    </label>
+
+                    <select
+                        id="availability_id"
+                        name="availability_id"
+                        required
+                    >
+                        <option value="">
+                            Select Available Date & Time
+                        </option>
+
+                        {% for slot in availability_slots %}
+                            <option value="{{ slot.pk }}">
+                                {{ slot.volunteer.app_user.full_name }}
+                                —
+                                {{ slot.date|date:"d M Y" }}
+                                —
+                                {{ slot.start_time|time:"g:i A" }}
+                                to
+                                {{ slot.end_time|time:"g:i A" }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="schedule-form-field">
+                    <label for="estimated_duration">
+                        Estimated Duration
+                    </label>
+
+                    <select
+                        id="estimated_duration"
+                        name="estimated_duration"
+                        required
+                    >
+                        <option value="30">
+                            30 minutes
+                        </option>
+
+                        <option value="60" selected>
+                            1 hour
+                        </option>
+
+                        <option value="90">
+                            1 hour 30 minutes
+                        </option>
+
+                        <option value="120">
+                            2 hours
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remarks -->
+        <div class="schedule-form-section">
+            <h2>Remarks</h2>
+
+            <div class="schedule-form-field">
+                <label for="notes">
+                    Additional Remarks
+                </label>
+
+                <textarea
+                    id="notes"
+                    name="notes"
+                    rows="5"
+                    placeholder="Enter any additional notes for this visit"
+                ></textarea>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="schedule-form-actions">
+            <a
+                href="{% url 'admin_visits_schedule' %}"
+                class="schedule-cancel-button"
+            >
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="schedule-confirm-button"
+            >
+                Confirm →
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}

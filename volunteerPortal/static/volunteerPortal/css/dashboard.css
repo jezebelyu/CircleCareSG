@@ -1,0 +1,652 @@
+/* Volunteer dashboard */
+
+.volunteer-dashboard {
+    width: 100%;
+}
+
+
+/* Page heading */
+
+.volunteer-dashboard-heading {
+    margin-bottom: 26px;
+}
+
+.volunteer-dashboard-heading h1 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.volunteer-dashboard-heading p {
+    margin: 0;
+
+    color: #39434c;
+
+    font-size: 17px;
+}
+
+
+/* Summary cards */
+
+.volunteer-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 28px;
+}
+
+.volunteer-summary-card {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    min-height: 125px;
+
+    padding: 22px;
+
+    border-radius: 6px;
+}
+
+.summary-upcoming {
+    background-color: #e5f0ff;
+}
+
+.summary-seniors {
+    background-color: #e5fbe4;
+}
+
+.summary-reports {
+    background-color: #eee7ff;
+}
+
+.summary-hours {
+    background-color: #fff5e4;
+}
+
+.summary-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+
+    border-radius: 50%;
+}
+
+.summary-circle i {
+    color: #ffffff;
+
+    font-size: 24px;
+    line-height: 1;
+}
+
+/* Upcoming visits */
+.summary-upcoming .summary-circle {
+    background-color: #389bf3;
+}
+
+/* Seniors assigned */
+.summary-seniors .summary-circle {
+    background-color: #16952f;
+}
+
+/* Reports submitted */
+.summary-reports .summary-circle {
+    background-color: #672bd3;
+}
+
+/* Volunteer hours */
+.summary-hours .summary-circle {
+    background-color: #ff7815;
+}
+
+.summary-number {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #111111;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.volunteer-summary-card p {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.volunteer-summary-card small {
+    display: block;
+
+    margin-top: 6px;
+
+    color: #39434c;
+
+    font-size: 11px;
+}
+
+
+/* Dashboard content */
+
+.volunteer-dashboard-content-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+
+    gap: 20px;
+}
+
+.volunteer-dashboard-card {
+    min-height: 360px;
+
+    padding: 28px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 6px;
+
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.16);
+}
+
+.dashboard-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.volunteer-dashboard-card h2 {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.dashboard-card-link {
+    flex-shrink: 0;
+
+    color: #2879c9;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.dashboard-card-link:hover {
+    color: #185a9d;
+
+    text-decoration: underline;
+}
+
+
+/* Empty states */
+
+.dashboard-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 250px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.dashboard-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: auto;
+    margin-bottom: 18px;
+    margin-left: auto;
+}
+
+.dashboard-empty-icon i {
+    color: #6c757d;
+
+    font-size: 27px;
+    line-height: 1;
+}
+
+.dashboard-empty-state h3 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.dashboard-empty-state p {
+    max-width: 390px;
+
+    margin: 0;
+
+    color: #66717a;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* Today's schedule */
+
+.volunteer-schedule-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+.schedule-record {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr) auto;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 16px 18px;
+
+    background-color: #f9fbfc;
+
+    border: 1px solid #e1e6ea;
+    border-radius: 8px;
+}
+
+.schedule-time {
+    display: flex;
+    flex-direction: column;
+
+    color: #111111;
+}
+
+.schedule-time strong {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.schedule-time span {
+    margin-top: 3px;
+
+    color: #68727b;
+
+    font-size: 12px;
+}
+
+.schedule-person {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.schedule-person img {
+    flex-shrink: 0;
+
+    width: 46px;
+    height: 46px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.schedule-person div {
+    min-width: 0;
+}
+
+.schedule-person strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.schedule-person p {
+    margin: 0;
+
+    color: #5f6972;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* Visit status */
+
+.schedule-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 82px;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.schedule-status-upcoming {
+    color: #176532;
+    background-color: #e3f5e9;
+}
+
+.schedule-status-completed {
+    color: #245c87;
+    background-color: #e1eef8;
+}
+
+.schedule-status-cancelled {
+    color: #9b2c2c;
+    background-color: #fbe4e4;
+}
+
+
+/* Recent activity */
+
+.announcement-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.announcement-record {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #e6eaed;
+}
+
+.announcement-record:first-child {
+    padding-top: 2px;
+}
+
+.announcement-record:last-child {
+    padding-bottom: 0;
+
+    border-bottom: none;
+}
+
+.announcement-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    border-radius: 50%;
+}
+
+.announcement-icon i {
+    font-size: 14px;
+    line-height: 1;
+}
+
+.activity-urgent .announcement-icon {
+    color: #a32424;
+    background-color: #fde8e8;
+}
+
+.activity-attention .announcement-icon {
+    color: #9a5c00;
+    background-color: #fff1d6;
+}
+
+.activity-resolved .announcement-icon {
+    color: #176532;
+    background-color: #e3f5e9;
+}
+
+.activity-support .announcement-icon {
+    color: #245c87;
+    background-color: #e1eef8;
+}
+
+.activity-report .announcement-icon {
+    color: #6428c7;
+    background-color: #eee7ff;
+}
+
+.activity-wellbeing .announcement-icon {
+    color: #176532;
+    background-color: #e5fbe4;
+}
+
+.announcement-content {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.announcement-content strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.announcement-content p {
+    margin: 0 0 5px;
+
+    color: #5f6972;
+
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.announcement-time {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #8a949d;
+
+    font-size: 10px;
+}
+
+.activity-link {
+    display: inline-block;
+
+    color: #2879c9;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.activity-link:hover {
+    color: #185a9d;
+
+    text-decoration: underline;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .volunteer-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .volunteer-dashboard-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-dashboard-card {
+        min-height: 330px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .volunteer-dashboard-heading h1 {
+        font-size: 30px;
+    }
+
+    .volunteer-dashboard-heading p {
+        font-size: 15px;
+    }
+
+    .volunteer-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-dashboard-card {
+        min-height: auto;
+        padding: 22px;
+    }
+
+    .dashboard-card-header {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .schedule-record {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+    }
+
+    .schedule-status {
+        width: fit-content;
+    }
+
+    .announcement-record {
+        gap: 12px;
+    }
+
+    .announcement-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .volunteer-dashboard-heading {
+        margin-bottom: 20px;
+    }
+
+    .volunteer-dashboard-heading h1 {
+        font-size: 28px;
+    }
+
+    .volunteer-dashboard-heading p {
+        font-size: 14px;
+    }
+
+    .volunteer-summary-grid {
+        gap: 14px;
+        margin-bottom: 22px;
+    }
+
+    .volunteer-summary-card {
+        min-height: 105px;
+        padding: 18px;
+    }
+
+    .summary-circle {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+    }
+
+    .summary-circle i {
+        font-size: 22px;
+    }
+
+    .summary-number {
+        font-size: 23px;
+    }
+
+    .volunteer-dashboard-content-grid {
+        gap: 16px;
+    }
+
+    .volunteer-dashboard-card {
+        padding: 18px;
+    }
+
+    .dashboard-card-header {
+        flex-direction: column;
+        margin-bottom: 18px;
+    }
+
+    .volunteer-dashboard-card h2 {
+        font-size: 19px;
+    }
+
+    .dashboard-empty-state {
+        min-height: 220px;
+        padding: 25px 15px;
+    }
+
+    .schedule-record {
+        gap: 14px;
+        padding: 14px;
+    }
+
+    .schedule-person {
+        align-items: flex-start;
+    }
+
+    .schedule-person img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .announcement-record {
+        padding: 13px 0;
+    }
+}

@@ -1,0 +1,404 @@
+/* Edit Senior page */
+
+.edit-senior-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* Back link */
+
+.edit-senior-back-link {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    color: #278de9;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.edit-senior-back-link:hover {
+    color: #1f78c5;
+}
+
+
+/* Page heading */
+
+.edit-senior-heading {
+    margin-bottom: 26px;
+}
+
+.edit-senior-heading h1 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.edit-senior-heading p {
+    margin: 0;
+
+    color: #39434c;
+
+    font-size: 15px;
+}
+
+
+/* Form */
+
+.edit-senior-form {
+    width: 100%;
+}
+
+
+/* Form cards */
+
+.edit-senior-card {
+    margin-bottom: 22px;
+    padding: 28px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.14);
+}
+
+.edit-card-heading {
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #e1e6ea;
+}
+
+.edit-card-heading h2 {
+    margin: 0 0 5px;
+
+    color: #111111;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.edit-card-heading p {
+    margin: 0;
+
+    color: #68727c;
+
+    font-size: 12px;
+}
+
+
+/* Form grid */
+
+.edit-senior-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.edit-field {
+    min-width: 0;
+}
+
+.edit-field-full {
+    grid-column: 1 / -1;
+}
+
+
+/* Labels */
+
+.edit-field label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* Inputs */
+
+.edit-field .form-control,
+.edit-field .form-select {
+    width: 100%;
+    min-height: 43px;
+    padding: 9px 12px;
+
+    color: #111111;
+    background-color: #ffffff;
+
+    border: 1px solid #cfd6dc;
+    border-radius: 5px;
+
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.edit-field textarea.form-control {
+    min-height: 105px;
+    resize: vertical;
+}
+
+.edit-field .form-control:focus,
+.edit-field .form-select:focus {
+    outline: none;
+
+    border-color: #389bf3;
+    box-shadow: 0 0 0 3px rgba(56, 155, 243, 0.10);
+}
+
+
+/* Support options */
+
+.support-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.support-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-height: 46px;
+    padding: 11px 14px;
+
+    background-color: #f8fafc;
+
+    border: 1px solid #d8dde2;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.support-option:hover {
+    border-color: #a8cdef;
+}
+
+.support-option input {
+    width: 16px;
+    height: 16px;
+
+    flex-shrink: 0;
+
+    accent-color: #389bf3;
+}
+
+.support-option span {
+    color: #222222;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.other-support-field {
+    margin-top: 4px;
+}
+
+
+/* Errors */
+
+.edit-senior-error {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+
+    color: #a92f2f;
+    background-color: #fff1f1;
+
+    border: 1px solid #efc4c4;
+    border-radius: 5px;
+}
+
+.edit-senior-error p {
+    margin: 0;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.field-error {
+    display: block;
+    margin-top: 6px;
+
+    color: #c93838;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* Action buttons */
+
+.edit-senior-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    padding-bottom: 30px;
+}
+
+.edit-senior-cancel-button,
+.edit-senior-save-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 125px;
+    min-height: 40px;
+    padding: 8px 18px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.edit-senior-cancel-button {
+    color: #39434c;
+    background-color: #ffffff;
+
+    border: 1px solid #cfd6dc;
+}
+
+.edit-senior-cancel-button:hover {
+    color: #111111;
+    background-color: #f5f7f8;
+}
+
+.edit-senior-save-button {
+    color: #ffffff;
+    background-color: #389bf3;
+
+    border: 1px solid #389bf3;
+
+    cursor: pointer;
+}
+
+.edit-senior-save-button:hover {
+    background-color: #2f8de1;
+    border-color: #2f8de1;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .edit-senior-card {
+        padding: 26px;
+    }
+
+    .edit-senior-grid {
+        gap: 18px;
+    }
+
+    .support-options-grid {
+        gap: 10px 12px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .edit-senior-heading h1 {
+        font-size: 30px;
+    }
+
+    .edit-senior-card {
+        padding: 22px;
+    }
+
+    .edit-senior-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-field-full {
+        grid-column: auto;
+    }
+
+    .support-options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-senior-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .edit-senior-cancel-button,
+    .edit-senior-save-button {
+        width: 100%;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .edit-senior-back-link {
+        margin-bottom: 18px;
+        font-size: 12px;
+    }
+
+    .edit-senior-heading {
+        margin-bottom: 20px;
+    }
+
+    .edit-senior-heading h1 {
+        font-size: 28px;
+    }
+
+    .edit-senior-heading p {
+        font-size: 14px;
+    }
+
+    .edit-senior-card {
+        margin-bottom: 18px;
+        padding: 18px;
+    }
+
+    .edit-card-heading {
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+    }
+
+    .edit-senior-grid {
+        gap: 16px;
+    }
+
+    .support-options-grid {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .support-option {
+        padding: 10px 12px;
+    }
+
+    .edit-senior-actions {
+        gap: 10px;
+        padding-bottom: 22px;
+    }
+}

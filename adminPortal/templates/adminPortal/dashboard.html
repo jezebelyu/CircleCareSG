@@ -1,0 +1,506 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Admin Dashboard
+{% endblock %}
+
+{% block extra_css %}
+
+<!-- Bootstrap Icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+>
+
+<!-- Admin dashboard styling -->
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/dashboard.css' %}?v=3"
+>
+
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-dashboard-page">
+
+    <!-- Page heading -->
+    <div class="admin-dashboard-heading">
+        <h1>Dashboard</h1>
+        <p>Welcome back! Here’s what’s happening in CircleCareSG.</p>
+    </div>
+
+
+    <!-- Summary cards -->
+    <div class="admin-summary-grid">
+
+        <!-- Total seniors -->
+        <article class="admin-summary-card">
+
+            <div class="summary-icon summary-blue">
+                <i
+                    class="bi bi-person-heart"
+                    aria-hidden="true"
+                ></i>
+            </div>
+
+            <div class="summary-content">
+                <strong class="summary-number">
+                    {{ total_seniors }}
+                </strong>
+
+                <p>Total Seniors</p>
+            </div>
+
+        </article>
+
+
+        <!-- Total volunteers -->
+        <article class="admin-summary-card">
+
+            <div class="summary-icon summary-green">
+                <i
+                    class="bi bi-people-fill"
+                    aria-hidden="true"
+                ></i>
+            </div>
+
+            <div class="summary-content">
+                <strong class="summary-number">
+                    {{ total_volunteers }}
+                </strong>
+
+                <p>Total Volunteers</p>
+            </div>
+
+        </article>
+
+
+        <!-- Total visits -->
+        <article class="admin-summary-card">
+
+            <div class="summary-icon summary-purple">
+                <i
+                    class="bi bi-calendar-check-fill"
+                    aria-hidden="true"
+                ></i>
+            </div>
+
+            <div class="summary-content">
+                <strong class="summary-number">
+                    {{ total_visits }}
+                </strong>
+
+                <p>Total Visits</p>
+            </div>
+
+        </article>
+
+
+        <!-- Check-in rate -->
+        <article class="admin-summary-card">
+
+            <div class="summary-icon summary-orange">
+                <i
+                    class="bi bi-clipboard2-check-fill"
+                    aria-hidden="true"
+                ></i>
+            </div>
+
+            <div class="summary-content">
+                <strong class="summary-number">
+                    {{ check_in_rate }}%
+                </strong>
+
+                <p>Check-In Rate</p>
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- Dashboard overview -->
+    <div class="admin-dashboard-middle-grid">
+
+        <!-- Visit overview -->
+        <article class="admin-dashboard-card visit-overview-card">
+
+            <div class="dashboard-card-heading">
+
+                <div>
+                    <h2>Visit Overview</h2>
+
+                    <span class="visit-period-label">
+                        {{ visit_period_label }}
+                    </span>
+                </div>
+
+                <form method="get">
+
+                    <select
+                        name="period"
+                        class="dashboard-period-select"
+                        onchange="this.form.submit()"
+                    >
+
+                        <option
+                            value="current"
+                            {% if period == "current" %}selected{% endif %}
+                        >
+                            This Month
+                        </option>
+
+                        <option
+                            value="last"
+                            {% if period == "last" %}selected{% endif %}
+                        >
+                            Last Month
+                        </option>
+
+                    </select>
+
+                </form>
+
+            </div>
+
+
+            {% if monthly_total > 0 %}
+
+                <div class="visit-overview-chart">
+
+                    <!-- Completed -->
+                    <div class="visit-chart-column">
+
+                        <div class="visit-chart-value">
+                            {{ monthly_completed }}
+                        </div>
+
+                        <div class="visit-chart-bar-area">
+                            <div
+                                class="visit-chart-bar completed-bar"
+                                style="--bar-height: {{ completed_percent }}%;"
+                            ></div>
+                        </div>
+
+                        <span>Completed</span>
+
+                    </div>
+
+
+                    <!-- Scheduled -->
+                    <div class="visit-chart-column">
+
+                        <div class="visit-chart-value">
+                            {{ monthly_scheduled }}
+                        </div>
+
+                        <div class="visit-chart-bar-area">
+                            <div
+                                class="visit-chart-bar scheduled-bar"
+                                style="--bar-height: {{ scheduled_percent }}%;"
+                            ></div>
+                        </div>
+
+                        <span>Scheduled</span>
+
+                    </div>
+
+
+                    <!-- Cancelled -->
+                    <div class="visit-chart-column">
+
+                        <div class="visit-chart-value">
+                            {{ monthly_cancelled }}
+                        </div>
+
+                        <div class="visit-chart-bar-area">
+                            <div
+                                class="visit-chart-bar cancelled-bar"
+                                style="--bar-height: {{ cancelled_percent }}%;"
+                            ></div>
+                        </div>
+
+                        <span>Cancelled</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="visit-overview-total">
+                    Total Visits:
+                    <strong>{{ monthly_total }}</strong>
+                </div>
+
+
+            {% else %}
+
+                <!-- Empty visit state -->
+                <div class="visit-chart-empty">
+
+                    <div class="activity-empty-icon">
+                        <i
+                            class="bi bi-calendar-x"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+
+                    <h3>No Visits This Month</h3>
+
+                    <p>
+                        No visits were scheduled during
+                        {{ visit_period_label }}.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </article>
+
+
+        <!-- Recent activities -->
+        <article class="admin-dashboard-card recent-activities-card">
+
+            <h2>Recent Activities</h2>
+
+            {% if recent_activities %}
+
+                <div class="admin-activity-list">
+
+                    {% for activity in recent_activities %}
+
+                        <article class="admin-activity-card">
+
+                            <div
+                                class="
+                                    activity-card-icon
+                                    {% if activity.title == 'Visit Report Submitted' %}
+                                        activity-report-icon
+                                    {% elif activity.title == 'Support Request Submitted' %}
+                                        activity-support-icon
+                                    {% else %}
+                                        activity-default-icon
+                                    {% endif %}
+                                "
+                            >
+
+                                {% if activity.title == "Visit Report Submitted" %}
+
+                                    <i
+                                        class="bi bi-file-earmark-check-fill"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                {% elif activity.title == "Support Request Submitted" %}
+
+                                    <i
+                                        class="bi bi-hand-thumbs-up-fill"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                {% else %}
+
+                                    <i
+                                        class="bi bi-bell-fill"
+                                        aria-hidden="true"
+                                    ></i>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <div class="activity-card-content">
+
+                                <strong class="activity-card-title">
+                                    {{ activity.title }}
+                                </strong>
+
+                                <p class="activity-card-description">
+                                    {{ activity.description }}
+                                </p>
+
+                                <span class="activity-card-time">
+                                    {{ activity.time|date:"d M Y" }}
+                                    {{ activity.time|time:"g:i A" }}
+                                </span>
+
+                            </div>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+
+            {% else %}
+
+                <!-- Empty activity state -->
+                <div class="admin-activity-empty">
+
+                    <div class="activity-empty-icon">
+                        <i
+                            class="bi bi-inbox"
+                            aria-hidden="true"
+                        ></i>
+                    </div>
+
+                    <h3>No Recent Activities</h3>
+
+                    <p>
+                        New visits, reports and support requests
+                        will appear here.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </article>
+
+    </div>
+
+
+    <!-- Dashboard statistics -->
+    <div class="admin-dashboard-bottom-grid">
+
+        <!-- Visits by type -->
+        <article class="admin-dashboard-card visit-type-card">
+
+            <h2>Visit by Type</h2>
+
+            <div class="visit-type-content">
+
+                {% if total_visits > 0 %}
+
+                    <div
+                        class="visit-donut-chart"
+                        style="--home-percent: {{ home_visit_percent|default:0 }}%;"
+                    >
+
+                        <div class="visit-donut-center">
+                            <strong>{{ total_visits }}</strong>
+                            <span>Total</span>
+                        </div>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="visit-donut-chart visit-donut-empty">
+
+                        <div class="visit-donut-center">
+                            <strong>0</strong>
+                            <span>Total</span>
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+
+                <div class="visit-type-legend">
+
+                    <!-- Home visits -->
+                    <div class="visit-type-legend-item">
+
+                        <span class="legend-box legend-blue"></span>
+
+                        <span>Home Visit</span>
+
+                        <strong>
+                            {{ home_visit_count }}
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Phone calls -->
+                    <div class="visit-type-legend-item">
+
+                        <span class="legend-box legend-green"></span>
+
+                        <span>Phone Call</span>
+
+                        <strong>
+                            {{ phone_call_count }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Check-in rate -->
+        <article class="admin-dashboard-card checkin-rate-card">
+
+            <h2>Check-In Rate</h2>
+
+            <div class="checkin-rate-main">
+
+                <div
+                    class="checkin-circle"
+                    style="--checkin-percent: {{ check_in_rate|default:0 }}%;"
+                >
+
+                    <div class="checkin-circle-center">
+                        <strong>{{ check_in_rate }}%</strong>
+                        <span>Overall</span>
+                    </div>
+
+                </div>
+
+
+                <div class="checkin-change">
+                    <strong>0%</strong>
+                    <span>from last month</span>
+                </div>
+
+            </div>
+
+
+            <div class="checkin-stat-grid">
+
+                <div>
+                    <strong>Completed</strong>
+
+                    <span class="checkin-completed">
+                        {{ completed_check_ins }}
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>Pending</strong>
+
+                    <span class="checkin-pending">
+                        {{ pending_check_ins }}
+                    </span>
+                </div>
+
+
+                <div>
+                    <strong>Cancelled / Missed</strong>
+
+                    <span class="checkin-missed">
+                        {{ missed_check_ins }}
+                    </span>
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,526 @@
+{% extends "mainWebsite/base.html" %}
+
+{% load static %}
+
+
+{% block title %}
+
+CircleCareSG | Register
+
+{% endblock %}
+
+
+{% block extra_css %}
+
+<!-- Page styling -->
+<link
+    rel="stylesheet"
+    href="{% static 'css/about.css' %}?v=5"
+>
+
+<link
+    rel="stylesheet"
+    href="{% static 'accounts/css/register.css' %}?v=6"
+>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- Registration hero -->
+<section class="about-hero">
+    <div class="row g-0 about-hero-row">
+
+        <div class="about-hero-content">
+            <div class="about-hero-text">
+
+                <h1>Create Your Account</h1>
+
+                <p class="about-introduction">
+                    Join CircleCareSG and become part of a caring community
+                    supporting seniors across Singapore.
+                </p>
+
+                <p>
+                    Register as a senior or volunteer to access
+                    CircleCareSG's services, stay connected and contribute
+                    to a stronger support network for seniors.
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="about-hero-image-column">
+
+            <img
+                src="{% static 'image2.jpg' %}"
+                alt="Volunteer supporting a senior"
+                class="about-hero-image"
+            >
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Registration form -->
+<section class="registration-page">
+    <div class="container registration-container">
+
+
+        <!-- Registration progress -->
+        <div class="registration-progress">
+
+            <div class="progress-step active">
+
+                <div class="progress-circle">1</div>
+
+                <div class="progress-label">
+                    <strong>Basic Information</strong>
+                    <span>Personal details</span>
+                </div>
+
+            </div>
+
+
+            <div class="progress-line"></div>
+
+
+            <div class="progress-step">
+
+                <div class="progress-circle">2</div>
+
+                <div class="progress-label">
+                    <strong>Additional Details</strong>
+                    <span>Role-specific information</span>
+                </div>
+
+            </div>
+
+
+            <div class="progress-line"></div>
+
+
+            <div class="progress-step">
+
+                <div class="progress-circle">3</div>
+
+                <div class="progress-label">
+                    <strong>Review &amp; Submit</strong>
+                    <span>Confirm your information</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Registration card -->
+        <div class="registration-card">
+
+            <div class="registration-card-header">
+
+                <h2>Basic Information</h2>
+
+                <p>
+                    Please provide your personal details to begin your
+                    registration.
+                </p>
+
+            </div>
+
+
+            <form method="post" novalidate>
+
+                {% csrf_token %}
+
+
+                <!-- Form errors -->
+                {% if form.non_field_errors %}
+
+                    <div class="registration-alert">
+
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- Account type -->
+                <div class="registration-form-group">
+
+                    <label for="{{ form.account_type.id_for_label }}">
+
+                        You are registering as
+
+                        <span class="required-mark">*</span>
+
+                    </label>
+
+
+                    {{ form.account_type }}
+
+
+                    {% if form.account_type.errors %}
+
+                        <div class="registration-field-error">
+
+                            {% for error in form.account_type.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Guardian access information -->
+                <div class="guardian-registration-info">
+
+                    <div class="guardian-registration-icon">
+
+                        <i class="bi bi-shield-check"></i>
+
+                    </div>
+
+
+                    <div class="guardian-registration-content">
+
+                        <h3>Looking to become a Guardian?</h3>
+
+                        <p>
+                            Guardian accounts cannot be created through
+                            public registration. To protect our seniors'
+                            privacy and security, Guardian access is provided
+                            only after CircleCareSG has verified your
+                            relationship with the senior and your
+                            understanding of their situation.
+                        </p>
+
+                        <p>
+                            Please contact our team with the relevant details.
+                            Once verified, an administrator will create your
+                            Guardian access and link you to the appropriate
+                            senior.
+                        </p>
+
+                        <a
+                            href="{% url 'contact' %}"
+                            class="guardian-contact-link"
+                        >
+                            Contact Us
+
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Name and NRIC -->
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+
+                        <div class="registration-form-group">
+
+                            <label for="{{ form.full_name.id_for_label }}">
+
+                                Your Name
+
+                                <span class="required-mark">*</span>
+
+                            </label>
+
+
+                            {{ form.full_name }}
+
+
+                            {% if form.full_name.errors %}
+
+                                <div class="registration-field-error">
+
+                                    {% for error in form.full_name.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="registration-form-group">
+
+                            <label for="{{ form.nric_fin.id_for_label }}">
+
+                                NRIC / FIN
+
+                                <span class="required-mark">*</span>
+
+                            </label>
+
+
+                            {{ form.nric_fin }}
+
+
+                            {% if form.nric_fin.errors %}
+
+                                <div class="registration-field-error">
+
+                                    {% for error in form.nric_fin.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Contact details -->
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+
+                        <div class="registration-form-group">
+
+                            <label for="{{ form.mobile_number.id_for_label }}">
+
+                                Mobile Number
+
+                                <span class="required-mark">*</span>
+
+                            </label>
+
+
+                            {{ form.mobile_number }}
+
+
+                            {% if form.mobile_number.errors %}
+
+                                <div class="registration-field-error">
+
+                                    {% for error in form.mobile_number.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="registration-form-group">
+
+                            <label for="{{ form.email.id_for_label }}">
+
+                                Email Address
+
+                                <span class="required-mark">*</span>
+
+                            </label>
+
+
+                            {{ form.email }}
+
+
+                            {% if form.email.errors %}
+
+                                <div class="registration-field-error">
+
+                                    {% for error in form.email.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Date of birth -->
+                <div class="registration-form-group">
+
+                    <label for="{{ form.date_of_birth.id_for_label }}">
+
+                        Date of Birth
+
+                        <span class="required-mark">*</span>
+
+                    </label>
+
+
+                    {{ form.date_of_birth }}
+
+
+                    {% if form.date_of_birth.errors %}
+
+                        <div class="registration-field-error">
+
+                            {% for error in form.date_of_birth.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+
+                        <div class="registration-form-group">
+
+                            <label for="{{ form.password.id_for_label }}">
+
+                                Password
+
+                                <span class="required-mark">*</span>
+
+                            </label>
+
+
+                            {{ form.password }}
+
+
+                            <p class="registration-help-text">
+                                Use at least 8 characters.
+                            </p>
+
+
+                            {% if form.password.errors %}
+
+                                <div class="registration-field-error">
+
+                                    {% for error in form.password.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="registration-form-group">
+
+                            <label for="{{ form.confirm_password.id_for_label }}">
+
+                                Confirm Password
+
+                                <span class="required-mark">*</span>
+
+                            </label>
+
+
+                            {{ form.confirm_password }}
+
+
+                            {% if form.confirm_password.errors %}
+
+                                <div class="registration-field-error">
+
+                                    {% for error in form.confirm_password.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Form actions -->
+                <div class="registration-actions">
+
+                    <a
+                        href="{% url 'home' %}"
+                        class="btn registration-back-button"
+                    >
+                        Cancel
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="btn registration-next-button"
+                    >
+                        Next: Additional Information
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- Login link -->
+        <div class="registration-login-link">
+
+            <p>
+                Already have an account?
+
+                <a href="{% url 'login' %}">
+                    Log in here
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}
+
+
+<!-- Hide the community section on registration pages -->
+{% block community_section %}
+
+{% endblock %}

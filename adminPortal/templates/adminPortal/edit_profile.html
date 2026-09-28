@@ -1,0 +1,205 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Edit Admin Profile
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/profile.css' %}?v=5"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-profile-page">
+
+    <!-- Back link -->
+    <a
+        href="{% url 'admin_profile' %}"
+        class="admin-profile-back-link"
+    >
+        &lt; Back to Profile
+    </a>
+
+    <!-- Page heading -->
+    <div class="admin-profile-heading">
+        <div>
+            <h1>Edit Profile</h1>
+            <p>Update your personal and account information.</p>
+        </div>
+    </div>
+
+    <!-- Edit profile form -->
+    <article class="admin-profile-card admin-edit-card">
+
+        <div class="admin-edit-card-heading">
+            <h2>Personal Information</h2>
+            <p>
+                Update the details associated with your administrator account.
+            </p>
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="admin-form-error">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Profile picture -->
+            <div class="admin-edit-profile-picture">
+
+                <div class="admin-edit-profile-avatar">
+                    {% if app_user.profile_picture %}
+                        <img
+                            src="{{ app_user.profile_picture.url }}"
+                            alt="{{ app_user.full_name }} profile picture"
+                            class="admin-edit-profile-image"
+                        >
+                    {% else %}
+                        <img
+                            src="{% static 'empty_user_icon.png' %}"
+                            alt="Default administrator profile"
+                            class="admin-edit-profile-placeholder"
+                        >
+                    {% endif %}
+                </div>
+
+                <div class="admin-profile-picture-upload">
+                    <label for="{{ form.profile_picture.id_for_label }}">
+                        {% if app_user.profile_picture %}
+                            Change Profile Picture
+                        {% else %}
+                            Add Profile Picture
+                        {% endif %}
+                    </label>
+
+                    {{ form.profile_picture }}
+
+                    {% for error in form.profile_picture.errors %}
+                        <span class="admin-field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="admin-edit-grid">
+
+                <!-- Full name -->
+                <div class="admin-edit-field">
+                    <label for="{{ form.full_name.id_for_label }}">
+                        Full Name
+                    </label>
+
+                    {{ form.full_name }}
+
+                    {% for error in form.full_name.errors %}
+                        <span class="admin-field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <!-- Date of birth -->
+                <div class="admin-edit-field">
+                    <label for="{{ form.date_of_birth.id_for_label }}">
+                        Date of Birth
+                    </label>
+
+                    {{ form.date_of_birth }}
+
+                    {% for error in form.date_of_birth.errors %}
+                        <span class="admin-field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <!-- Email -->
+                <div class="admin-edit-field">
+                    <label for="{{ form.email.id_for_label }}">
+                        Email Address
+                    </label>
+
+                    {{ form.email }}
+
+                    {% for error in form.email.errors %}
+                        <span class="admin-field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <!-- Mobile number -->
+                <div class="admin-edit-field">
+                    <label for="{{ form.mobile_number.id_for_label }}">
+                        Mobile Number
+                    </label>
+
+                    {{ form.mobile_number }}
+
+                    {% for error in form.mobile_number.errors %}
+                        <span class="admin-field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <!-- Read-only account information -->
+                <div class="admin-edit-field">
+                    <label>NRIC / FIN</label>
+
+                    <input
+                        type="text"
+                        value="{{ app_user.nric_fin }}"
+                        readonly
+                        class="admin-readonly-field"
+                    >
+                </div>
+
+                <div class="admin-edit-field">
+                    <label>Account Type</label>
+
+                    <input
+                        type="text"
+                        value="Administrator"
+                        readonly
+                        class="admin-readonly-field"
+                    >
+                </div>
+
+            </div>
+
+            <!-- Actions -->
+            <div class="admin-edit-actions">
+                <a
+                    href="{% url 'admin_profile' %}"
+                    class="admin-cancel-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="admin-save-button"
+                >
+                    Save Changes
+                </button>
+            </div>
+
+        </form>
+
+    </article>
+
+</section>
+
+{% endblock %}

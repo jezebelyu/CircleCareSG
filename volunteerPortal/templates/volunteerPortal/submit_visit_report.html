@@ -1,0 +1,189 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | Submit Visit Report
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/check_in_reports.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="check-in-reports-page">
+
+    <!-- Page heading -->
+    <div class="check-in-reports-heading">
+
+        <a
+            href="{% url 'volunteer_check_in_reports' %}"
+            class="report-back-link"
+        >
+            ‹ &nbsp; Back to Check-In Reports
+        </a>
+
+        <h1>Submit Visit Report</h1>
+
+        <p>
+            Complete the report for your visit with
+            {{ visit.assignment.senior.app_user.full_name }}.
+        </p>
+
+    </div>
+
+
+    <!-- Visit summary -->
+    <article class="visit-report-summary">
+
+        <div>
+            <strong>Senior</strong>
+            <span>
+                {{ visit.assignment.senior.app_user.full_name }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Date</strong>
+            <span>
+                {{ visit.visit_date|date:"d M Y" }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Time</strong>
+            <span>
+                {{ visit.start_time|time:"g:i A" }}
+                -
+                {{ visit.end_time|time:"g:i A" }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Visit Type</strong>
+            <span>
+                {{ visit.get_visit_type_display }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Purpose</strong>
+            <span>
+                {{ visit.get_visit_purpose_display }}
+            </span>
+        </div>
+
+    </article>
+
+
+    <!-- Visit report form -->
+    <form
+        method="post"
+        class="visit-report-form"
+    >
+        {% csrf_token %}
+
+        <div class="report-form-field">
+
+            <label for="{{ form.wellbeing_status.id_for_label }}">
+                {{ form.wellbeing_status.label }}
+            </label>
+
+            {{ form.wellbeing_status }}
+
+            {% for error in form.wellbeing_status.errors %}
+                <small class="form-error">
+                    {{ error }}
+                </small>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="report-form-field">
+
+            <label for="{{ form.assistance_provided.id_for_label }}">
+                {{ form.assistance_provided.label }}
+            </label>
+
+            {{ form.assistance_provided }}
+
+            {% for error in form.assistance_provided.errors %}
+                <small class="form-error">
+                    {{ error }}
+                </small>
+            {% endfor %}
+
+        </div>
+
+
+        <div class="report-form-field">
+
+            <label for="{{ form.observations.id_for_label }}">
+                {{ form.observations.label }}
+            </label>
+
+            {{ form.observations }}
+
+        </div>
+
+
+        <div class="report-form-field">
+
+            <label for="{{ form.concerns.id_for_label }}">
+                {{ form.concerns.label }}
+            </label>
+
+            {{ form.concerns }}
+
+        </div>
+
+
+        <div class="report-checkbox-field">
+
+            {{ form.follow_up_required }}
+
+            <label for="{{ form.follow_up_required.id_for_label }}">
+                {{ form.follow_up_required.label }}
+            </label>
+
+        </div>
+
+
+        <div class="report-form-field">
+
+            <label for="{{ form.follow_up_notes.id_for_label }}">
+                {{ form.follow_up_notes.label }}
+            </label>
+
+            {{ form.follow_up_notes }}
+
+        </div>
+
+
+        <div class="report-form-actions">
+
+            <a
+                href="{% url 'volunteer_check_in_reports' %}"
+                class="report-cancel-button"
+            >
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="report-submit-button"
+            >
+                Submit Report
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}

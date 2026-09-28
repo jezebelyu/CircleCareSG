@@ -1,0 +1,364 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Volunteer Profile
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/volunteer_detail.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="volunteer-detail-page">
+
+    <!-- Back link -->
+    <a
+        href="{% url 'admin_volunteers' %}"
+        class="volunteer-back-link"
+    >
+        ‹ &nbsp; Back to Volunteer Page
+    </a>
+
+    <!-- Page heading -->
+    <div class="volunteer-detail-heading">
+        <div>
+            <h1>Individual Volunteer Profile</h1>
+            <p>View and manage volunteer information.</p>
+        </div>
+
+        <a
+            href="{% url 'admin_edit_volunteer' volunteer_profile.pk %}"
+            class="edit-volunteer-placeholder"
+        >
+            Edit Profile
+        </a>
+    </div>
+
+    <!-- Main profile -->
+    <article class="volunteer-profile-card">
+        <div class="volunteer-profile-avatar">
+
+            {% if volunteer_app_user.profile_picture %}
+                <img
+                    src="{{ volunteer_app_user.profile_picture.url }}"
+                    alt="{{ volunteer_app_user.full_name }} profile picture"
+                    class="volunteer-detail-profile-picture"
+                >
+            {% else %}
+                <img
+                    src="{% static 'empty_user_icon.png' %}"
+                    alt="Default volunteer profile"
+                    class="volunteer-detail-profile-placeholder"
+                >
+            {% endif %}
+
+        </div>
+
+        <div class="volunteer-profile-information">
+            <div class="volunteer-profile-name">
+                <h2>{{ volunteer_app_user.full_name }}</h2>
+                <span>Volunteer Member</span>
+            </div>
+
+            <div class="volunteer-profile-grid">
+
+                <!-- Date of birth -->
+                <div class="volunteer-profile-field">
+                    <strong>Date of Birth</strong>
+                    <span>
+                        {{ volunteer_app_user.date_of_birth|date:"d M Y" }}
+                        ({{ age }} years old)
+                    </span>
+                </div>
+
+                <!-- Member since -->
+                <div class="volunteer-profile-field">
+                    <strong>Member Since</strong>
+                    <span>
+                        {{ volunteer_app_user.created_at|date:"d M Y" }}
+                    </span>
+                </div>
+
+                <!-- Email -->
+                <div class="volunteer-profile-field">
+                    <strong>Email Address</strong>
+                    <span>
+                        {% if volunteer_app_user.user.email %}
+                            {{ volunteer_app_user.user.email }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </span>
+                </div>
+
+                <!-- Contact -->
+                <div class="volunteer-profile-field">
+                    <strong>Contact Number</strong>
+                    <span>{{ volunteer_app_user.mobile_number }}</span>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+    <!-- Information cards -->
+    <div class="volunteer-information-grid">
+
+        <!-- Personal information -->
+        <article class="volunteer-info-card">
+            <h3>Personal Information</h3>
+
+            <div class="volunteer-info-row">
+                <strong>Address</strong>
+                <span>
+                    {{ volunteer_profile.address }}
+
+                    {% if volunteer_profile.unit_number %}
+                        #{{ volunteer_profile.unit_number }}
+                    {% endif %}
+
+                    <br>
+
+                    Singapore {{ volunteer_profile.postal_code }}
+                </span>
+            </div>
+
+            <div class="volunteer-info-row">
+                <strong>Preferred Language</strong>
+                <span>
+                    {{ volunteer_profile.get_preferred_language_display }}
+                </span>
+            </div>
+
+            <div class="volunteer-info-row">
+                <strong>Transport Available</strong>
+                <span>
+                    {% if volunteer_profile.transport_available %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </span>
+            </div>
+        </article>
+
+        <!-- Volunteer information -->
+        <article class="volunteer-info-card">
+            <h3>Volunteer Information</h3>
+
+            <div class="volunteer-info-row">
+                <strong>About Me</strong>
+                <span>
+                    {% if volunteer_profile.about_me %}
+                        {{ volunteer_profile.about_me }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="volunteer-info-row">
+                <strong>Skills &amp; Interests</strong>
+                <span>
+                    {% if volunteer_profile.skills_interests %}
+                        {{ volunteer_profile.skills_interests }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="volunteer-info-row">
+                <strong>Additional Notes</strong>
+                <span>
+                    {% if volunteer_profile.additional_notes %}
+                        {{ volunteer_profile.additional_notes }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </span>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Support interests -->
+    <article class="volunteer-support-card">
+        <h3>Support Interests</h3>
+
+        <div class="support-interest-list">
+
+            {% if volunteer_profile.regular_check_ins %}
+                <span class="support-interest-tag">
+                    Regular Check-ins
+                </span>
+            {% endif %}
+
+            {% if volunteer_profile.mobility_assistance %}
+                <span class="support-interest-tag">
+                    Mobility Assistance
+                </span>
+            {% endif %}
+
+            {% if volunteer_profile.meal_assistance %}
+                <span class="support-interest-tag">
+                    Meal Assistance
+                </span>
+            {% endif %}
+
+            {% if volunteer_profile.emotional_support %}
+                <span class="support-interest-tag">
+                    Emotional Support
+                </span>
+            {% endif %}
+
+            {% if volunteer_profile.medical_assistance %}
+                <span class="support-interest-tag">
+                    Medical Assistance
+                </span>
+            {% endif %}
+
+            {% if volunteer_profile.other_support %}
+                <span class="support-interest-tag">
+                    {{ volunteer_profile.other_support }}
+                </span>
+            {% endif %}
+
+            {% if not volunteer_profile.regular_check_ins and not volunteer_profile.mobility_assistance and not volunteer_profile.meal_assistance and not volunteer_profile.emotional_support and not volunteer_profile.medical_assistance and not volunteer_profile.other_support %}
+                <span class="no-support-interests">
+                    No support interests have been specified.
+                </span>
+            {% endif %}
+
+        </div>
+    </article>
+
+    <!-- Assigned seniors -->
+    <article class="volunteer-info-card assigned-seniors-card">
+        <div class="assigned-seniors-header">
+            <div>
+                <h2>Assigned Seniors</h2>
+                <p>Seniors currently assigned to this volunteer.</p>
+            </div>
+        </div>
+
+        <!-- Current assignments -->
+        {% if assigned_seniors %}
+            <div class="assigned-seniors-list">
+
+                {% for assignment in assigned_seniors %}
+                    <div class="assigned-senior-item">
+
+                        <div class="assigned-senior-avatar">
+                            {{ assignment.senior.app_user.full_name|first|upper }}
+                        </div>
+
+                        <div class="assigned-senior-details">
+                            <strong>
+                                {{ assignment.senior.app_user.full_name }}
+                            </strong>
+
+                            <span>
+                                Senior ID:
+                                SEN-{{ assignment.senior.pk|stringformat:"04d" }}
+                            </span>
+
+                            {% if assignment.senior.app_user.mobile_number %}
+                                <span>
+                                    {{ assignment.senior.app_user.mobile_number }}
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <div class="assigned-senior-actions">
+                            <a
+                                href="{% url 'admin_senior_detail' assignment.senior.pk %}"
+                                class="view-senior-button"
+                            >
+                                View Senior
+                            </a>
+
+                            <form
+                                method="post"
+                                action="{% url 'admin_remove_senior_from_volunteer' assignment.pk %}"
+                                class="remove-senior-form"
+                                onsubmit="return confirm('Remove this senior from the volunteer?');"
+                            >
+                                {% csrf_token %}
+
+                                <button
+                                    type="submit"
+                                    class="remove-senior-button"
+                                >
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+            <div class="no-assigned-seniors">
+                <p>
+                    No seniors are currently assigned to this volunteer.
+                </p>
+            </div>
+        {% endif %}
+
+        <!-- Assign senior -->
+        <div class="assign-senior-section">
+            <h3>Assign Senior</h3>
+            <p>Select a senior to assign to this volunteer.</p>
+
+            <form
+                method="post"
+                action="{% url 'admin_assign_senior_to_volunteer' volunteer_profile.pk %}"
+                class="assign-senior-form"
+            >
+                {% csrf_token %}
+
+                <div class="assign-senior-field">
+                    <label for="senior_id">
+                        Select Senior
+                    </label>
+
+                    <select
+                        name="senior_id"
+                        id="senior_id"
+                        required
+                    >
+                        <option value="">
+                            Select a senior
+                        </option>
+
+                        {% for senior in all_seniors %}
+                            <option value="{{ senior.pk }}">
+                                {{ senior.app_user.full_name }}
+                                — SEN-{{ senior.pk|stringformat:"04d" }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button
+                    type="submit"
+                    class="assign-senior-button"
+                >
+                    Assign Senior
+                </button>
+            </form>
+        </div>
+
+    </article>
+
+</section>
+
+{% endblock %}

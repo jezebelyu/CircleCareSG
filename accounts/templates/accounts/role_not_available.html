@@ -1,0 +1,438 @@
+{% extends "mainWebsite/base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Review Registration
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'accounts/css/register.css' %}"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="registration-page">
+
+    <div class="container registration-container">
+
+        <!-- PAGE HEADING -->
+        <div class="registration-heading">
+
+            <h1>Review Your Information</h1>
+
+            <p>
+                Please check that all your details are correct before
+                submitting your registration.
+            </p>
+
+        </div>
+
+
+        <!-- REGISTRATION PROGRESS -->
+        <div class="registration-progress">
+
+            <!-- STEP 1 -->
+            <div class="progress-step active">
+
+                <div class="progress-circle">
+                    ✓
+                </div>
+
+                <div class="progress-label">
+
+                    <strong>Basic Information</strong>
+
+                    <span>
+                        Personal details
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="progress-line progress-line-completed"></div>
+
+            <!-- STEP 2 -->
+            <div class="progress-step active">
+
+                <div class="progress-circle">
+                    ✓
+                </div>
+
+                <div class="progress-label">
+
+                    <strong>Additional Details</strong>
+
+                    <span>
+                        Role-specific information
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="progress-line progress-line-completed"></div>
+
+            <!-- STEP 3 -->
+            <div class="progress-step active">
+
+                <div class="progress-circle">
+                    3
+                </div>
+
+                <div class="progress-label">
+
+                    <strong>Review &amp; Submit</strong>
+
+                    <span>
+                        Confirm your information
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- REVIEW CARD -->
+        <div class="registration-card">
+
+            <div class="registration-card-header">
+
+                <div class="registration-card-title-row">
+
+                    <div>
+
+                        <h2>Registration Summary</h2>
+
+                        <p>
+                            Review the information entered in the previous
+                            steps.
+                        </p>
+
+                    </div>
+
+                    <div class="registration-role-badge">
+                        {{ step_one.account_type|title }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BASIC INFORMATION -->
+            <div class="review-section">
+
+                <div class="review-section-header">
+
+                    <div>
+                        <h3>Basic Information</h3>
+
+                        <p>
+                            Your personal and account details.
+                        </p>
+                    </div>
+
+                    <a
+                        href="{% url 'register' %}"
+                        class="review-edit-link"
+                    >
+                        Edit
+                    </a>
+
+                </div>
+
+                <div class="review-grid">
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Registering As
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_one.account_type|title }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Full Name
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_one.full_name }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            NRIC / FIN
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_one.nric_fin }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Mobile Number
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_one.mobile_number }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Email Address
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_one.email }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Date of Birth
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_one.date_of_birth }}
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESIDENTIAL INFORMATION -->
+            <div class="review-section">
+
+                <div class="review-section-header">
+
+                    <div>
+                        <h3>Residential Information</h3>
+
+                        <p>
+                            Your home address and location details.
+                        </p>
+                    </div>
+
+                    <a
+                        href="{% url 'register_step_two' %}"
+                        class="review-edit-link"
+                    >
+                        Edit
+                    </a>
+
+                </div>
+
+                <div class="review-grid">
+
+                    <div class="review-item review-item-full">
+                        <span class="review-label">
+                            Address
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_two.address }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Postal Code
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_two.postal_code }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Unit / Floor Number
+                        </span>
+
+                        <span class="review-value">
+                            {% if step_two.unit_number %}
+                                {{ step_two.unit_number }}
+                            {% else %}
+                                Not provided
+                            {% endif %}
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUPPORT INFORMATION -->
+            <div class="review-section">
+
+                <div class="review-section-header">
+
+                    <div>
+                        <h3>Support Preferences</h3>
+
+                        <p>
+                            Your preferred communication and support details.
+                        </p>
+                    </div>
+
+                    <a
+                        href="{% url 'register_step_two' %}"
+                        class="review-edit-link"
+                    >
+                        Edit
+                    </a>
+
+                </div>
+
+                <div class="review-grid">
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Preferred Language
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_two.preferred_language }}
+                        </span>
+                    </div>
+
+                    {% if step_two.support_needed %}
+
+                        <div class="review-item review-item-full">
+                            <span class="review-label">
+                                Support Needed
+                            </span>
+
+                            <span class="review-value">
+                                {{ step_two.support_needed }}
+                            </span>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- EMERGENCY CONTACT -->
+            <div class="review-section">
+
+                <div class="review-section-header">
+
+                    <div>
+                        <h3>Emergency Contact</h3>
+
+                        <p>
+                            The person who may be contacted during an emergency.
+                        </p>
+                    </div>
+
+                    <a
+                        href="{% url 'register_step_two' %}"
+                        class="review-edit-link"
+                    >
+                        Edit
+                    </a>
+
+                </div>
+
+                <div class="review-grid">
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Contact Name
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_two.emergency_contact_name }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Relationship
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_two.relationship }}
+                        </span>
+                    </div>
+
+                    <div class="review-item">
+                        <span class="review-label">
+                            Contact Number
+                        </span>
+
+                        <span class="review-value">
+                            {{ step_two.emergency_contact_phone }}
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONFIRMATION -->
+            <div class="registration-confirmation">
+
+                <p>
+                    By submitting this registration, you confirm that the
+                    information provided is accurate.
+                </p>
+
+            </div>
+
+
+            <!-- SUBMIT FORM -->
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="registration-actions">
+
+                    <a
+                        href="{% url 'register_step_two' %}"
+                        class="btn registration-back-button"
+                    >
+                        Back
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn registration-next-button"
+                    >
+                        Submit Registration
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block community_section %}
+{% endblock %}

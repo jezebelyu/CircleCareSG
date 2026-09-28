@@ -1,0 +1,276 @@
+ {% extends "mainWebsite/base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Get Involved
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/get_involved.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="involved-hero">
+    <div class="involved-hero-row">
+
+        <div class="involved-hero-content">
+            <div class="involved-hero-text">
+
+                <h1>Get Involved</h1>
+
+                <p class="involved-hero-tagline">
+                    Make a difference in a senior's life.
+                </p>
+
+                <p class="involved-hero-description">
+                    Join the CircleCareSG community and help us build
+                    a stronger support network for seniors.
+                </p>
+
+                <a
+                    href="{% url 'register' %}"
+                    class="btn btn-primary involved-hero-button"
+                >
+                    Join Our Community
+                </a>
+
+            </div>
+        </div>
+
+        <div class="involved-hero-image-column">
+            <img
+                src="{% static 'image9.jpg' %}"
+                alt="Volunteer supporting a senior"
+                class="involved-hero-image"
+            >
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Ways to get involved -->
+<section class="involvement-section">
+    <div class="container">
+
+        <h2 class="involvement-heading">
+            Ways You Can Get Involved
+        </h2>
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-md-4">
+                <article class="involvement-card volunteer-card">
+
+                    <div class="involvement-icon volunteer-icon">
+                        <i class="bi bi-person-heart"></i>
+                    </div>
+
+                    <h3>Become A Volunteer</h3>
+
+                    <p>
+                        Give your time, share your care, and make
+                        a meaningful impact in a senior's life.
+                    </p>
+
+                    <a
+                        href="{% url 'register' %}"
+                        class="btn involvement-button volunteer-button"
+                    >
+                        Join As Volunteer
+                    </a>
+
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <article class="involvement-card senior-card">
+
+                    <div class="involvement-icon senior-icon">
+                        <i class="bi bi-person-plus"></i>
+                    </div>
+
+                    <h3>Register A Senior</h3>
+
+                    <p>
+                        Know a senior who could benefit from our
+                        support? Register them today.
+                    </p>
+
+                    <a
+                        href="{% url 'register' %}"
+                        class="btn involvement-button senior-button"
+                    >
+                        Register A Senior
+                    </a>
+
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <article class="involvement-card partner-card">
+
+                    <div class="involvement-icon partner-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <h3>Community Partner</h3>
+
+                    <p>
+                        Partner with us to create a stronger and
+                        more caring community together.
+                    </p>
+
+                    <a
+                        href="{% url 'contact' %}"
+                        class="btn involvement-button partner-button"
+                    >
+                        Contact Us
+                    </a>
+
+                </article>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Volunteer journey -->
+<section class="journey-section">
+    <div class="container">
+
+        <h2 class="journey-heading">
+            Volunteer Journey
+        </h2>
+
+        <div class="journey-list">
+
+            <div class="journey-item">
+                <div class="journey-circle">
+                    <i class="bi bi-file-earmark-person"></i>
+                </div>
+
+                <h3>Apply</h3>
+
+                <p>
+                    Create an account with us and
+                    we will contact you.
+                </p>
+            </div>
+
+            <div class="journey-item">
+                <div class="journey-circle">
+                    <i class="bi bi-chat-dots"></i>
+                </div>
+
+                <h3>Interview</h3>
+
+                <p>
+                    Let us get to know you better.
+                </p>
+            </div>
+
+            <div class="journey-item">
+                <div class="journey-circle">
+                    <i class="bi bi-mortarboard"></i>
+                </div>
+
+                <h3>Training</h3>
+
+                <p>
+                    Attend orientation and training.
+                </p>
+            </div>
+
+            <div class="journey-item">
+                <div class="journey-circle">
+                    <i class="bi bi-person-check"></i>
+                </div>
+
+                <h3>Matching</h3>
+
+                <p>
+                    We match you with seniors in need.
+                </p>
+            </div>
+
+            <div class="journey-item">
+                <div class="journey-circle">
+                    <i class="bi bi-heart"></i>
+                </div>
+
+                <h3>Start Volunteering</h3>
+
+                <p>
+                    Begin your journey of impact.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Why volunteer -->
+<section class="volunteer-benefits-section">
+    <div class="container">
+
+        <h2 class="benefits-heading">
+            Why Volunteer With Us?
+        </h2>
+
+        <div class="benefits-list">
+
+            <div class="benefit-item">
+                <div class="benefit-icon benefit-pink">
+                    <i class="bi bi-heart"></i>
+                </div>
+                <p>Meaningful<br>Impact</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon benefit-blue">
+                    <i class="bi bi-people"></i>
+                </div>
+                <p>Community<br>Connections</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon benefit-green">
+                    <i class="bi bi-mortarboard"></i>
+                </div>
+                <p>Free<br>Training</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon benefit-blue">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+                <p>Flexible<br>Scheduling</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon benefit-green">
+                    <i class="bi bi-person-hearts"></i>
+                </div>
+                <p>Supportive<br>Environment</p>
+            </div>
+
+            <div class="benefit-item">
+                <div class="benefit-icon benefit-orange">
+                    <i class="bi bi-award"></i>
+                </div>
+                <p>Recognition &amp;<br>Appreciation</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

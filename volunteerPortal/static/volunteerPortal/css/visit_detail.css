@@ -1,0 +1,475 @@
+/* Visit details */
+
+.visit-detail-page {
+    width: 100%;
+}
+
+
+/* Back link */
+
+.visit-back-link {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 22px;
+
+    color: #278de9;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.visit-back-link:hover {
+    color: #1f78c5;
+}
+
+
+/* Page heading */
+
+.visit-detail-heading {
+    margin-bottom: 24px;
+}
+
+.visit-detail-heading h1 {
+    margin: 0 0 7px;
+
+    color: #111111;
+
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.visit-detail-heading p {
+    margin: 0;
+
+    color: #39434c;
+
+    font-size: 15px;
+}
+
+
+/* Main layout */
+
+.visit-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr);
+
+    gap: 22px;
+
+    align-items: start;
+}
+
+.visit-detail-left,
+.visit-detail-right {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+
+/* Cards */
+
+.visit-detail-card {
+    padding: 24px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.14);
+}
+
+.visit-detail-card h2 {
+    margin: 0 0 20px;
+
+    color: #111111;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+/* Senior profile */
+
+.visit-senior-profile {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+}
+
+.visit-senior-avatar {
+    flex-shrink: 0;
+
+    width: 92px;
+    height: 92px;
+
+    overflow: hidden;
+
+    background-color: #eeeeee;
+
+    border-radius: 50%;
+}
+
+.visit-senior-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.visit-senior-information {
+    min-width: 0;
+
+    flex: 1;
+}
+
+.visit-senior-information h2 {
+    margin: 0 0 3px;
+
+    font-size: 21px;
+}
+
+.visit-senior-number {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: #66717a;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.visit-senior-details p {
+    margin: 0 0 7px;
+
+    color: #39434c;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.visit-senior-details p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Buttons */
+
+.visit-outline-button,
+.visit-primary-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 8px 16px;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.visit-outline-button {
+    width: 100%;
+
+    margin-top: 20px;
+
+    color: #278de9;
+    background-color: #ffffff;
+
+    border: 1px solid #278de9;
+}
+
+.visit-outline-button:hover {
+    color: #278de9;
+    background-color: #f4f9ff;
+}
+
+.visit-primary-button {
+    color: #ffffff;
+    background-color: #389bf3;
+
+    border: 1px solid #389bf3;
+}
+
+.visit-primary-button:hover {
+    color: #ffffff;
+    background-color: #268fe9;
+}
+
+
+/* Visit notes */
+
+.visit-notes-box {
+    padding: 16px 18px;
+
+    color: #ffffff;
+    background-color: #389bf3;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* Address */
+
+.visit-address {
+    margin: 0;
+
+    color: #39434c;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+/* Visit overview */
+
+.visit-overview-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+
+    margin-bottom: 22px;
+}
+
+.visit-overview-item:last-child {
+    margin-bottom: 0;
+}
+
+.visit-overview-item strong {
+    color: #111111;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.visit-overview-item span {
+    color: #39434c;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.visit-overview-item small {
+    margin-top: 3px;
+
+    color: #66717a;
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+
+/* Status */
+
+.visit-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+
+    margin-top: 3px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 10px !important;
+    font-weight: 700;
+}
+
+.visit-status-scheduled {
+    color: #176532 !important;
+    background-color: #e3f5e9;
+}
+
+.visit-status-completed {
+    color: #245c87 !important;
+    background-color: #e1eef8;
+}
+
+.visit-status-cancelled {
+    color: #9b2c2c !important;
+    background-color: #fbe4e4;
+}
+
+
+/* Emergency contact */
+
+.emergency-contact-details {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.emergency-contact-details strong {
+    color: #111111;
+
+    font-size: 13px;
+}
+
+.emergency-contact-details span {
+    color: #39434c;
+
+    font-size: 12px;
+}
+
+
+/* Report */
+
+.visit-report-message {
+    margin: 0 0 16px;
+
+    color: #39434c;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* Empty information */
+
+.visit-empty-information {
+    margin: 0;
+
+    color: #66717a;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .visit-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .visit-detail-left,
+    .visit-detail-right {
+        gap: 18px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .visit-detail-heading h1 {
+        font-size: 30px;
+    }
+
+    .visit-senior-profile {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .visit-detail-card {
+        padding: 22px;
+    }
+
+    .visit-senior-information {
+        width: 100%;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .visit-back-link {
+        margin-bottom: 18px;
+
+        font-size: 12px;
+    }
+
+    .visit-detail-heading {
+        margin-bottom: 20px;
+    }
+
+    .visit-detail-heading h1 {
+        font-size: 28px;
+    }
+
+    .visit-detail-heading p {
+        font-size: 14px;
+    }
+
+    .visit-detail-grid {
+        gap: 16px;
+    }
+
+    .visit-detail-left,
+    .visit-detail-right {
+        gap: 16px;
+    }
+
+    .visit-detail-card {
+        padding: 18px;
+    }
+
+    .visit-detail-card h2 {
+        margin-bottom: 18px;
+
+        font-size: 17px;
+    }
+
+    .visit-senior-profile {
+        gap: 18px;
+    }
+
+    .visit-senior-avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .visit-senior-information h2 {
+        font-size: 19px;
+    }
+
+    .visit-senior-number {
+        margin-bottom: 12px;
+    }
+
+    .visit-outline-button {
+        margin-top: 16px;
+    }
+
+    .visit-notes-box {
+        padding: 14px 16px;
+
+        font-size: 12px;
+    }
+
+    .visit-overview-item {
+        margin-bottom: 18px;
+    }
+
+    .visit-primary-button {
+        width: 100%;
+    }
+}

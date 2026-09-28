@@ -1,0 +1,541 @@
+/* Contact Volunteer page */
+
+.guardian-contact-volunteer {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* Page heading */
+
+.contact-volunteer-heading {
+    margin-bottom: 12px;
+}
+
+.contact-volunteer-heading h1 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.contact-volunteer-heading p {
+    margin: 0;
+
+    color: #20262b;
+
+    font-size: 17px;
+}
+
+
+/* Main grid */
+
+.contact-volunteer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.contact-volunteer-left,
+.contact-volunteer-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+/* Volunteer profile card */
+
+.volunteer-contact-card {
+    padding: 24px 28px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+}
+
+.volunteer-contact-top {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.volunteer-contact-avatar {
+    width: 125px;
+    height: 125px;
+
+    flex: 0 0 125px;
+
+    overflow: hidden;
+
+    background-color: #d8d8d8;
+
+    border-radius: 50%;
+}
+
+.volunteer-contact-avatar img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.volunteer-contact-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.volunteer-contact-details h2 {
+    margin: 0 0 3px;
+
+    color: #111111;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.assigned-volunteer-label {
+    margin: 0 0 22px;
+
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Contact methods */
+
+.volunteer-contact-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 34px;
+}
+
+.volunteer-contact-method {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #111111;
+
+    font-size: 13px;
+}
+
+/* Contact icons */
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+
+    color: #6c757d;
+
+    font-size: 17px;
+    line-height: 1;
+}
+
+.contact-icon i {
+    line-height: 1;
+}
+
+
+/* About volunteer heading */
+
+.volunteer-about-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+
+    color: #6c757d;
+
+    font-size: 17px;
+    line-height: 1;
+}
+
+
+/* No assigned volunteer icon */
+
+.no-volunteer-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 18px;
+
+    color: #6c757d;
+    background-color: #eef1f3;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+    line-height: 1;
+}
+
+.no-volunteer-icon i {
+    line-height: 1;
+}
+
+
+/* Divider */
+
+.volunteer-contact-divider {
+    height: 1px;
+    margin: 28px 0 18px;
+
+    background-color: #dfe5ea;
+}
+
+
+/* Extra details */
+
+.volunteer-extra-details {
+    display: flex;
+    gap: 70px;
+
+    padding-left: 5px;
+}
+
+.volunteer-extra-details>div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.volunteer-detail-label {
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.volunteer-extra-details strong {
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* About card */
+
+.volunteer-about-card {
+    padding: 24px 28px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+}
+
+.volunteer-about-card h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 0 0 20px;
+
+    color: #111111;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.about-icon {
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.volunteer-about-card p {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 15px;
+    line-height: 1.45;
+
+    white-space: pre-line;
+}
+
+
+/* Skills and support cards */
+
+.volunteer-skills-card,
+.volunteer-support-card {
+    padding: 26px 28px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+}
+
+.volunteer-skills-card {
+    min-height: 165px;
+}
+
+.volunteer-skills-card h2,
+.volunteer-support-card h2 {
+    margin: 0 0 22px;
+
+    color: #111111;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* Skills */
+
+.skills-text {
+    display: inline-block;
+    padding: 9px 13px;
+
+    color: #1769d2;
+    background-color: #eaf3ff;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* Support capabilities */
+
+.volunteer-support-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.volunteer-support-list span {
+    display: inline-block;
+    padding: 8px 11px;
+
+    color: #278531;
+    background-color: #edf7ed;
+
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* Muted text */
+
+.contact-muted {
+    margin: 0;
+
+    color: #68727c !important;
+
+    font-size: 13px;
+}
+
+
+/* No assigned volunteer */
+
+.no-assigned-volunteer {
+    padding: 50px 30px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+
+    text-align: center;
+}
+
+.no-volunteer-icon {
+    margin-bottom: 12px;
+
+    color: #68727c;
+
+    font-size: 42px;
+}
+
+.no-assigned-volunteer h2 {
+    margin: 0 0 8px;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.no-assigned-volunteer p {
+    margin: 0;
+
+    color: #68727c;
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .contact-volunteer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-contact-top {
+        align-items: flex-start;
+    }
+
+    .contact-volunteer-left,
+    .contact-volunteer-right {
+        gap: 20px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .contact-volunteer-heading h1 {
+        font-size: 30px;
+    }
+
+    .contact-volunteer-heading p {
+        font-size: 16px;
+    }
+
+    .volunteer-contact-card,
+    .volunteer-about-card,
+    .volunteer-skills-card,
+    .volunteer-support-card {
+        padding: 22px;
+    }
+
+    .volunteer-contact-top {
+        flex-direction: column;
+    }
+
+    .volunteer-contact-avatar {
+        width: 90px;
+        height: 90px;
+        flex-basis: 90px;
+    }
+
+    .volunteer-contact-methods {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .volunteer-extra-details {
+        flex-direction: column;
+        gap: 18px;
+        padding-left: 0;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .contact-volunteer-heading {
+        margin-bottom: 18px;
+    }
+
+    .contact-volunteer-heading h1 {
+        font-size: 28px;
+    }
+
+    .contact-volunteer-heading p {
+        font-size: 14px;
+    }
+
+    .contact-volunteer-grid,
+    .contact-volunteer-left,
+    .contact-volunteer-right {
+        gap: 16px;
+    }
+
+    .volunteer-contact-card,
+    .volunteer-about-card,
+    .volunteer-skills-card,
+    .volunteer-support-card {
+        padding: 18px;
+    }
+
+    .volunteer-contact-top {
+        gap: 18px;
+    }
+
+    .volunteer-contact-details h2 {
+        font-size: 21px;
+    }
+
+    .assigned-volunteer-label {
+        margin-bottom: 18px;
+        font-size: 12px;
+    }
+
+    .volunteer-contact-divider {
+        margin: 22px 0 16px;
+    }
+
+    .volunteer-about-card h2,
+    .volunteer-skills-card h2,
+    .volunteer-support-card h2 {
+        margin-bottom: 18px;
+    }
+
+    .volunteer-about-card p {
+        font-size: 14px;
+    }
+
+    .volunteer-skills-card {
+        min-height: auto;
+    }
+
+    .no-assigned-volunteer {
+        padding: 40px 18px;
+    }
+
+    .no-assigned-volunteer h2 {
+        font-size: 19px;
+    }
+
+    .no-assigned-volunteer p {
+        font-size: 13px;
+    }
+}

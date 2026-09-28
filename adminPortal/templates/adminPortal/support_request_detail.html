@@ -1,0 +1,165 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Support Request
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/support_requests.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-support-requests-page">
+
+    <!-- Page heading -->
+    <div class="support-requests-heading">
+        <div>
+            <a
+                href="{% url 'admin_support_requests' %}"
+                class="support-back-link"
+            >
+                ‹ &nbsp; Back to Support Request Page
+            </a>
+
+            <h1>Support Request</h1>
+            <p>Review and update this senior support request.</p>
+        </div>
+    </div>
+
+    <!-- Request summary -->
+    <div class="support-request-summary">
+
+        <div>
+            <strong>Senior</strong>
+            <span>
+                {{ support_request.senior.app_user.full_name }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Requested Date</strong>
+            <span>
+                {{ support_request.requested_date|date:"d M Y" }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Requested Time</strong>
+            <span>
+                {{ support_request.requested_time|time:"g:i A" }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Status</strong>
+            <span class="support-status-badge status-{{ support_request.status }}">
+                {{ support_request.get_status_display }}
+            </span>
+        </div>
+
+    </div>
+
+    <!-- Request details -->
+    <div class="support-request-card">
+
+        <div class="support-detail-field">
+            <label>Support Type</label>
+
+            <p>
+                {% for label in support_request.get_support_type_labels %}
+                    {{ label }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+
+        {% if support_request.other_support_details %}
+            <div class="support-detail-field">
+                <label>Other Support Details</label>
+                <p>{{ support_request.other_support_details }}</p>
+            </div>
+        {% endif %}
+
+        <div class="support-detail-field">
+            <label>Additional Notes</label>
+
+            <p>
+                {% if support_request.additional_notes %}
+                    {{ support_request.additional_notes }}
+                {% else %}
+                    No additional notes provided.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="support-detail-field">
+            <label>Submitted</label>
+            <p>
+                {{ support_request.submitted_at|date:"d M Y, g:i A" }}
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Admin update -->
+    <div class="support-admin-card">
+        <h2>Admin Update</h2>
+
+        <form method="post" class="support-admin-form">
+            {% csrf_token %}
+
+            <div class="support-form-field">
+                <label for="status">
+                    Status
+                </label>
+
+                <select name="status" id="status">
+                    {% for value, label in status_choices %}
+                        <option
+                            value="{{ value }}"
+                            {% if support_request.status == value %}selected{% endif %}
+                        >
+                            {{ label }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="support-form-field">
+                <label for="admin_notes">
+                    Admin Notes
+                </label>
+
+                <textarea
+                    name="admin_notes"
+                    id="admin_notes"
+                    rows="5"
+                    placeholder="Add internal notes about this request..."
+                >{{ support_request.admin_notes }}</textarea>
+            </div>
+
+            <div class="support-form-actions">
+                <a
+                    href="{% url 'admin_support_requests' %}"
+                    class="support-cancel-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="support-save-button"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+{% endblock %}

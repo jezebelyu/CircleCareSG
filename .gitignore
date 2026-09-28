@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment variables / secrets
+.env
+
+# IDE / operating system
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+
+# Test / cache files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Demo credentials
+DEMO_ACCOUNTS.txt
+
+# Local development database
+db.sqlite3

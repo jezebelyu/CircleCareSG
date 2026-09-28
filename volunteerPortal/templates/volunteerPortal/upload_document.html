@@ -1,0 +1,102 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | Upload Document
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/profile.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="volunteer-profile-page">
+
+    <!-- Page heading -->
+    <div class="volunteer-profile-heading">
+        <h1>Submit Document</h1>
+
+        <p>
+            Upload your {{ document_name }} for administrator review.
+        </p>
+    </div>
+
+
+    <!-- Document upload -->
+    <article class="volunteer-profile-card volunteer-document-upload-card">
+
+        <h2>{{ document_name }}</h2>
+
+        {% if existing_document %}
+            <div class="existing-document-notice">
+
+                <p>
+                    You have already submitted this document.
+                </p>
+
+                <a
+                    href="{{ existing_document.file.url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View Current Document
+                </a>
+
+                <p>
+                    Uploading another file will replace the current document.
+                </p>
+
+            </div>
+        {% endif %}
+
+
+        <form
+            method="post"
+            enctype="multipart/form-data"
+        >
+            {% csrf_token %}
+
+            <div class="volunteer-upload-field">
+
+                <label for="{{ form.file.id_for_label }}">
+                    Choose File
+                </label>
+
+                {{ form.file }}
+
+                {% if form.file.errors %}
+                    {{ form.file.errors }}
+                {% endif %}
+
+            </div>
+
+
+            <div class="volunteer-edit-actions">
+
+                <a
+                    href="{% url 'volunteer_profile' %}"
+                    class="document-action-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="volunteer-save-button"
+                >
+                    Submit Document
+                </button>
+
+            </div>
+
+        </form>
+
+    </article>
+
+</section>
+
+{% endblock %}

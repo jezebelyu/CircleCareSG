@@ -1,0 +1,123 @@
+{% extends "seniorPortal/senior_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | New Support Request
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'seniorPortal/css/support_request.css' %}?v=20"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="support-request-page">
+
+    <div class="support-request-heading">
+        <div>
+            <h1>Support Request</h1>
+
+            <p>
+                We are here to help. Choose the type of assistance you need.
+            </p>
+        </div>
+    </div>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <article class="support-selection-card">
+
+            <h2>What do you need help with?</h2>
+
+            {% if form.support_types.errors %}
+                <div class="support-form-error">
+                    {% for error in form.support_types.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="support-option-grid">
+
+                {% for value, label in form.support_types.field.choices %}
+
+                    <label
+                        class="support-option-card
+                        support-option-{{ value }}"
+                    >
+                        <input
+                            type="checkbox"
+                            name="support_types"
+                            value="{{ value }}"
+                            {% if value in form.support_types.value %}
+                                checked
+                            {% endif %}
+                        >
+
+                        <span class="support-option-icon">
+                            {% if value == "meal" %}
+                                🍱
+                            {% elif value == "transport" %}
+                                🚗
+                            {% elif value == "emotional" %}
+                                💬
+                            {% elif value == "medical" %}
+                                🏥
+                            {% else %}
+                                🤝
+                            {% endif %}
+                        </span>
+
+                        <span class="support-option-text">
+                            <strong>{{ label }}</strong>
+
+                            <small>
+                                {% if value == "meal" %}
+                                    Get help with meal preparation or food delivery.
+                                {% elif value == "transport" %}
+                                    Get assistance travelling to appointments.
+                                {% elif value == "emotional" %}
+                                    Talk to someone who listens and cares.
+                                {% elif value == "medical" %}
+                                    Get help attending medical appointments.
+                                {% else %}
+                                    Tell us how else we can assist you.
+                                {% endif %}
+                            </small>
+                        </span>
+
+                        <span class="support-checkbox"></span>
+                    </label>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="support-form-actions">
+                <a
+                    href="{% url 'support_request_history' %}"
+                    class="btn support-back-button"
+                >
+                    Back
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn support-continue-button"
+                >
+                    Continue
+                </button>
+            </div>
+
+        </article>
+    </form>
+
+    {% include "seniorPortal/support_process.html" %}
+
+</section>
+
+{% endblock %}

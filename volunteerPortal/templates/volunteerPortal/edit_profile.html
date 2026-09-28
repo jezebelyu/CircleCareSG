@@ -1,0 +1,221 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | Edit Volunteer Profile
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/profile.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="volunteer-profile-page">
+
+    <!-- Page heading -->
+    <div class="volunteer-profile-heading">
+        <h1>Edit Profile</h1>
+
+        <p>
+            Update your personal information and volunteer profile.
+        </p>
+    </div>
+
+
+    <!-- Profile form -->
+    <article class="volunteer-profile-card volunteer-profile-edit-card">
+
+        <form
+            method="post"
+            enctype="multipart/form-data"
+        >
+            {% csrf_token %}
+
+            <!-- Profile picture -->
+            <div class="volunteer-edit-profile-picture">
+
+                <div class="volunteer-edit-avatar">
+                    {% if app_user.profile_picture %}
+                        <img
+                            src="{{ app_user.profile_picture.url }}"
+                            alt="{{ app_user.full_name }} profile picture"
+                            class="volunteer-profile-picture-image"
+                        >
+                    {% else %}
+                        <img
+                            src="{% static 'empty_user_icon.png' %}"
+                            alt="Default volunteer profile"
+                            class="volunteer-profile-picture-placeholder"
+                        >
+                    {% endif %}
+                </div>
+
+                <div class="volunteer-picture-upload">
+
+                    <label
+                        for="{{ account_form.profile_picture.id_for_label }}"
+                    >
+                        {% if app_user.profile_picture %}
+                            Change Profile Picture
+                        {% else %}
+                            Add Profile Picture
+                        {% endif %}
+                    </label>
+
+                    {{ account_form.profile_picture }}
+
+                    <p class="edit-field-help">
+                        Choose an image to use as your profile picture.
+                    </p>
+
+                    {% if account_form.profile_picture.errors %}
+                        {{ account_form.profile_picture.errors }}
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- Personal information -->
+            <div class="volunteer-edit-section">
+
+                <h2>Personal Information</h2>
+
+                <div class="volunteer-edit-details-grid">
+
+                    <div class="volunteer-edit-field">
+
+                        <label for="{{ account_form.full_name.id_for_label }}">
+                            Full Name
+                        </label>
+
+                        {{ account_form.full_name }}
+
+                        {% if account_form.full_name.errors %}
+                            {{ account_form.full_name.errors }}
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="volunteer-edit-field">
+
+                        <label for="{{ account_form.email.id_for_label }}">
+                            Email
+                        </label>
+
+                        {{ account_form.email }}
+
+                        {% if account_form.email.errors %}
+                            {{ account_form.email.errors }}
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="volunteer-edit-field">
+
+                        <label for="{{ account_form.mobile_number.id_for_label }}">
+                            Mobile Number
+                        </label>
+
+                        {{ account_form.mobile_number }}
+
+                        {% if account_form.mobile_number.errors %}
+                            {{ account_form.mobile_number.errors }}
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="volunteer-edit-field">
+
+                        <label for="{{ account_form.date_of_birth.id_for_label }}">
+                            Date of Birth
+                        </label>
+
+                        {{ account_form.date_of_birth }}
+
+                        {% if account_form.date_of_birth.errors %}
+                            {{ account_form.date_of_birth.errors }}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Volunteer information -->
+            <div class="volunteer-edit-section">
+
+                <h2>Volunteer Information</h2>
+
+                <div class="volunteer-edit-field">
+
+                    <label for="{{ profile_form.about_me.id_for_label }}">
+                        About Me
+                    </label>
+
+                    {{ profile_form.about_me }}
+
+                    {% if profile_form.about_me.errors %}
+                        {{ profile_form.about_me.errors }}
+                    {% endif %}
+
+                </div>
+
+
+                <div class="volunteer-edit-field">
+
+                    <label for="{{ profile_form.skills_interests.id_for_label }}">
+                        Skills &amp; Interests
+                    </label>
+
+                    <p class="edit-field-help">
+                        Separate multiple skills using commas.
+                    </p>
+
+                    {{ profile_form.skills_interests }}
+
+                    {% if profile_form.skills_interests.errors %}
+                        {{ profile_form.skills_interests.errors }}
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- Actions -->
+            <div class="volunteer-edit-actions">
+
+                <a
+                    href="{% url 'volunteer_profile' %}"
+                    class="document-action-button"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="volunteer-save-button"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </article>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+Wellbeing Submission | CircleCareSG
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/alert_detail.css' %}?v=1"
+>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="alert-detail-page">
+
+
+    <!-- BACK LINK -->
+
+    <a
+        href="{% url 'volunteer_alerts' %}"
+        class="back-link"
+    >
+        ‹ &nbsp; Back to Alerts
+    </a>
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="alert-detail-header">
+
+        <div>
+
+            <h1>
+                Wellbeing Submission
+            </h1>
+
+            <p>
+                Review the wellbeing form submitted by your assigned senior.
+            </p>
+
+        </div>
+
+
+        {% if submission.feeling == "need_support" %}
+
+            <span class="priority-badge priority-high">
+                High Priority
+            </span>
+
+        {% elif submission.feeling == "not_good" %}
+
+            <span class="priority-badge priority-medium">
+                Medium Priority
+            </span>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- SENIOR INFORMATION -->
+
+    <div class="detail-card">
+
+        <div class="detail-card-header">
+
+            <h2>
+                Senior Information
+            </h2>
+
+        </div>
+
+
+        <div class="detail-grid">
+
+            <div class="detail-field">
+
+                <span class="field-label">
+                    Senior Name
+                </span>
+
+                <strong>
+                    {{ senior.app_user.full_name }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-field">
+
+                <span class="field-label">
+                    Mobile Number
+                </span>
+
+                <strong>
+                    {{ senior.app_user.mobile_number }}
+                </strong>
+
+            </div>
+
+
+            <div class="detail-field">
+
+                <span class="field-label">
+                    Submission Date
+                </span>
+
+                <strong>
+                    {{ submission.submitted_at|date:"d M Y, g:i A" }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUBMITTED WELLBEING FORM -->
+
+    <div class="detail-card">
+
+        <div class="detail-card-header">
+
+            <h2>
+                Submitted Wellbeing Form
+            </h2>
+
+        </div>
+
+
+        <div class="form-display-field">
+
+            <label>
+                How are you feeling today?
+            </label>
+
+            <div class="submitted-value feeling-value">
+
+                {{ submission.get_feeling_display }}
+
+            </div>
+
+        </div>
+
+
+        <div class="form-display-field">
+
+            <label>
+                Additional Notes
+            </label>
+
+            <div class="submitted-value notes-value">
+
+                {% if submission.notes %}
+
+                    {{ submission.notes }}
+
+                {% else %}
+
+                    No additional notes were provided.
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ALERT STATUS -->
+
+    <div class="detail-card">
+
+        <div class="detail-card-header">
+
+            <h2>
+                Alert Status
+            </h2>
+
+        </div>
+
+
+        {% if submission.is_resolved %}
+
+            <div class="resolved-message">
+
+                <strong>
+                    Resolved
+                </strong>
+
+                {% if submission.resolved_at %}
+
+                    <span>
+                        Resolved on
+                        {{ submission.resolved_at|date:"d M Y, g:i A" }}
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        {% else %}
+
+            <div class="resolution-section">
+
+                <div>
+
+                    <strong>
+                        Action Required
+                    </strong>
+
+                    <p>
+                        This wellbeing concern requires attention.
+                        Alert resolution is managed by an administrator.
+                    </p>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+</div>
+
+{% endblock %}

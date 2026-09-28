@@ -1,0 +1,395 @@
+{% extends "guardianPortal/guardian_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Edit Profile
+{% endblock %}
+
+{% block extra_css %}
+<!-- Reuse profile styles -->
+<link
+    rel="stylesheet"
+    href="{% static 'guardianPortal/css/profile.css' %}?v=3"
+>
+
+<!-- Edit-specific styles -->
+<link
+    rel="stylesheet"
+    href="{% static 'guardianPortal/css/edit_profile.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="guardian-profile-page">
+
+    <!-- Page header -->
+    <div class="profile-page-header">
+        <h1>Edit Profile</h1>
+        <p>
+            Update your personal information and communication preferences.
+        </p>
+    </div>
+
+    <div class="guardian-profile-card">
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Guardian information -->
+            <div class="guardian-profile-section">
+
+                <div class="guardian-edit-picture-section">
+
+                    <div class="profile-avatar-large">
+
+                        {% if app_user.profile_picture %}
+                            <img
+                                src="{{ app_user.profile_picture.url }}"
+                                alt="{{ app_user.full_name }} profile picture"
+                                class="guardian-profile-picture"
+                            >
+                        {% else %}
+                            <img
+                                src="{% static 'empty_user_icon.png' %}"
+                                alt="Default guardian profile"
+                                class="guardian-profile-placeholder"
+                            >
+                        {% endif %}
+
+                    </div>
+
+                    <div class="guardian-picture-upload">
+
+                        <label for="{{ form.profile_picture.id_for_label }}">
+                            {% if app_user.profile_picture %}
+                                Change Profile Picture
+                            {% else %}
+                                Add Profile Picture
+                            {% endif %}
+                        </label>
+
+                        {{ form.profile_picture }}
+
+                        {% if form.profile_picture.errors %}
+                            <div class="field-error">
+                                {{ form.profile_picture.errors }}
+                            </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+                <div class="guardian-profile-information">
+
+                    <div class="profile-name-row">
+
+                        <div class="edit-name-section">
+
+                            <div class="edit-profile-field edit-name-field">
+                                <label for="{{ form.full_name.id_for_label }}">
+                                    Full Name
+                                </label>
+
+                                {{ form.full_name }}
+
+                                {% if form.full_name.errors %}
+                                    <div class="field-error">
+                                        {{ form.full_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <p class="profile-role">
+                                Guardian
+                            </p>
+
+                        </div>
+
+                        <div class="edit-profile-top-actions">
+
+                            <a
+                                href="{% url 'guardian_profile' %}"
+                                class="cancel-edit-button"
+                            >
+                                Cancel
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="save-profile-button"
+                            >
+                                Save Changes
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Contact information -->
+                    <div class="guardian-edit-contact-information">
+
+                        <div class="edit-contact-row">
+                            <span class="contact-icon">✉</span>
+
+                            <div class="edit-profile-field">
+                                <label for="{{ form.email.id_for_label }}">
+                                    Email Address
+                                </label>
+
+                                {{ form.email }}
+
+                                {% if form.email.errors %}
+                                    <div class="field-error">
+                                        {{ form.email.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="edit-contact-row">
+                            <span class="contact-icon">☎</span>
+
+                            <div class="edit-profile-field">
+                                <label for="{{ form.mobile_number.id_for_label }}">
+                                    Mobile Number
+                                </label>
+
+                                {{ form.mobile_number }}
+
+                                {% if form.mobile_number.errors %}
+                                    <div class="field-error">
+                                        {{ form.mobile_number.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="guardian-preferences">
+
+                        <div class="preference-item">
+                            <label
+                                class="preference-label"
+                                for="{{ form.preferred_contact_method.id_for_label }}"
+                            >
+                                Preferred Contact Method
+                            </label>
+
+                            {{ form.preferred_contact_method }}
+
+                            {% if form.preferred_contact_method.errors %}
+                                <div class="field-error">
+                                    {{ form.preferred_contact_method.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="preference-item">
+                            <label
+                                class="preference-label"
+                                for="{{ form.preferred_language.id_for_label }}"
+                            >
+                                Preferred Language
+                            </label>
+
+                            {{ form.preferred_language }}
+
+                            {% if form.preferred_language.errors %}
+                                <div class="field-error">
+                                    {{ form.preferred_language.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="preference-item">
+                            <label
+                                class="preference-label"
+                                for="{{ form.relationship_to_senior.id_for_label }}"
+                            >
+                                Relationship to Senior
+                            </label>
+
+                            {{ form.relationship_to_senior }}
+
+                            {% if form.relationship_to_senior.errors %}
+                                <div class="field-error">
+                                    {{ form.relationship_to_senior.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Linked senior -->
+            <div class="linked-senior-section">
+
+                <div class="linked-senior-heading">
+                    <h3>Linked Senior</h3>
+
+                    {% if guardian_profile.linked_senior %}
+                        <a
+                            href="{% url 'guardian_my_senior' %}"
+                            class="view-senior-button"
+                        >
+                            View Full Profile
+                        </a>
+                    {% endif %}
+                </div>
+
+                {% if guardian_profile.linked_senior %}
+
+                    {% with linked_senior=guardian_profile.linked_senior %}
+
+                        <div class="linked-senior-content">
+
+                            <div class="linked-senior-avatar">
+
+                                {% if linked_senior.app_user.profile_picture %}
+                                    <img
+                                        src="{{ linked_senior.app_user.profile_picture.url }}"
+                                        alt="{{ linked_senior.app_user.full_name }} profile picture"
+                                        class="linked-senior-profile-picture"
+                                    >
+                                {% else %}
+                                    <img
+                                        src="{% static 'empty_user_icon.png' %}"
+                                        alt="Default senior profile"
+                                        class="linked-senior-profile-placeholder"
+                                    >
+                                {% endif %}
+
+                            </div>
+
+                            <!-- Main senior details -->
+                            <div class="linked-senior-main">
+
+                                <h2>
+                                    {{ linked_senior.app_user.full_name }}
+                                </h2>
+
+                                <p class="profile-role">
+                                    Senior Member
+                                </p>
+
+                                <div class="linked-senior-details">
+
+                                    <div class="linked-detail">
+                                        <strong>Email</strong>
+                                        <span>
+                                            {% if linked_senior.app_user.user.email %}
+                                                {{ linked_senior.app_user.user.email }}
+                                            {% else %}
+                                                No email recorded
+                                            {% endif %}
+                                        </span>
+                                    </div>
+
+                                    <div class="linked-detail">
+                                        <strong>Phone</strong>
+                                        <span>
+                                            {{ linked_senior.app_user.mobile_number }}
+                                        </span>
+                                    </div>
+
+                                    <div class="linked-detail">
+                                        <strong>Date of Birth</strong>
+                                        <span>
+                                            {{ linked_senior.app_user.date_of_birth|date:"d F Y" }}
+                                        </span>
+                                    </div>
+
+                                    <div class="linked-detail">
+                                        <strong>Address</strong>
+                                        <span>
+                                            {{ linked_senior.address }}
+
+                                            {% if linked_senior.unit_number %}
+                                                , {{ linked_senior.unit_number }}
+                                            {% endif %}
+
+                                            Singapore {{ linked_senior.postal_code }}
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Additional senior details -->
+                            <div class="linked-senior-secondary">
+
+                                <div class="linked-detail">
+                                    <strong>
+                                        Preferred Language
+                                    </strong>
+                                    <span>
+                                        {{ linked_senior.get_preferred_language_display }}
+                                    </span>
+                                </div>
+
+                                <div class="linked-detail">
+                                    <strong>Religion</strong>
+                                    <span>
+                                        {% if linked_senior.religion %}
+                                            {{ linked_senior.religion }}
+                                        {% else %}
+                                            Not recorded
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                                <div class="linked-detail">
+                                    <strong>
+                                        Medical Conditions
+                                    </strong>
+                                    <span>
+                                        {% if linked_senior.medical_conditions %}
+                                            {{ linked_senior.medical_conditions }}
+                                        {% else %}
+                                            None recorded
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                                <div class="linked-detail">
+                                    <strong>Allergies</strong>
+                                    <span>
+                                        {% if linked_senior.allergies %}
+                                            {{ linked_senior.allergies }}
+                                        {% else %}
+                                            None recorded
+                                        {% endif %}
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endwith %}
+
+                {% else %}
+
+                    <div class="no-linked-senior">
+                        <p>
+                            No senior is currently linked to your account.
+                        </p>
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

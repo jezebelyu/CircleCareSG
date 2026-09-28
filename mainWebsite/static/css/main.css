@@ -1,0 +1,416 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    color: #111111;
+    background-color: #F8FAFC;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Header */
+
+.site-header {
+    position: relative;
+    z-index: 100;
+
+    background-color: #F8FAFC;
+
+    border-bottom: 1px solid #edf0f3;
+}
+
+.navbar {
+    min-height: 95px;
+    padding: 10px 0;
+}
+
+
+/* Header logo */
+
+.header-logo-link {
+    display: block;
+
+    width: 220px;
+    flex-shrink: 0;
+
+    text-decoration: none;
+}
+
+.header-logo-image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* Navigation */
+
+.navbar-nav {
+    gap: 8px;
+}
+
+.nav-link {
+    padding: 10px 9px !important;
+
+    color: #111111;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #389bf3;
+}
+
+.nav-buttons .btn {
+    min-width: 92px;
+    padding: 9px 18px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* Community section */
+
+.community-section {
+    padding: 45px 0;
+
+    background-color: #4292EA;
+}
+
+.community-text h2 {
+    margin-bottom: 10px;
+
+    color: #fff;
+
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.community-text p {
+    max-width: 540px;
+    margin-bottom: 0;
+
+    color: rgba(255, 255, 255, 0.95);
+
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.community-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.community-buttons .btn {
+    min-width: 180px;
+    padding: 13px 22px;
+
+    border-radius: 6px;
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.community-light-button {
+    color: #4292EA;
+    background: #fff;
+
+    border: 2px solid #fff;
+}
+
+.community-light-button:hover {
+    color: #4292EA;
+    background: #f5f8ff;
+}
+
+.community-outline-button {
+    color: #fff;
+    background: transparent;
+
+    border: 2px solid #fff;
+}
+
+.community-outline-button:hover {
+    color: #4292EA;
+    background: #fff;
+}
+
+
+/* Footer */
+
+.site-footer {
+    padding: 40px 0 20px;
+
+    color: #56616b;
+    background-color: #ffffff;
+
+    border-top: 1px solid #e5e9ed;
+}
+
+.footer-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-logo-link {
+    display: block;
+
+    width: 150px;
+
+    text-decoration: none;
+}
+
+.footer-logo {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+}
+
+.footer-description {
+    margin: 10px 0 0;
+
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 28px;
+}
+
+.footer-links a {
+    color: #39434c;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #389bf3;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 18px;
+
+    border-top: 1px solid #e8ecef;
+
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .navbar {
+        min-height: 82px;
+    }
+
+    .header-logo-link {
+        width: 105px;
+    }
+
+    .navbar-collapse {
+        padding: 18px 0 22px;
+    }
+
+    .navbar-nav {
+        align-items: flex-start !important;
+    }
+
+    .nav-buttons {
+        margin-top: 16px;
+        margin-left: 0 !important;
+    }
+
+    .community-text {
+        margin-bottom: 30px;
+
+        text-align: center;
+    }
+
+    .community-text p {
+        margin: 0 auto;
+    }
+
+    .community-buttons {
+        justify-content: center;
+    }
+
+    .footer-layout {
+        gap: 30px;
+    }
+
+    .footer-links {
+        gap: 20px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .community-section {
+        padding: 35px 0;
+    }
+
+    .community-text h2 {
+        font-size: 2rem;
+    }
+
+    .community-text p {
+        font-size: 1rem;
+    }
+
+    .community-buttons {
+        flex-direction: column;
+    }
+
+    .community-buttons .btn {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .site-footer {
+        padding: 35px 0 20px;
+    }
+
+    .footer-layout {
+        align-items: center;
+        flex-direction: column;
+        gap: 24px;
+
+        text-align: center;
+    }
+
+    .footer-description {
+        max-width: 450px;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .navbar {
+        min-height: 72px;
+    }
+
+    .header-logo-link {
+        width: 90px;
+    }
+
+    .navbar-collapse {
+        padding: 14px 0 18px;
+    }
+
+    .nav-buttons {
+        display: flex;
+
+        width: 100%;
+        gap: 10px;
+    }
+
+    .nav-buttons .btn {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .community-section {
+        padding: 30px 0;
+    }
+
+    .community-text {
+        margin-bottom: 24px;
+    }
+
+    .community-text h2 {
+        font-size: 1.75rem;
+    }
+
+    .community-text p {
+        font-size: 0.95rem;
+    }
+
+    .community-buttons {
+        gap: 12px;
+    }
+
+    .community-buttons .btn {
+        max-width: none;
+    }
+
+    .site-footer {
+        padding: 30px 0 18px;
+    }
+
+    .footer-layout {
+        gap: 20px;
+    }
+
+    .footer-logo-link {
+        width: 135px;
+    }
+
+    .footer-description {
+        font-size: 13px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+
+    .footer-bottom {
+        margin-top: 24px;
+        padding-top: 16px;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,226 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | My Availability
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/availability.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="availability-page">
+
+    <!-- Page heading -->
+    <div class="availability-heading">
+        <h1>My Availability</h1>
+
+        <p>
+            Set your weekly availability so administrators can schedule visits with you.
+        </p>
+    </div>
+
+
+    <form method="post" id="availabilityForm">
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="selected_slots"
+            id="selectedSlots"
+        >
+
+
+        <!-- Week navigation and actions -->
+        <div class="availability-toolbar">
+
+            <div class="availability-toolbar-left">
+
+                <a
+                    href="{% url 'volunteer_availability' %}"
+                    class="availability-today-button"
+                >
+                    Today
+                </a>
+
+                <div class="availability-week-navigation">
+
+                    <a
+                        href="?week={{ previous_week }}"
+                        class="availability-nav-button"
+                    >
+                        ‹
+                    </a>
+
+                    <div class="availability-week-label">
+                        {{ week_start|date:"j" }}
+                        -
+                        {{ week_end|date:"j M Y" }}
+                    </div>
+
+                    <a
+                        href="?week={{ next_week }}"
+                        class="availability-nav-button"
+                    >
+                        ›
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="availability-actions">
+
+                <button
+                    type="button"
+                    id="clearAvailability"
+                    class="availability-clear-button"
+                >
+                    Clear All
+                </button>
+
+                <button
+                    type="submit"
+                    class="availability-save-button"
+                >
+                    Save Availability
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Availability calendar -->
+        <div class="availability-table-wrapper">
+
+            <table class="availability-table">
+
+                <thead>
+                    <tr>
+
+                        <th class="availability-time-column"></th>
+
+                        {% for day in week_days %}
+                            <th class="availability-day-heading">
+
+                                <strong>
+                                    {{ day|date:"D" }}
+                                </strong>
+
+                                <span>
+                                    {{ day|date:"j M" }}
+                                </span>
+
+                            </th>
+                        {% endfor %}
+
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    {% for row in availability_rows %}
+                        <tr>
+
+                            <th class="availability-time-label">
+                                {{ row.label }}
+                            </th>
+
+                            {% for cell in row.cells %}
+                                <td>
+
+                                    <button
+                                        type="button"
+                                        class="availability-cell
+                                        {% if cell.selected %}
+                                            selected
+                                        {% endif %}"
+                                        data-date="{{ cell.date|date:'Y-m-d' }}"
+                                        data-start="{{ cell.start }}"
+                                        data-end="{{ cell.end }}"
+                                        aria-label="
+                                            Select
+                                            {{ cell.date|date:'j F Y' }}
+                                            {{ row.label }}
+                                        "
+                                    >
+                                        ✓
+                                    </button>
+
+                                </td>
+                            {% endfor %}
+
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const cells = document.querySelectorAll(".availability-cell");
+    const selectedSlotsInput = document.getElementById("selectedSlots");
+    const clearButton = document.getElementById("clearAvailability");
+    const form = document.getElementById("availabilityForm");
+
+
+    // Select or unselect a time slot
+    cells.forEach(function (cell) {
+        cell.addEventListener("click", function () {
+            cell.classList.toggle("selected");
+        });
+    });
+
+
+    // Clear all selected time slots
+    clearButton.addEventListener("click", function () {
+        cells.forEach(function (cell) {
+            cell.classList.remove("selected");
+        });
+    });
+
+
+    // Collect selected slots before saving
+    form.addEventListener("submit", function () {
+
+        const selected = [];
+
+        document
+            .querySelectorAll(".availability-cell.selected")
+            .forEach(function (cell) {
+                selected.push({
+                    date: cell.dataset.date,
+                    start: cell.dataset.start,
+                    end: cell.dataset.end,
+                });
+            });
+
+        selectedSlotsInput.value = JSON.stringify(selected);
+
+    });
+
+});
+</script>
+
+{% endblock %}

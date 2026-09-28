@@ -1,0 +1,290 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | Visit Details
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/visit_detail.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="visit-detail-page">
+
+    <a
+        href="{% url 'volunteer_schedule' %}"
+        class="visit-back-link"
+    >
+        ‹ &nbsp; Back to My Schedule
+    </a>
+
+    <!-- Page heading -->
+    <div class="visit-detail-heading">
+        <h1>Visit Details</h1>
+        <p>View the details of your scheduled visit.</p>
+    </div>
+
+    <div class="visit-detail-grid">
+
+        <!-- Left column -->
+        <div class="visit-detail-left">
+
+            <!-- Senior information -->
+            <article class="visit-detail-card visit-senior-card">
+
+                <div class="visit-senior-profile">
+
+                    <div class="visit-senior-avatar">
+                        <img
+                            src="{% static 'empty_user_icon.png' %}"
+                            alt="Senior profile"
+                        >
+                    </div>
+
+                    <div class="visit-senior-information">
+
+                        <h2>{{ senior.app_user.full_name }}</h2>
+
+                        <span class="visit-senior-number">
+                            SEN-{{ senior.pk|stringformat:"04d" }}
+                        </span>
+
+                        <div class="visit-senior-details">
+
+                            <p>
+                                {% if senior.unit_number %}
+                                    {{ senior.unit_number }},
+                                {% endif %}
+
+                                {{ senior.address }}
+
+                                {% if senior.postal_code %}
+                                    {{ senior.postal_code }}
+                                {% endif %}
+                            </p>
+
+                            <p>
+                                {{ senior.app_user.mobile_number }}
+                            </p>
+
+                            <p>
+                                Preferred Check-In:
+                                {{ senior.get_preferred_language_display }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <a
+                    href="{% url 'volunteer_senior_detail' senior.pk %}"
+                    class="visit-outline-button"
+                >
+                    View Senior Profile
+                </a>
+
+            </article>
+
+
+            <!-- Visit notes -->
+            <article class="visit-detail-card">
+
+                <h2>Visit Notes</h2>
+
+                {% if visit.notes %}
+                    <div class="visit-notes-box">
+                        {{ visit.notes|linebreaksbr }}
+                    </div>
+                {% else %}
+                    <p class="visit-empty-information">
+                        No additional notes were provided for this visit.
+                    </p>
+                {% endif %}
+
+            </article>
+
+
+            <!-- Address -->
+            <article class="visit-detail-card">
+
+                <h2>Address</h2>
+
+                <p class="visit-address">
+                    {% if senior.unit_number %}
+                        {{ senior.unit_number }},
+                    {% endif %}
+
+                    {{ senior.address }}
+
+                    {% if senior.postal_code %}
+                        {{ senior.postal_code }}
+                    {% endif %}
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <!-- Right column -->
+        <div class="visit-detail-right">
+
+            <!-- Visit overview -->
+            <article class="visit-detail-card">
+
+                <h2>Visit Overview</h2>
+
+                <div class="visit-overview-item">
+                    <strong>Date &amp; Time</strong>
+
+                    <span>
+                        {{ visit.visit_date|date:"l, j F Y" }}
+                    </span>
+
+                    <span>
+                        {{ visit.start_time|time:"g:i A" }}
+                        -
+                        {{ visit.end_time|time:"g:i A" }}
+                    </span>
+                </div>
+
+                <div class="visit-overview-item">
+                    <strong>Visit Type</strong>
+
+                    <span>
+                        {{ visit.get_visit_type_display }}
+                    </span>
+                </div>
+
+                <div class="visit-overview-item">
+                    <strong>Purpose</strong>
+
+                    <span>
+                        {{ visit.get_visit_purpose_display }}
+                    </span>
+
+                    {% if visit.other_support_details %}
+                        <small>
+                            {{ visit.other_support_details }}
+                        </small>
+                    {% endif %}
+                </div>
+
+                <div class="visit-overview-item">
+                    <strong>Estimated Duration</strong>
+
+                    <span>
+                        {{ visit.estimated_duration }} minutes
+                    </span>
+                </div>
+
+                <div class="visit-overview-item">
+                    <strong>Status</strong>
+
+                    <span
+                        class="
+                            visit-status-badge
+                            {% if visit.status == 'scheduled' %}
+                                visit-status-scheduled
+                            {% elif visit.status == 'completed' %}
+                                visit-status-completed
+                            {% elif visit.status == 'cancelled' %}
+                                visit-status-cancelled
+                            {% endif %}
+                        "
+                    >
+                        {{ visit.get_status_display }}
+                    </span>
+                </div>
+
+            </article>
+
+
+            <!-- Emergency contact -->
+            <article class="visit-detail-card">
+
+                <h2>Emergency Contact</h2>
+
+                {% if emergency_contact %}
+                    <div class="emergency-contact-details">
+
+                        <strong>
+                            {{ emergency_contact.full_name }}
+                        </strong>
+
+                        <span>
+                            {{ emergency_contact.relationship }}
+                        </span>
+
+                        <span>
+                            {{ emergency_contact.mobile_number }}
+                        </span>
+
+                    </div>
+                {% else %}
+                    <p class="visit-empty-information">
+                        No emergency contact is currently available.
+                    </p>
+                {% endif %}
+
+            </article>
+
+
+            <!-- Check-in report -->
+            <article class="visit-detail-card">
+
+                <h2>Check-In Report</h2>
+
+                {% if visit_report %}
+
+                    <p class="visit-report-message">
+                        A check-in report has already been submitted
+                        for this visit.
+                    </p>
+
+                    <a
+                        href="{% url 'volunteer_view_report' visit_report.pk %}"
+                        class="visit-primary-button"
+                    >
+                        View Report
+                    </a>
+
+                {% elif visit.status == "cancelled" %}
+
+                    <p class="visit-empty-information">
+                        No check-in report is required for a
+                        cancelled visit.
+                    </p>
+
+                {% else %}
+
+                    <p class="visit-report-message">
+                        Submit a check-in report after completing
+                        this visit.
+                    </p>
+
+                    <a
+                        href="{% url 'submit_visit_report' visit.pk %}"
+                        class="visit-primary-button"
+                    >
+                        Submit Check-In Report
+                    </a>
+
+                {% endif %}
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

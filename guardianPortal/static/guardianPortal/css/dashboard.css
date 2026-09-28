@@ -1,0 +1,641 @@
+/* Guardian dashboard */
+
+.guardian-dashboard {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+/* Page heading */
+
+.guardian-dashboard-heading {
+    margin-bottom: 25px;
+}
+
+.guardian-dashboard-heading h1 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.guardian-dashboard-heading p {
+    margin: 0;
+
+    color: #20262b;
+
+    font-size: 17px;
+}
+
+
+/* Senior overview */
+
+.guardian-senior-overview {
+    margin-bottom: 28px;
+    padding: 22px 28px 28px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 11px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.15);
+}
+
+.guardian-senior-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.guardian-senior-avatar {
+    width: 125px;
+    height: 125px;
+
+    flex: 0 0 125px;
+
+    overflow: hidden;
+
+    background-color: #d8d8d8;
+
+    border-radius: 50%;
+}
+
+.guardian-senior-avatar img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.guardian-senior-name h2 {
+    margin: 10px 0 4px;
+
+    color: #111111;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.guardian-senior-name p {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* Senior status */
+
+.guardian-senior-status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    margin-top: -35px;
+    margin-left: 150px;
+}
+
+.guardian-overview-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    min-height: 90px;
+    padding: 0 20px;
+
+    border-left: 1px solid #cfd5da;
+}
+
+.guardian-overview-item:first-child {
+    border-left: none;
+}
+
+/* Guardian dashboard circular icons */
+
+.overview-icon,
+.summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+
+    border-radius: 50%;
+}
+
+.overview-icon i,
+.summary-icon i {
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* Upcoming visit icon */
+
+.upcoming-visit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+
+    border-radius: 50%;
+}
+
+.upcoming-visit-icon i {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.status-icon {
+    color: #258b30;
+    background-color: #dfeee0;
+}
+
+.checkin-icon {
+    color: #278de9;
+    background-color: #e1effd;
+}
+
+.volunteer-icon {
+    background-color: #ece6fb;
+}
+
+.guardian-overview-item h3 {
+    margin: 0 0 9px;
+
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.guardian-overview-item span {
+    display: block;
+
+    color: #111111;
+
+    font-size: 12px;
+}
+
+.overview-highlight {
+    margin: 0 0 8px;
+
+    color: #333333;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.status-text,
+.checkin-text {
+    color: #268b31;
+}
+
+.volunteer-text {
+    color: #6337ce;
+}
+
+
+/* Summary cards */
+
+.guardian-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+
+    margin-bottom: 38px;
+}
+
+.guardian-summary-card {
+    min-height: 200px;
+    padding: 18px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 6px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+}
+
+.summary-card-header {
+    display: flex;
+    gap: 16px;
+
+    min-height: 100px;
+}
+
+.summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    flex: 0 0 58px;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.latest-checkin-icon {
+    color: #ffffff;
+    background-color: #7eb8f2;
+}
+
+.alerts-icon {
+    color: #ffffff;
+    background-color: #b498f4;
+}
+
+.wellbeing-icon {
+    color: #ffffff;
+    background-color: #ffb99c;
+}
+
+.summary-card-header h2 {
+    margin: 2px 0 13px;
+
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.summary-card-header p {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 13px;
+}
+
+.summary-card-header span {
+    display: block;
+
+    color: #111111;
+
+    font-size: 12px;
+}
+
+.alert-count {
+    font-size: 26px !important;
+    line-height: 1;
+}
+
+
+/* Summary update panels */
+
+.summary-colour-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    height: 57px;
+    min-height: 78px;
+
+    margin-top: 12px;
+    padding: 12px 16px;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+}
+
+.blue-block {
+    background-color: #82baf1;
+}
+
+.purple-block {
+    background-color: #b498f4;
+}
+
+.peach-block {
+    background-color: #ffb99c;
+}
+
+.summary-colour-block strong {
+    display: block;
+    margin-bottom: 4px;
+
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.summary-colour-block span {
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    color: #202830;
+
+    font-size: 12px;
+    line-height: 1.35;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.summary-colour-block small {
+    display: block;
+    margin-top: 6px;
+
+    color: #59636d;
+
+    font-size: 10px;
+    font-weight: 500;
+}
+
+
+/* Upcoming visit */
+
+.guardian-upcoming-visit {
+    display: flex;
+
+    width: 570px;
+    max-width: 100%;
+    gap: 18px;
+
+    padding: 25px 22px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 6px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+}
+
+.upcoming-visit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    flex: 0 0 58px;
+
+    background-color: #e5f2e6;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.upcoming-visit-content {
+    flex: 1;
+}
+
+.upcoming-visit-content h2 {
+    margin: 0 0 18px;
+
+    color: #111111;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.upcoming-visit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px;
+}
+
+.upcoming-visit-grid div {
+    display: grid;
+    gap: 8px;
+}
+
+.upcoming-visit-grid strong {
+    color: #111111;
+
+    font-size: 13px;
+}
+
+.upcoming-visit-grid span {
+    margin-bottom: 5px;
+
+    color: #111111;
+
+    font-size: 13px;
+}
+
+.no-upcoming-visit {
+    margin: 0;
+
+    color: #68727c;
+
+    font-size: 14px;
+}
+
+
+/* No linked senior */
+
+.guardian-no-senior {
+    padding: 35px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 8px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+
+    text-align: center;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .guardian-senior-status-grid {
+        margin-top: 25px;
+        margin-left: 0;
+    }
+
+    .guardian-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .guardian-summary-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .guardian-summary-card {
+        min-height: auto;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .guardian-dashboard-heading h1 {
+        font-size: 30px;
+    }
+
+    .guardian-dashboard-heading p {
+        font-size: 16px;
+    }
+
+    .guardian-senior-overview {
+        padding: 22px;
+    }
+
+    .guardian-senior-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .guardian-senior-avatar {
+        width: 90px;
+        height: 90px;
+        flex-basis: 90px;
+    }
+
+    .guardian-senior-status-grid {
+        grid-template-columns: 1fr;
+        margin-top: 25px;
+    }
+
+    .guardian-overview-item {
+        padding: 18px 0;
+        border-top: 1px solid #d8dde2;
+        border-left: 0;
+    }
+
+    .guardian-overview-item:first-child {
+        border-top: 1px solid #d8dde2;
+    }
+
+    .guardian-summary-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .guardian-summary-card:last-child {
+        grid-column: auto;
+    }
+
+    .guardian-upcoming-visit {
+        width: 100%;
+    }
+
+    .upcoming-visit-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .guardian-dashboard-heading {
+        margin-bottom: 20px;
+    }
+
+    .guardian-dashboard-heading h1 {
+        font-size: 28px;
+    }
+
+    .guardian-dashboard-heading p {
+        font-size: 14px;
+    }
+
+    .guardian-senior-overview {
+        margin-bottom: 22px;
+        padding: 18px;
+    }
+
+    .guardian-senior-top {
+        gap: 18px;
+    }
+
+    .guardian-senior-name h2 {
+        font-size: 21px;
+    }
+
+    .guardian-senior-status-grid {
+        margin-top: 20px;
+    }
+
+    .guardian-overview-item {
+        gap: 14px;
+        min-height: auto;
+        padding: 16px 0;
+    }
+
+    .overview-icon,
+    .summary-icon,
+    .upcoming-visit-icon {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+    }
+
+    .overview-icon i,
+    .summary-icon i,
+    .upcoming-visit-icon i {
+        font-size: 20px;
+    }
+
+    .guardian-summary-grid {
+        gap: 16px;
+        margin-bottom: 26px;
+    }
+
+    .guardian-summary-card {
+        padding: 16px;
+    }
+
+    .summary-card-header {
+        gap: 14px;
+        min-height: auto;
+    }
+
+    .summary-colour-block {
+        min-height: 72px;
+        padding: 10px 14px;
+    }
+
+    .guardian-upcoming-visit {
+        gap: 14px;
+        padding: 20px 18px;
+    }
+
+    .upcoming-visit-content h2 {
+        margin-bottom: 16px;
+        font-size: 19px;
+    }
+
+    .guardian-no-senior {
+        padding: 28px 18px;
+    }
+}

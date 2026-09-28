@@ -1,0 +1,366 @@
+/* Edit senior profile */
+.admin-edit-senior-page {
+    width: 100%;
+    max-width: none;
+}
+
+/* Back link */
+.edit-senior-back-link {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: #389bf3;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.edit-senior-back-link:hover {
+    color: #187fd8;
+}
+
+/* Page heading */
+.edit-senior-heading {
+    margin-bottom: 25px;
+}
+
+.edit-senior-heading h1 {
+    margin: 0 0 8px;
+    color: #111111;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.edit-senior-heading p {
+    margin: 0;
+    color: #39434c;
+    font-size: 16px;
+}
+
+/* Main profile card */
+.edit-senior-main-card {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    min-height: 230px;
+    margin-bottom: 28px;
+    padding: 30px 42px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.14);
+}
+
+.edit-senior-avatar {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+.edit-senior-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.edit-senior-main-info {
+    flex: 1;
+}
+
+.edit-main-name {
+    max-width: 420px;
+}
+
+.edit-main-name label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.edit-main-name input {
+    width: 100%;
+    padding: 9px 11px;
+    font-size: 22px;
+    font-weight: 700;
+    border: 1px solid #d8dde2;
+    border-radius: 5px;
+}
+
+.edit-senior-role {
+    margin: 7px 0 24px;
+    color: #39434c;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Main details */
+.edit-senior-main-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 45px;
+}
+
+.edit-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.edit-field-group label {
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Information cards */
+.edit-senior-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.edit-senior-card {
+    min-height: 355px;
+    padding: 28px 32px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.14);
+}
+
+.edit-senior-card h2 {
+    margin: 0 0 30px;
+    color: #111111;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Information rows */
+.edit-information-row {
+    display: grid;
+    grid-template-columns: 145px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.edit-information-row:last-child {
+    margin-bottom: 0;
+}
+
+.edit-information-row label {
+    padding-top: 9px;
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Form elements */
+.edit-senior-page input,
+.admin-edit-senior-page input,
+.admin-edit-senior-page select,
+.admin-edit-senior-page textarea {
+    width: 100%;
+    padding: 9px 11px;
+    color: #111111;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.admin-edit-senior-page textarea {
+    min-height: 82px;
+    resize: vertical;
+}
+
+.admin-edit-senior-page input:focus,
+.admin-edit-senior-page select:focus,
+.admin-edit-senior-page textarea:focus {
+    outline: none;
+    border-color: #389bf3;
+    box-shadow: 0 0 0 3px rgba(56, 155, 243, 0.10);
+}
+
+/* Read-only fields */
+.readonly-field {
+    color: #66717a !important;
+    background-color: #f4f6f8 !important;
+    cursor: not-allowed;
+}
+
+/* Form errors */
+.errorlist {
+    margin: 6px 0 0;
+    padding: 0;
+    color: #d63232;
+    font-size: 11px;
+    list-style: none;
+}
+
+/* Form actions */
+.edit-senior-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.edit-senior-cancel-button,
+.edit-senior-save-button {
+    min-width: 130px;
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+}
+
+.edit-senior-cancel-button {
+    color: #389bf3;
+    background-color: #ffffff;
+    border: 1px solid #389bf3;
+    text-decoration: none;
+}
+
+.edit-senior-cancel-button:hover {
+    color: #278de9;
+    border-color: #278de9;
+}
+
+.edit-senior-save-button {
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+}
+
+.edit-senior-save-button:hover {
+    background-color: #278de9;
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .edit-senior-main-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 30px;
+        padding: 28px 32px;
+    }
+
+    .edit-senior-main-info {
+        width: 100%;
+    }
+
+    .edit-senior-bottom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-senior-card {
+        min-height: auto;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .edit-senior-heading h1 {
+        font-size: 31px;
+    }
+
+    .edit-senior-main-card {
+        padding: 25px 22px;
+    }
+
+    .edit-main-name {
+        max-width: none;
+    }
+
+    .edit-senior-main-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .edit-information-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .edit-information-row label {
+        padding-top: 0;
+    }
+
+    .edit-senior-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .edit-senior-cancel-button,
+    .edit-senior-save-button {
+        width: 100%;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .edit-senior-back-link {
+        margin-bottom: 18px;
+        font-size: 13px;
+    }
+
+    .edit-senior-heading {
+        margin-bottom: 20px;
+    }
+
+    .edit-senior-heading h1 {
+        font-size: 28px;
+    }
+
+    .edit-senior-heading p {
+        font-size: 14px;
+    }
+
+    .edit-senior-main-card {
+        gap: 24px;
+        min-height: auto;
+        padding: 20px 18px;
+    }
+
+    .edit-senior-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .edit-main-name input {
+        font-size: 19px;
+    }
+
+    .edit-senior-role {
+        margin-bottom: 20px;
+    }
+
+    .edit-senior-card {
+        padding: 22px 18px;
+    }
+
+    .edit-senior-card h2 {
+        margin-bottom: 24px;
+    }
+
+    .edit-senior-actions {
+        gap: 10px;
+        margin-top: 24px;
+    }
+}

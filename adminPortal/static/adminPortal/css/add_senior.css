@@ -1,0 +1,302 @@
+/* Add senior page */
+.add-senior-page {
+    width: 100%;
+    max-width: none;
+}
+
+/* Page heading */
+.add-senior-heading {
+    margin-bottom: 22px;
+}
+
+.add-senior-heading h1 {
+    margin: 0 0 7px;
+    color: #111111;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.add-senior-heading p {
+    margin: 0;
+    color: #555f68;
+    font-size: 15px;
+}
+
+/* Form */
+.add-senior-form {
+    width: 100%;
+}
+
+.senior-form-card {
+    margin-bottom: 20px;
+    padding: 26px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px rgba(24, 39, 56, 0.10);
+}
+
+.form-card-heading {
+    margin-bottom: 22px;
+}
+
+.form-card-heading h2 {
+    margin: 0 0 5px;
+    color: #111111;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.form-card-heading p {
+    margin: 0;
+    color: #68727c;
+    font-size: 12px;
+}
+
+/* Form grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 22px;
+    margin-bottom: 18px;
+}
+
+.password-grid {
+    margin-bottom: 0;
+}
+
+/* Form fields */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-field label,
+.section-label {
+    color: #222222;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 11px 12px;
+    box-sizing: border-box;
+    color: #111111;
+    background-color: #ffffff;
+    border: 1px solid #d7dde3;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+.form-field input,
+.form-field select {
+    height: 42px;
+}
+
+.form-field textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #389bf3;
+}
+
+.full-width {
+    margin-bottom: 18px;
+}
+
+/* Support needs */
+.support-section {
+    margin-bottom: 22px;
+}
+
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 18px;
+    margin-top: 10px;
+}
+
+.support-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 42px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    background-color: #f8fafc;
+    border: 1px solid #e0e5e9;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.support-option input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: #389bf3;
+}
+
+.support-option span {
+    color: #333333;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Form errors */
+.form-error-box {
+    margin-bottom: 18px;
+    padding: 12px 15px;
+    color: #a52834;
+    background-color: #fdecee;
+    border: 1px solid #f4c7cc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.form-error-box p {
+    margin: 0;
+}
+
+.field-error {
+    color: #d63232;
+    font-size: 11px;
+}
+
+/* Form actions */
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-bottom: 30px;
+}
+
+.cancel-button,
+.create-senior-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 145px;
+    height: 42px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cancel-button {
+    color: #555f68;
+    background-color: #ffffff;
+    border: 1px solid #cfd5da;
+}
+
+.cancel-button:hover {
+    color: #111111;
+    background-color: #f5f7f8;
+}
+
+.create-senior-button {
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+}
+
+.create-senior-button:hover {
+    color: #ffffff;
+    background-color: #278de9;
+    border-color: #278de9;
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .senior-form-card {
+        padding: 24px;
+    }
+
+    .form-grid {
+        gap: 16px 18px;
+    }
+
+    .support-grid {
+        gap: 10px 14px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .add-senior-heading h1 {
+        font-size: 32px;
+    }
+
+    .senior-form-card {
+        padding: 22px;
+    }
+
+    .form-grid,
+    .support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .cancel-button,
+    .create-senior-button {
+        width: 100%;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .add-senior-heading {
+        margin-bottom: 18px;
+    }
+
+    .add-senior-heading h1 {
+        font-size: 28px;
+    }
+
+    .add-senior-heading p {
+        font-size: 14px;
+    }
+
+    .senior-form-card {
+        padding: 18px;
+    }
+
+    .form-card-heading {
+        margin-bottom: 18px;
+    }
+
+    .form-actions {
+        gap: 10px;
+        padding-bottom: 20px;
+    }
+}

@@ -1,0 +1,567 @@
+/* Admin senior detail page */
+.admin-senior-detail-page {
+    width: 100%;
+    max-width: none;
+}
+
+/* Back link */
+.senior-back-link {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: #389bf3;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.senior-back-link:hover {
+    color: #187fd8;
+}
+
+/* Page heading */
+.senior-detail-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.senior-detail-heading h1 {
+    margin: 0 0 6px;
+    color: #111111;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.senior-detail-heading p {
+    margin: 0;
+    color: #303030;
+    font-size: 15px;
+}
+
+/* Edit senior button */
+
+.senior-edit-button {
+    min-width: 120px;
+
+    padding: 9px 16px;
+
+    color: #ffffff;
+    background-color: #389bf3;
+
+    border: 1px solid #389bf3;
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.senior-edit-button:hover {
+    color: #ffffff;
+    background-color: #278de9;
+
+    border-color: #278de9;
+}
+
+/* Main profile card */
+.senior-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    min-height: 245px;
+    margin-bottom: 28px;
+    padding: 34px 38px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.14);
+}
+
+/* Senior profile picture */
+.senior-profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 155px;
+    height: 155px;
+
+    flex-shrink: 0;
+    overflow: hidden;
+
+    border-radius: 50%;
+}
+
+.senior-profile-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.senior-detail-profile-picture {
+    object-fit: cover;
+}
+
+.senior-detail-profile-placeholder {
+    object-fit: contain;
+}
+
+.senior-profile-summary {
+    flex: 1;
+    min-width: 0;
+}
+
+.senior-profile-summary h2 {
+    margin: 0 0 3px;
+    color: #111111;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.senior-member-label {
+    margin: 0 0 30px;
+    color: #333333;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+/* Personal details */
+.senior-personal-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 70px;
+    row-gap: 28px;
+    max-width: 760px;
+}
+
+.senior-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.senior-detail-item span {
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.senior-detail-item strong {
+    color: #222222;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Information cards */
+.senior-information-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.senior-information-card {
+    min-height: 330px;
+    padding: 26px 30px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.14);
+}
+
+.senior-information-card>h2 {
+    margin: 0 0 28px;
+    color: #111111;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Information groups */
+.information-group {
+    margin-bottom: 24px;
+}
+
+.information-group:last-child {
+    margin-bottom: 0;
+}
+
+.information-group h3 {
+    margin: 0 0 9px;
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.information-group p {
+    margin: 0;
+    color: #252525;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.information-muted {
+    color: #66717a !important;
+}
+
+/* Health information */
+.health-highlight {
+    padding: 9px 12px;
+    color: #208034;
+    background-color: #eaf6ea;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* Emergency contact */
+.primary-contact-label {
+    margin-bottom: 20px;
+    padding: 10px 12px;
+    color: #dc3545;
+    background-color: #fff0f1;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.emergency-contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 0 5px;
+}
+
+.emergency-contact-details strong {
+    color: #111111;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.emergency-contact-details span {
+    color: #333333;
+    font-size: 12px;
+}
+
+.emergency-contact-details p {
+    margin: 2px 0 0;
+    color: #111111;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Support needs */
+.support-needs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.support-needs-list span {
+    display: block;
+    padding: 8px 10px;
+    color: #208034;
+    background-color: #eaf6ea;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Senior activity */
+.senior-activity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin-top: 28px;
+}
+
+.senior-activity-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    padding: 24px 26px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.14);
+}
+
+.senior-activity-card>h2 {
+    margin: 0 0 22px;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.activity-list {
+    flex: 1;
+}
+
+.activity-item {
+    margin-bottom: 18px;
+}
+
+.activity-item:last-child {
+    margin-bottom: 15px;
+}
+
+.activity-item strong {
+    display: block;
+    margin-bottom: 3px;
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.activity-item>span {
+    display: block;
+    margin-bottom: 4px;
+    color: #444444;
+    font-size: 11px;
+}
+
+.activity-item p {
+    margin: 0;
+    color: #555f69;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.activity-empty {
+    margin: 0;
+    color: #7b8490;
+    font-size: 12px;
+}
+
+/* Report status */
+.report-item-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 3px;
+}
+
+.report-item-heading strong {
+    margin: 0;
+}
+
+.report-status {
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.report-status.good {
+    color: #208034;
+    background-color: #eaf6ea;
+}
+
+.report-status.okay {
+    color: #946200;
+    background-color: #fff4d8;
+}
+
+.report-status.concern {
+    color: #b46b00;
+    background-color: #fff1d6;
+}
+
+/* Activity buttons */
+.activity-outline-button {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    color: #389bf3;
+    background-color: #ffffff;
+    border: 1px solid #389bf3;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.activity-outline-button:hover {
+    color: #ffffff;
+    background-color: #389bf3;
+}
+
+/* Quick actions */
+.quick-actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .senior-profile-card {
+        gap: 35px;
+        padding: 30px;
+    }
+
+    .senior-personal-details {
+        column-gap: 40px;
+    }
+
+    .senior-information-grid,
+    .senior-activity-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .senior-information-card,
+    .senior-activity-card {
+        min-height: auto;
+    }
+
+    .senior-detail-item {
+        padding: 12px;
+    }
+
+    .senior-detail-item:first-child {
+        padding-left: 12px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .senior-detail-heading {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .senior-detail-heading h1 {
+        font-size: 31px;
+    }
+
+    .senior-edit-button {
+        align-self: flex-start;
+    }
+
+    .senior-profile-card {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 28px;
+        padding: 26px 24px;
+    }
+
+    .senior-profile-summary {
+        width: 100%;
+    }
+
+    .senior-personal-details {
+        grid-template-columns: 1fr;
+        gap: 0;
+        max-width: none;
+    }
+
+    .senior-detail-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #e5e8eb;
+    }
+
+    .senior-detail-item:first-child {
+        padding-left: 0;
+    }
+
+    .senior-detail-item:last-child {
+        border-bottom: none;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .senior-back-link {
+        margin-bottom: 18px;
+        font-size: 13px;
+    }
+
+    .senior-detail-heading {
+        margin-bottom: 20px;
+    }
+
+    .senior-detail-heading h1 {
+        font-size: 28px;
+    }
+
+    .senior-detail-heading p {
+        font-size: 14px;
+    }
+
+    .senior-edit-button {
+        width: 100%;
+    }
+
+    .senior-profile-card {
+        gap: 22px;
+        min-height: auto;
+        margin-bottom: 22px;
+        padding: 22px 18px;
+    }
+
+    .senior-profile-avatar {
+        width: 125px;
+        height: 125px;
+    }
+
+    .senior-profile-summary h2 {
+        font-size: 21px;
+    }
+
+    .senior-member-label {
+        margin-bottom: 22px;
+    }
+
+    .senior-information-grid,
+    .senior-activity-grid {
+        gap: 18px;
+    }
+
+    .senior-activity-grid {
+        margin-top: 22px;
+    }
+
+    .senior-information-card {
+        padding: 22px 18px;
+    }
+
+    .senior-information-card>h2 {
+        margin-bottom: 22px;
+    }
+
+    .senior-activity-card {
+        padding: 20px 18px;
+    }
+
+    .report-item-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+}

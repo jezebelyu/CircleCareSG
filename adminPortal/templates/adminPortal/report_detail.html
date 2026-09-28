@@ -1,0 +1,155 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Report Details
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/reports.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-reports-page">
+
+    <!-- Page heading -->
+    <div class="admin-reports-heading">
+        <div>
+            <a
+                href="{% url 'admin_reports' %}"
+                class="report-back-link"
+            >
+                ‹ &nbsp; Back to Reports Page
+            </a>
+
+            <h1>Visit Report</h1>
+
+            <p>
+                Review the volunteer report submitted for
+                {{ visit.assignment.senior.app_user.full_name }}.
+            </p>
+        </div>
+    </div>
+
+    <!-- Visit summary -->
+    <div class="admin-report-summary">
+
+        <div>
+            <strong>Senior</strong>
+            <span>
+                {{ visit.assignment.senior.app_user.full_name }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Volunteer</strong>
+            <span>
+                {{ visit.assignment.volunteer.app_user.full_name }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Visit Date</strong>
+            <span>
+                {{ visit.visit_date|date:"d M Y" }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Visit Type</strong>
+            <span>
+                {{ visit.get_visit_type_display }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Purpose</strong>
+            <span>
+                {{ visit.get_visit_purpose_display }}
+            </span>
+        </div>
+
+    </div>
+
+    <!-- Report details -->
+    <div class="admin-report-detail-card">
+
+        <div class="admin-report-field">
+            <label>Senior Wellbeing</label>
+
+            <span class="wellbeing-badge wellbeing-{{ report.wellbeing_status }}">
+                {{ report.get_wellbeing_status_display }}
+            </span>
+        </div>
+
+        <div class="admin-report-field">
+            <label>Assistance Provided</label>
+            <p>{{ report.assistance_provided }}</p>
+        </div>
+
+        <div class="admin-report-field">
+            <label>Observations</label>
+
+            <p>
+                {% if report.observations %}
+                    {{ report.observations }}
+                {% else %}
+                    No observations recorded.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="admin-report-field">
+            <label>Concerns</label>
+
+            <p>
+                {% if report.concerns %}
+                    {{ report.concerns }}
+                {% else %}
+                    No concerns recorded.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="admin-report-field">
+            <label>Follow-Up Required</label>
+
+            {% if report.follow_up_required %}
+                <span class="follow-up-badge required">
+                    Required
+                </span>
+            {% else %}
+                <span class="follow-up-badge none">
+                    No
+                </span>
+            {% endif %}
+        </div>
+
+        <div class="admin-report-field">
+            <label>Follow-Up Notes</label>
+
+            <p>
+                {% if report.follow_up_notes %}
+                    {{ report.follow_up_notes }}
+                {% else %}
+                    No follow-up notes.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="admin-report-field">
+            <label>Submitted</label>
+            <p>
+                {{ report.submitted_at|date:"d M Y, g:i A" }}
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

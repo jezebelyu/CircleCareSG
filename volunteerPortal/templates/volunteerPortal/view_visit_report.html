@@ -1,0 +1,154 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | View Visit Report
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/check_in_reports.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="check-in-reports-page">
+
+    <!-- Page heading -->
+    <div class="check-in-reports-heading">
+
+        <a
+            href="{% url 'volunteer_check_in_reports' %}"
+            class="report-back-link"
+        >
+            ‹ &nbsp; Back to Check-In Reports
+        </a>
+
+        <h1>Visit Report</h1>
+
+        <p>
+            Review the submitted report for
+            {{ visit.assignment.senior.app_user.full_name }}.
+        </p>
+
+    </div>
+
+
+    <!-- Visit summary -->
+    <article class="visit-report-summary">
+
+        <div>
+            <strong>Senior</strong>
+            <span>
+                {{ visit.assignment.senior.app_user.full_name }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Visit Date</strong>
+            <span>
+                {{ visit.visit_date|date:"d M Y" }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Time</strong>
+            <span>
+                {{ visit.start_time|time:"g:i A" }}
+                -
+                {{ visit.end_time|time:"g:i A" }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Visit Type</strong>
+            <span>
+                {{ visit.get_visit_type_display }}
+            </span>
+        </div>
+
+        <div>
+            <strong>Purpose</strong>
+            <span>
+                {{ visit.get_visit_purpose_display }}
+            </span>
+        </div>
+
+    </article>
+
+
+    <!-- Report details -->
+    <article class="visit-report-form">
+
+        <div class="report-form-field">
+            <label>Senior Wellbeing</label>
+            <p>
+                {{ report.get_wellbeing_status_display }}
+            </p>
+        </div>
+
+        <div class="report-form-field">
+            <label>Assistance Provided</label>
+            <p>
+                {{ report.assistance_provided }}
+            </p>
+        </div>
+
+        <div class="report-form-field">
+            <label>Observations</label>
+            <p>
+                {% if report.observations %}
+                    {{ report.observations }}
+                {% else %}
+                    No observations recorded.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="report-form-field">
+            <label>Concerns</label>
+            <p>
+                {% if report.concerns %}
+                    {{ report.concerns }}
+                {% else %}
+                    No concerns recorded.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="report-form-field">
+            <label>Follow-Up Required</label>
+            <p>
+                {% if report.follow_up_required %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="report-form-field">
+            <label>Follow-Up Notes</label>
+            <p>
+                {% if report.follow_up_notes %}
+                    {{ report.follow_up_notes }}
+                {% else %}
+                    No follow-up notes.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="report-form-field">
+            <label>Submitted</label>
+            <p>
+                {{ report.submitted_at|date:"d M Y, g:i A" }}
+            </p>
+        </div>
+
+    </article>
+
+</section>
+
+{% endblock %}

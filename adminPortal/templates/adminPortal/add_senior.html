@@ -1,0 +1,418 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Add Senior
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/add_senior.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="add-senior-page">
+
+    <!-- Page heading -->
+    <div class="add-senior-heading">
+        <h1>Add Senior</h1>
+        <p>Create a new senior account and profile.</p>
+    </div>
+
+    <form method="post" class="add-senior-form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="form-error-box">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Account information -->
+        <article class="senior-form-card">
+
+            <div class="form-card-heading">
+                <h2>Account Information</h2>
+                <p>Enter the senior's personal and login details.</p>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-field">
+                    <label for="{{ form.full_name.id_for_label }}">
+                        Full Name
+                    </label>
+
+                    {{ form.full_name }}
+
+                    {% for error in form.full_name.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.nric_fin.id_for_label }}">
+                        NRIC / FIN
+                    </label>
+
+                    {{ form.nric_fin }}
+
+                    {% for error in form.nric_fin.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.email.id_for_label }}">
+                        Email Address
+                    </label>
+
+                    {{ form.email }}
+
+                    {% for error in form.email.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.mobile_number.id_for_label }}">
+                        Mobile Number
+                    </label>
+
+                    {{ form.mobile_number }}
+
+                    {% for error in form.mobile_number.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.date_of_birth.id_for_label }}">
+                        Date of Birth
+                    </label>
+
+                    {{ form.date_of_birth }}
+
+                    {% for error in form.date_of_birth.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="form-grid password-grid">
+
+                <div class="form-field">
+                    <label for="{{ form.password.id_for_label }}">
+                        Temporary Password
+                    </label>
+
+                    {{ form.password }}
+
+                    {% for error in form.password.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.confirm_password.id_for_label }}">
+                        Confirm Password
+                    </label>
+
+                    {{ form.confirm_password }}
+
+                    {% for error in form.confirm_password.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- Address -->
+        <article class="senior-form-card">
+
+            <div class="form-card-heading">
+                <h2>Address</h2>
+                <p>Enter the senior's residential information.</p>
+            </div>
+
+            <div class="form-field full-width">
+                <label for="{{ form.address.id_for_label }}">
+                    Address
+                </label>
+
+                {{ form.address }}
+
+                {% for error in form.address.errors %}
+                    <span class="field-error">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-field">
+                    <label for="{{ form.postal_code.id_for_label }}">
+                        Postal Code
+                    </label>
+
+                    {{ form.postal_code }}
+
+                    {% for error in form.postal_code.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.unit_number.id_for_label }}">
+                        Unit / Floor
+                    </label>
+
+                    {{ form.unit_number }}
+
+                    {% for error in form.unit_number.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- Care information -->
+        <article class="senior-form-card">
+
+            <div class="form-card-heading">
+                <h2>Care Information</h2>
+                <p>Enter the senior's care preferences and health information.</p>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-field">
+                    <label for="{{ form.preferred_language.id_for_label }}">
+                        Preferred Language
+                    </label>
+
+                    {{ form.preferred_language }}
+
+                    {% for error in form.preferred_language.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.religion.id_for_label }}">
+                        Religion
+                    </label>
+
+                    {{ form.religion }}
+
+                    {% for error in form.religion.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-field">
+                    <label for="{{ form.medical_conditions.id_for_label }}">
+                        Medical Conditions
+                    </label>
+
+                    {{ form.medical_conditions }}
+
+                    {% for error in form.medical_conditions.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.allergies.id_for_label }}">
+                        Allergies
+                    </label>
+
+                    {{ form.allergies }}
+
+                    {% for error in form.allergies.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- Support needs -->
+        <article class="senior-form-card">
+
+            <div class="form-card-heading">
+                <h2>Support Needs</h2>
+                <p>Select the types of assistance the senior may require.</p>
+            </div>
+
+            <div class="support-section">
+                <label class="section-label">
+                    Assistance Required
+                </label>
+
+                <div class="support-grid">
+
+                    <label class="support-option">
+                        {{ form.regular_check_ins }}
+                        <span>Regular Check-ins</span>
+                    </label>
+
+                    <label class="support-option">
+                        {{ form.mobility_assistance }}
+                        <span>Mobility Assistance</span>
+                    </label>
+
+                    <label class="support-option">
+                        {{ form.meal_assistance }}
+                        <span>Meal Assistance</span>
+                    </label>
+
+                    <label class="support-option">
+                        {{ form.emotional_support }}
+                        <span>Emotional Support</span>
+                    </label>
+
+                    <label class="support-option">
+                        {{ form.medical_assistance }}
+                        <span>Medical Assistance</span>
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="form-field full-width">
+                <label for="{{ form.other_support.id_for_label }}">
+                    Other Support
+                </label>
+
+                {{ form.other_support }}
+
+                {% for error in form.other_support.errors %}
+                    <span class="field-error">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </div>
+
+        </article>
+
+        <!-- Emergency contact -->
+        <article class="senior-form-card">
+
+            <div class="form-card-heading">
+                <h2>Emergency Contact</h2>
+                <p>Enter the senior's primary emergency contact.</p>
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-field">
+                    <label for="{{ form.emergency_full_name.id_for_label }}">
+                        Full Name
+                    </label>
+
+                    {{ form.emergency_full_name }}
+
+                    {% for error in form.emergency_full_name.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.emergency_relationship.id_for_label }}">
+                        Relationship
+                    </label>
+
+                    {{ form.emergency_relationship }}
+
+                    {% for error in form.emergency_relationship.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="form-field">
+                    <label for="{{ form.emergency_mobile_number.id_for_label }}">
+                        Contact Number
+                    </label>
+
+                    {{ form.emergency_mobile_number }}
+
+                    {% for error in form.emergency_mobile_number.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- Actions -->
+        <div class="form-actions">
+            <a
+                href="{% url 'admin_seniors' %}"
+                class="cancel-button"
+            >
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="create-senior-button"
+            >
+                Create Senior
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}

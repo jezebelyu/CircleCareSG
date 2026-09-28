@@ -1,0 +1,212 @@
+{% extends "seniorPortal/senior_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Senior Dashboard
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'seniorPortal/css/dashboard.css' %}?v=11"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="senior-dashboard">
+
+    <!-- Welcome -->
+    <div class="senior-welcome-card">
+
+        <div class="senior-welcome-image">
+            <img
+                src="{% static 'image2.jpg' %}"
+                alt="Senior receiving care and support"
+            >
+        </div>
+
+        <div class="senior-welcome-content">
+            <h1>
+                Good Morning {{ app_user.full_name }}!
+            </h1>
+
+            <p>
+                Here is an overview of your care and support.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="senior-dashboard-grid">
+
+        <!-- Upcoming visit -->
+        <article class="senior-dashboard-card upcoming-visit-card">
+
+            <h2>
+                Upcoming Visit
+            </h2>
+
+            {% if upcoming_visit %}
+
+                <div class="upcoming-visit-content">
+
+                    <div class="volunteer-avatar">
+                        <img
+                            src="{% static 'empty_user_icon.png' %}"
+                            alt="Volunteer"
+                        >
+                    </div>
+
+                    <div class="visit-information">
+
+                        <h3>
+                            {{ upcoming_visit.assignment.volunteer.app_user.full_name }}
+                        </h3>
+
+                        <div class="visit-detail">
+                            <span class="visit-icon">
+                                📅
+                            </span>
+
+                            <span>
+                                {{ upcoming_visit.visit_date|date:"d F Y" }}
+                            </span>
+                        </div>
+
+                        <div class="visit-detail">
+                            <span class="visit-icon">
+                                🕒
+                            </span>
+
+                            <span>
+                                {{ upcoming_visit.start_time|time:"g:i A" }}
+                            </span>
+                        </div>
+
+                        <div class="visit-detail">
+                            <span class="visit-icon">
+                                📍
+                            </span>
+
+                            <span>
+                                {{ upcoming_visit.get_visit_type_display }}
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="visit-thank-you">
+                    Thank you for allowing us to care for you
+                </div>
+
+            {% else %}
+
+                <div class="upcoming-visit-empty-state">
+                    <h3>
+                        No Upcoming Visit
+                    </h3>
+
+                    <p>
+                        You currently have no scheduled visits.
+                    </p>
+                </div>
+
+            {% endif %}
+
+        </article>
+
+        <!-- Support request -->
+        <article class="senior-dashboard-card support-request-card">
+
+            <div>
+                <h2>
+                    Support Request
+                </h2>
+
+                <p class="support-request-introduction">
+                    Your recent requests
+                </p>
+            </div>
+
+            {% if active_support_request %}
+
+                <div class="support-request-dashboard-details">
+
+                    <div class="support-request-dashboard-row">
+                        <span class="support-dashboard-label">
+                            Status
+                        </span>
+
+                        <span class="
+                            support-dashboard-status
+                            status-{{ active_support_request.status }}
+                        ">
+                            {{ active_support_request.get_status_display }}
+                        </span>
+                    </div>
+
+                    <div class="support-request-dashboard-row">
+                        <span class="support-dashboard-label">
+                            Support
+                        </span>
+
+                        <strong>
+                            {% for support_type in active_support_request.get_support_type_labels %}
+                                {{ support_type }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </strong>
+                    </div>
+
+                    <div class="support-request-dashboard-row">
+                        <span class="support-dashboard-label">
+                            Requested Date
+                        </span>
+
+                        <strong>
+                            {{ active_support_request.requested_date|date:"d F Y" }}
+                        </strong>
+                    </div>
+
+                    <div class="support-request-dashboard-row">
+                        <span class="support-dashboard-label">
+                            Requested Time
+                        </span>
+
+                        <strong>
+                            {{ active_support_request.requested_time|time:"g:i A" }}
+                        </strong>
+                    </div>
+
+                </div>
+
+            {% else %}
+
+                <div class="support-request-empty-state">
+                    <h3>
+                        No Active Requests
+                    </h3>
+
+                    <p>
+                        You have no pending support requests.
+                    </p>
+                </div>
+
+            {% endif %}
+
+            <a
+                href="{% url 'support_request_select' %}"
+                class="btn request-support-button"
+            >
+                Request Support
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+{% endblock %}

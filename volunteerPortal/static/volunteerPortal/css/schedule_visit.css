@@ -1,0 +1,427 @@
+/* Schedule visit page */
+
+.schedule-visit-page {
+    width: 100%;
+    max-width: none;
+}
+
+
+/* Back link */
+
+.schedule-back-row {
+    margin-bottom: 16px;
+}
+
+.schedule-back-link {
+    display: inline-flex;
+    align-items: center;
+
+    color: #278de9;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.schedule-back-link:hover {
+    color: #1f78c5;
+}
+
+
+/* Page heading */
+
+.schedule-page-heading {
+    margin-bottom: 18px;
+}
+
+.schedule-page-heading h1 {
+    margin: 0 0 5px;
+
+    color: #111111;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.schedule-page-heading p {
+    margin: 0;
+
+    color: #555555;
+
+    font-size: 12px;
+}
+
+
+/* Form card */
+
+.schedule-form-card {
+    width: 100%;
+
+    padding: 28px 32px;
+
+    box-sizing: border-box;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d6dade;
+    border-radius: 7px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Form sections */
+
+.schedule-form-section {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #e1e4e7;
+}
+
+.schedule-form-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.schedule-form-section h2 {
+    margin: 0 0 18px;
+
+    color: #111111;
+
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+/* Form fields */
+
+.schedule-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px 22px;
+}
+
+.schedule-form-field {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 7px;
+}
+
+.schedule-form-field.full-width {
+    grid-column: 1 / -1;
+}
+
+.schedule-form-field label {
+    color: #111111;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.schedule-form-field input,
+.schedule-form-field select,
+.schedule-form-field textarea {
+    display: block;
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    box-sizing: border-box;
+
+    color: #222222;
+    background-color: #ffffff;
+
+    border: 1px solid #cdd2d7;
+    border-radius: 4px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.schedule-form-field input,
+.schedule-form-field select {
+    height: 39px;
+}
+
+.schedule-form-field textarea {
+    min-height: 95px;
+
+    line-height: 1.5;
+
+    resize: vertical;
+}
+
+.schedule-form-field input::placeholder,
+.schedule-form-field textarea::placeholder {
+    color: #aaaaaa;
+}
+
+.schedule-form-field input:focus,
+.schedule-form-field select:focus,
+.schedule-form-field textarea:focus {
+    border-color: #3598f5;
+}
+
+
+/* Read-only fields */
+
+.schedule-form-field input[readonly] {
+    color: #444444;
+    background-color: #f8f9fa;
+
+    cursor: default;
+}
+
+
+/* Support options */
+
+.schedule-support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-bottom: 17px;
+}
+
+.support-checkbox {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    box-sizing: border-box;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d4d8dc;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.support-checkbox input {
+    flex-shrink: 0;
+
+    width: 14px;
+    height: 14px;
+
+    margin: 0;
+
+    accent-color: #3598f5;
+}
+
+.support-checkbox span {
+    color: #222222;
+
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.support-checkbox:hover {
+    border-color: #3598f5;
+}
+
+.other-support-field {
+    margin-top: 5px;
+}
+
+
+/* No availability */
+
+.schedule-no-availability {
+    margin-top: 15px;
+
+    padding: 14px 16px;
+
+    box-sizing: border-box;
+
+    background-color: #f8f9fa;
+
+    border: 1px solid #e1e4e7;
+    border-radius: 4px;
+}
+
+.schedule-no-availability p {
+    margin: 0 0 7px;
+
+    color: #666666;
+
+    font-size: 11px;
+}
+
+.schedule-no-availability a {
+    color: #3598f5;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.schedule-no-availability a:hover {
+    text-decoration: underline;
+}
+
+
+/* Form actions */
+
+.schedule-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding-top: 5px;
+}
+
+.schedule-cancel-button,
+.schedule-confirm-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 115px;
+    height: 38px;
+
+    padding: 0 17px;
+
+    box-sizing: border-box;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.schedule-cancel-button {
+    color: #444444;
+    background-color: #ffffff;
+
+    border: 1px solid #cdd2d7;
+}
+
+.schedule-cancel-button:hover {
+    background-color: #f6f6f6;
+}
+
+.schedule-confirm-button {
+    color: #ffffff;
+    background-color: #3598f5;
+
+    border: 1px solid #3598f5;
+}
+
+.schedule-confirm-button:hover {
+    background-color: #2589e7;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .schedule-form-card {
+        padding: 26px 28px;
+    }
+
+    .schedule-form-grid {
+        gap: 16px 18px;
+    }
+
+    .schedule-support-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .schedule-page-heading h1 {
+        font-size: 28px;
+    }
+
+    .schedule-form-card {
+        padding: 24px 20px;
+    }
+
+    .schedule-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-form-field.full-width {
+        grid-column: auto;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .schedule-back-row {
+        margin-bottom: 14px;
+    }
+
+    .schedule-page-heading {
+        margin-bottom: 16px;
+    }
+
+    .schedule-page-heading h1 {
+        font-size: 26px;
+    }
+
+    .schedule-page-heading p {
+        font-size: 11px;
+    }
+
+    .schedule-form-card {
+        padding: 20px 16px;
+    }
+
+    .schedule-form-section {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .schedule-form-section h2 {
+        margin-bottom: 15px;
+    }
+
+    .schedule-support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule-form-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .schedule-cancel-button,
+    .schedule-confirm-button {
+        width: 100%;
+    }
+}

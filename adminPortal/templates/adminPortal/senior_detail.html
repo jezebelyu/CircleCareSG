@@ -1,0 +1,377 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Senior Profile
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/senior_detail.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-senior-detail-page">
+
+    <!-- Back link -->
+    <a
+        href="{% url 'admin_seniors' %}"
+        class="senior-back-link"
+    >
+        ‹ &nbsp; Back to Seniors Page
+    </a>
+
+    <!-- Page heading -->
+    <div class="senior-detail-heading">
+        <div>
+            <h1>Individual Senior Profile</h1>
+            <p>View the senior's profile and care information.</p>
+        </div>
+
+        <a
+            href="{% url 'admin_edit_senior' senior_profile.pk %}"
+            class="senior-edit-button"
+        >
+            Edit Profile
+        </a>
+    </div>
+
+    <!-- Senior profile -->
+    <article class="senior-profile-card">
+        <div class="senior-profile-avatar">
+
+            {% if senior_app_user.profile_picture %}
+                <img
+                    src="{{ senior_app_user.profile_picture.url }}"
+                    alt="{{ senior_app_user.full_name }} profile picture"
+                    class="senior-detail-profile-picture"
+                >
+            {% else %}
+                <img
+                    src="{% static 'empty_user_icon.png' %}"
+                    alt="Default senior profile"
+                    class="senior-detail-profile-placeholder"
+                >
+            {% endif %}
+
+        </div>
+
+        <div class="senior-profile-summary">
+            <h2>{{ senior_app_user.full_name }}</h2>
+            <p class="senior-member-label">Senior Member</p>
+
+            <div class="senior-personal-details">
+
+                <div class="senior-detail-item">
+                    <span>Date of Birth</span>
+                    <strong>
+                        {{ senior_app_user.date_of_birth|date:"d M Y" }}
+                        ({{ age }} years old)
+                    </strong>
+                </div>
+
+                <div class="senior-detail-item">
+                    <span>Member Since</span>
+                    <strong>
+                        {{ senior_app_user.created_at|date:"d M Y" }}
+                    </strong>
+                </div>
+
+                <div class="senior-detail-item">
+                    <span>Email Address</span>
+                    <strong>
+                        {% if senior_app_user.user.email %}
+                            {{ senior_app_user.user.email }}
+                        {% else %}
+                            No email recorded
+                        {% endif %}
+                    </strong>
+                </div>
+
+                <div class="senior-detail-item">
+                    <span>Contact Number</span>
+                    <strong>
+                        {{ senior_app_user.mobile_number }}
+                    </strong>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+    <!-- Information cards -->
+    <div class="senior-information-grid">
+
+        <!-- Health information -->
+        <article class="senior-information-card">
+            <h2>Health Information</h2>
+
+            <div class="information-group">
+                <h3>Allergies</h3>
+
+                {% if senior_profile.allergies %}
+                    <p>{{ senior_profile.allergies }}</p>
+                {% else %}
+                    <p class="information-muted">
+                        No allergies recorded.
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="information-group">
+                <h3>Medical Conditions</h3>
+
+                {% if senior_profile.medical_conditions %}
+                    <div class="health-highlight">
+                        {{ senior_profile.medical_conditions }}
+                    </div>
+                {% else %}
+                    <p class="information-muted">
+                        No medical conditions recorded.
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="information-group">
+                <h3>Religion</h3>
+
+                {% if senior_profile.religion %}
+                    <p>{{ senior_profile.religion }}</p>
+                {% else %}
+                    <p class="information-muted">
+                        Not specified.
+                    </p>
+                {% endif %}
+            </div>
+        </article>
+
+        <!-- Emergency contact -->
+        <article class="senior-information-card">
+            <h2>Emergency Contact</h2>
+
+            {% if emergency_contact %}
+                <div class="primary-contact-label">
+                    Primary Contact
+                </div>
+
+                <div class="emergency-contact-details">
+                    <strong>
+                        {{ emergency_contact.full_name }}
+                    </strong>
+
+                    <span>
+                        {{ emergency_contact.relationship }}
+                    </span>
+
+                    <p>
+                        {{ emergency_contact.mobile_number }}
+                    </p>
+                </div>
+
+            {% else %}
+                <p class="information-muted">
+                    No emergency contact has been recorded.
+                </p>
+            {% endif %}
+        </article>
+
+        <!-- Care preferences -->
+        <article class="senior-information-card">
+            <h2>Care Preferences</h2>
+
+            <div class="information-group">
+                <h3>Address</h3>
+
+                <p>
+                    {{ senior_profile.address }}
+
+                    {% if senior_profile.unit_number %}
+                        , {{ senior_profile.unit_number }}
+                    {% endif %}
+
+                    <br>
+
+                    Singapore {{ senior_profile.postal_code }}
+                </p>
+            </div>
+
+            <div class="information-group">
+                <h3>Preferred Language</h3>
+                <p>
+                    {{ senior_profile.get_preferred_language_display }}
+                </p>
+            </div>
+
+            <div class="information-group">
+                <h3>Support Needs</h3>
+
+                <div class="support-needs-list">
+
+                    {% if senior_profile.regular_check_ins %}
+                        <span>Regular Check-ins</span>
+                    {% endif %}
+
+                    {% if senior_profile.mobility_assistance %}
+                        <span>Mobility Assistance</span>
+                    {% endif %}
+
+                    {% if senior_profile.meal_assistance %}
+                        <span>Meal Assistance</span>
+                    {% endif %}
+
+                    {% if senior_profile.emotional_support %}
+                        <span>Emotional Support</span>
+                    {% endif %}
+
+                    {% if senior_profile.medical_assistance %}
+                        <span>Medical Assistance</span>
+                    {% endif %}
+
+                    {% if senior_profile.other_support %}
+                        <span>{{ senior_profile.other_support }}</span>
+                    {% endif %}
+
+                    {% if not senior_profile.regular_check_ins and not senior_profile.mobility_assistance and not senior_profile.meal_assistance and not senior_profile.emotional_support and not senior_profile.medical_assistance and not senior_profile.other_support %}
+                        <p class="information-muted">
+                            No specific support needs recorded.
+                        </p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Senior activity -->
+    <div class="senior-activity-grid">
+
+        <!-- Upcoming visits -->
+        <article class="senior-activity-card">
+            <h2>Upcoming Visits</h2>
+
+            <div class="activity-list">
+                {% for visit in upcoming_visits %}
+                    <div class="activity-item">
+                        <strong>
+                            {{ visit.visit_date|date:"D, d M Y" }}
+                        </strong>
+
+                        <span>
+                            {{ visit.start_time|time:"g:i A" }}
+                            -
+                            {{ visit.end_time|time:"g:i A" }}
+                        </span>
+
+                        <p>
+                            {{ visit.get_visit_type_display }}
+                            with
+                            {{ visit.assignment.volunteer.app_user.full_name }}
+                        </p>
+                    </div>
+
+                {% empty %}
+                    <p class="activity-empty">
+                        No upcoming visits scheduled.
+                    </p>
+                {% endfor %}
+            </div>
+
+            <a
+                href="{% url 'admin_visits_schedule' %}"
+                class="activity-outline-button"
+            >
+                View Full Schedule
+            </a>
+        </article>
+
+        <!-- Previous reports -->
+        <article class="senior-activity-card">
+            <h2>Previous Reports</h2>
+
+            <div class="activity-list">
+                {% for report in previous_reports %}
+                    <div class="activity-item report-item">
+
+                        <div class="report-item-heading">
+                            <strong>
+                                {{ report.submitted_at|date:"d M Y" }}
+                            </strong>
+
+                            {% if report.wellbeing_status == "concern" %}
+                                <span class="report-status concern">
+                                    Needs Attention
+                                </span>
+
+                            {% elif report.wellbeing_status == "good" %}
+                                <span class="report-status good">
+                                    Good
+                                </span>
+
+                            {% else %}
+                                <span class="report-status okay">
+                                    Okay
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <span>
+                            {{ report.submitted_at|time:"g:i A" }}
+                        </span>
+
+                        <p>
+                            {{ report.visit.get_visit_type_display }}
+                        </p>
+                    </div>
+
+                {% empty %}
+                    <p class="activity-empty">
+                        No previous reports available.
+                    </p>
+                {% endfor %}
+            </div>
+
+            <a
+                href="{% url 'admin_reports' %}"
+                class="activity-outline-button"
+            >
+                View All Reports
+            </a>
+        </article>
+
+        <!-- Quick actions -->
+        <article class="senior-activity-card">
+            <h2>Quick Actions</h2>
+
+            <div class="quick-actions-list">
+                <a
+                    href="{% url 'admin_schedule_visit' %}"
+                    class="activity-outline-button"
+                >
+                    Schedule New Visit
+                </a>
+
+                <a
+                    href="{% url 'admin_support_requests' %}"
+                    class="activity-outline-button"
+                >
+                    View Support Requests
+                </a>
+
+                <a
+                    href="{% url 'admin_edit_senior' senior_profile.pk %}"
+                    class="activity-outline-button"
+                >
+                    Edit Senior Profile
+                </a>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+{% endblock %}

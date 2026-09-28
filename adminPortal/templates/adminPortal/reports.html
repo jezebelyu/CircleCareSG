@@ -1,0 +1,140 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Reports
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/reports.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-reports-page">
+
+    <!-- Page heading -->
+    <div class="admin-reports-heading">
+        <div>
+            <h1>Volunteer Reports</h1>
+            <p>
+                Review submitted volunteer visit reports and follow-up concerns.
+            </p>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="report-summary-grid">
+
+        <div class="report-summary-card">
+            <span>Total Reports</span>
+            <strong>{{ total_reports }}</strong>
+        </div>
+
+        <div class="report-summary-card">
+            <span>Follow-Up Required</span>
+            <strong>{{ follow_up_count }}</strong>
+        </div>
+
+        <div class="report-summary-card">
+            <span>Reports With Concerns</span>
+            <strong>{{ concern_count }}</strong>
+        </div>
+
+    </div>
+
+    <!-- Report list -->
+    <section class="reports-table-section">
+        <h2>Submitted Reports</h2>
+
+        {% if reports %}
+            <div class="reports-table-wrapper">
+                <table class="reports-table">
+                    <thead>
+                        <tr>
+                            <th>Senior</th>
+                            <th>Volunteer</th>
+                            <th>Visit Date</th>
+                            <th>Wellbeing</th>
+                            <th>Follow-Up</th>
+                            <th>Submitted</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for report in reports %}
+                            <tr>
+
+                                <!-- Senior -->
+                                <td>
+                                    <strong>
+                                        {{ report.visit.assignment.senior.app_user.full_name }}
+                                    </strong>
+                                </td>
+
+                                <!-- Volunteer -->
+                                <td>
+                                    {{ report.visit.assignment.volunteer.app_user.full_name }}
+                                </td>
+
+                                <!-- Visit date -->
+                                <td>
+                                    {{ report.visit.visit_date|date:"d M Y" }}
+                                </td>
+
+                                <!-- Wellbeing -->
+                                <td>
+                                    <span class="wellbeing-badge wellbeing-{{ report.wellbeing_status }}">
+                                        {{ report.get_wellbeing_status_display }}
+                                    </span>
+                                </td>
+
+                                <!-- Follow-up -->
+                                <td>
+                                    {% if report.follow_up_required %}
+                                        <span class="follow-up-badge required">
+                                            Required
+                                        </span>
+                                    {% else %}
+                                        <span class="follow-up-badge none">
+                                            No
+                                        </span>
+                                    {% endif %}
+                                </td>
+
+                                <!-- Submitted -->
+                                <td>
+                                    {{ report.submitted_at|date:"d M Y, g:i A" }}
+                                </td>
+
+                                <!-- Action -->
+                                <td>
+                                    <a
+                                        href="{% url 'admin_view_report' report.pk %}"
+                                        class="view-report-button"
+                                    >
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% else %}
+            <div class="reports-empty-state">
+                <p>No volunteer reports have been submitted yet.</p>
+            </div>
+        {% endif %}
+
+    </section>
+
+</section>
+
+{% endblock %}

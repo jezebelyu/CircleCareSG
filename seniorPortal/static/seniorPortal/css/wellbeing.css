@@ -1,0 +1,425 @@
+/* Page heading */
+
+.wellbeing-page {
+    width: 100%;
+}
+
+.wellbeing-page-heading {
+    margin-bottom: 26px;
+}
+
+.wellbeing-page-heading h1 {
+    margin: 0 0 8px;
+    color: #111111;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.wellbeing-page-heading p {
+    margin: 0;
+    color: #39434c;
+    font-size: 17px;
+}
+
+
+/* Wellbeing card */
+
+.wellbeing-card {
+    padding: 34px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.16);
+}
+
+.wellbeing-card h2 {
+    margin: 0 0 28px;
+    color: #111111;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+
+/* Feeling options */
+
+.feeling-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.feeling-option {
+    display: block;
+    cursor: pointer;
+}
+
+.feeling-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.feeling-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 185px;
+    padding: 18px 12px;
+    background-color: #ffffff;
+    border: 1px solid #d7dde3;
+    border-radius: 6px;
+    text-align: center;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.feeling-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(24, 39, 56, 0.12);
+}
+
+.feeling-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 82px;
+    height: 82px;
+    margin-bottom: 12px;
+    background-color: #eeeeee;
+    border-radius: 50%;
+    font-size: 45px;
+}
+
+.feeling-card strong {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.feeling-card small {
+    color: #39434c;
+    font-size: 12px;
+}
+
+.feeling-great strong {
+    color: #278c35;
+}
+
+.feeling-good strong {
+    color: #f19b20;
+}
+
+.feeling-okay strong {
+    color: #176bdd;
+}
+
+.feeling-not-good strong {
+    color: #6430bd;
+}
+
+.feeling-need-support strong {
+    color: #df3640;
+}
+
+.feeling-option input:checked+.feeling-card {
+    border-width: 2px;
+    box-shadow: 0 0 0 4px rgba(56, 155, 243, 0.14);
+}
+
+.feeling-great input:checked+.feeling-card {
+    border-color: #278c35;
+}
+
+.feeling-good input:checked+.feeling-card {
+    border-color: #f19b20;
+}
+
+.feeling-okay input:checked+.feeling-card {
+    border-color: #176bdd;
+}
+
+.feeling-not-good input:checked+.feeling-card {
+    border-color: #6430bd;
+}
+
+.feeling-need-support input:checked+.feeling-card {
+    border-color: #df3640;
+}
+
+
+/* Notes */
+
+.wellbeing-notes-field {
+    margin-top: 24px;
+}
+
+.wellbeing-notes-field label {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.wellbeing-notes-field label strong,
+.wellbeing-notes-field label span {
+    display: block;
+}
+
+.wellbeing-notes-field label strong {
+    margin-bottom: 4px;
+    color: #111111;
+    font-size: 15px;
+}
+
+.wellbeing-notes-field label span {
+    color: #39434c;
+    font-size: 14px;
+}
+
+.wellbeing-notes-field textarea {
+    display: block;
+    width: 100%;
+    min-height: 135px;
+    padding: 14px;
+    color: #171b1f;
+    background-color: #ffffff;
+    border: 1px solid #cfd8e3;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.wellbeing-notes-field textarea:focus {
+    outline: none;
+    border-color: #389bf3;
+    box-shadow: 0 0 0 3px rgba(56, 155, 243, 0.15);
+}
+
+
+/* Actions */
+
+.wellbeing-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.wellbeing-back-button,
+.wellbeing-submit-button {
+    min-width: 240px;
+    padding: 13px 24px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.wellbeing-back-button {
+    color: #389bf3;
+    background-color: #ffffff;
+    border: 1px solid #389bf3;
+}
+
+.wellbeing-submit-button {
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+}
+
+
+/* Contact panel */
+
+.wellbeing-contact-panel {
+    display: grid;
+    grid-template-columns: 1.3fr 0.8fr 1fr;
+    gap: 36px;
+    margin-top: 32px;
+    padding: 30px 50px;
+    background-color: #f1faee;
+    border-radius: 8px;
+}
+
+.wellbeing-contact-panel h3 {
+    margin: 0 0 7px;
+    color: #111111;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.wellbeing-contact-panel p {
+    margin: 0;
+    color: #171b1f;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Contact information icons */
+
+.contact-heading {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.contact-heading i {
+    color: #389bf3;
+    font-size: 18px;
+}
+
+
+/* Errors */
+
+.wellbeing-field-error,
+.wellbeing-form-alert {
+    color: #b42318;
+    font-size: 13px;
+}
+
+.wellbeing-field-error {
+    margin: -14px 0 18px;
+}
+
+.wellbeing-form-alert {
+    margin-bottom: 22px;
+    padding: 14px 16px;
+    background-color: #fff2f2;
+    border: 1px solid #efb3b3;
+    border-radius: 6px;
+}
+
+.wellbeing-field-error p,
+.wellbeing-form-alert p {
+    margin: 0;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .feeling-options {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wellbeing-contact-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        padding: 28px 35px;
+    }
+
+    .wellbeing-contact-panel> :last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .wellbeing-page-heading h1 {
+        font-size: 32px;
+    }
+
+    .wellbeing-card {
+        padding: 26px 22px;
+    }
+
+    .feeling-options {
+        grid-template-columns: 1fr;
+    }
+
+    .feeling-card {
+        min-height: 150px;
+    }
+
+    .wellbeing-actions {
+        flex-direction: column-reverse;
+    }
+
+    .wellbeing-back-button,
+    .wellbeing-submit-button {
+        width: 100%;
+    }
+
+    .wellbeing-contact-panel {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 25px;
+    }
+
+    .wellbeing-contact-panel> :last-child {
+        grid-column: auto;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .wellbeing-page-heading {
+        margin-bottom: 20px;
+    }
+
+    .wellbeing-page-heading h1 {
+        font-size: 28px;
+    }
+
+    .wellbeing-page-heading p {
+        font-size: 14px;
+    }
+
+    .wellbeing-card {
+        padding: 22px 18px;
+    }
+
+    .wellbeing-card h2 {
+        margin-bottom: 22px;
+        font-size: 20px;
+    }
+
+    .feeling-options {
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .feeling-card {
+        min-height: 135px;
+        padding: 16px 12px;
+    }
+
+    .feeling-icon {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 10px;
+
+        font-size: 37px;
+    }
+
+    .wellbeing-notes-field {
+        margin-top: 20px;
+    }
+
+    .wellbeing-actions {
+        gap: 10px;
+        margin-top: 24px;
+    }
+
+    .wellbeing-back-button,
+    .wellbeing-submit-button {
+        min-width: 0;
+    }
+
+    .wellbeing-contact-panel {
+        gap: 20px;
+        margin-top: 24px;
+        padding: 22px 18px;
+    }
+}

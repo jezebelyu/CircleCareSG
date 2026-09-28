@@ -1,0 +1,249 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Visit Details
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/schedule_visit.css' %}?v=4"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="schedule-visit-page">
+
+    <!-- Back link -->
+    <div class="schedule-back-row">
+        <a
+            href="{% url 'admin_visits_schedule' %}"
+            class="schedule-back-link"
+        >
+            ‹ &nbsp; Back to Visits & Schedule
+        </a>
+    </div>
+
+    <!-- Page heading -->
+    <div class="schedule-page-heading">
+        <h1>Visit Details</h1>
+        <p>View the details of this scheduled visit.</p>
+    </div>
+
+    <!-- Visit details -->
+    <div class="schedule-form-card">
+
+        <!-- Visit information -->
+        <div class="schedule-form-section">
+            <h2>Visit Information</h2>
+
+            <div class="schedule-form-grid">
+                <div class="schedule-form-field">
+                    <label>Visit ID</label>
+                    <input
+                        type="text"
+                        value="VIS-{{ visit.pk|stringformat:'04d' }}"
+                        readonly
+                    >
+                </div>
+
+                <div class="schedule-form-field">
+                    <label>Status</label>
+                    <input
+                        type="text"
+                        value="{{ visit.get_status_display }}"
+                        readonly
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Senior and volunteer -->
+        <div class="schedule-form-section">
+            <h2>Senior & Volunteer</h2>
+
+            <div class="schedule-form-grid">
+                <div class="schedule-form-field">
+                    <label>Senior</label>
+                    <input
+                        type="text"
+                        value="{{ visit.assignment.senior.app_user.full_name }} (SEN-{{ visit.assignment.senior.pk|stringformat:'04d' }})"
+                        readonly
+                    >
+                </div>
+
+                <div class="schedule-form-field">
+                    <label>Assigned Volunteer</label>
+                    <input
+                        type="text"
+                        value="{{ visit.assignment.volunteer.app_user.full_name }} (VOL-{{ visit.assignment.volunteer.pk|stringformat:'04d' }})"
+                        readonly
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Visit details -->
+        <div class="schedule-form-section">
+            <h2>Visit Details</h2>
+
+            <div class="schedule-form-grid">
+                <div class="schedule-form-field">
+                    <label>Visit Type</label>
+                    <input
+                        type="text"
+                        value="{{ visit.get_visit_type_display }}"
+                        readonly
+                    >
+                </div>
+
+                <div class="schedule-form-field">
+                    <label>Visit Purpose</label>
+                    <input
+                        type="text"
+                        value="{{ visit.get_visit_purpose_display }}"
+                        readonly
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Support required -->
+        <div class="schedule-form-section">
+            <h2>Support Required</h2>
+
+            {% if visit.support_types %}
+                <div class="schedule-support-grid">
+
+                    {% if "regular_check_ins" in visit.support_types %}
+                        <div class="support-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Regular Check-In</span>
+                        </div>
+                    {% endif %}
+
+                    {% if "mobility_assistance" in visit.support_types %}
+                        <div class="support-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Mobility Assistance</span>
+                        </div>
+                    {% endif %}
+
+                    {% if "meal_assistance" in visit.support_types %}
+                        <div class="support-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Meal Assistance</span>
+                        </div>
+                    {% endif %}
+
+                    {% if "emotional_support" in visit.support_types %}
+                        <div class="support-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Emotional Support</span>
+                        </div>
+                    {% endif %}
+
+                    {% if "medical_assistance" in visit.support_types %}
+                        <div class="support-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Medical Assistance</span>
+                        </div>
+                    {% endif %}
+
+                    {% if "other" in visit.support_types %}
+                        <div class="support-checkbox">
+                            <input type="checkbox" checked disabled>
+                            <span>Other</span>
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% else %}
+                <p class="visit-no-support">
+                    No specific support requirements selected.
+                </p>
+            {% endif %}
+
+            {% if visit.other_support_details %}
+                <div class="schedule-form-field other-support-field">
+                    <label>Other Support Details</label>
+                    <input
+                        type="text"
+                        value="{{ visit.other_support_details }}"
+                        readonly
+                    >
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Date and time -->
+        <div class="schedule-form-section">
+            <h2>Date & Time</h2>
+
+            <div class="schedule-form-grid">
+                <div class="schedule-form-field">
+                    <label>Visit Date</label>
+                    <input
+                        type="text"
+                        value="{{ visit.visit_date|date:'d M Y' }}"
+                        readonly
+                    >
+                </div>
+
+                <div class="schedule-form-field">
+                    <label>Visit Time</label>
+                    <input
+                        type="text"
+                        value="{{ visit.start_time|time:'g:i A' }} - {{ visit.end_time|time:'g:i A' }}"
+                        readonly
+                    >
+                </div>
+
+                <div class="schedule-form-field">
+                    <label>Estimated Duration</label>
+                    <input
+                        type="text"
+                        value="{{ visit.estimated_duration }} minutes"
+                        readonly
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Remarks -->
+        <div class="schedule-form-section">
+            <h2>Remarks</h2>
+
+            <div class="schedule-form-field">
+                <label>Additional Remarks</label>
+                <textarea
+                    rows="5"
+                    readonly
+                >{% if visit.notes %}{{ visit.notes }}{% else %}No additional remarks.{% endif %}</textarea>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="schedule-form-actions">
+            <a
+                href="{% url 'admin_visits_schedule' %}"
+                class="schedule-cancel-button"
+            >
+                Back
+            </a>
+
+            <a
+                href="{% url 'admin_edit_visit' visit.pk %}"
+                class="schedule-confirm-button"
+            >
+                Edit Visit
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

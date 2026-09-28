@@ -1,0 +1,567 @@
+/* Guardian profile page */
+
+.guardian-profile-page {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+
+/* Page header */
+
+.profile-page-header {
+    margin-bottom: 28px;
+}
+
+.profile-page-header h1 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.profile-page-header p {
+    margin: 0;
+
+    color: #202830;
+
+    font-size: 18px;
+}
+
+
+/* Main card */
+
+.guardian-profile-card {
+    padding: 28px 34px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 8px;
+
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.15);
+}
+
+
+/* Guardian information */
+
+.guardian-profile-section {
+    display: grid;
+    grid-template-columns: 165px minmax(0, 1fr);
+    gap: 32px;
+}
+
+.profile-avatar-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 165px;
+    height: 165px;
+
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-avatar-large img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.guardian-profile-information {
+    min-width: 0;
+}
+
+.profile-name-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.profile-name-row h2 {
+    margin: 0 0 4px;
+
+    color: #111111;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.profile-role {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.profile-edit-button,
+.view-senior-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 20px;
+
+    color: #ffffff;
+    background-color: #278de9;
+
+    border: 1px solid #278de9;
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.profile-edit-button:hover,
+.view-senior-button:hover {
+    color: #ffffff;
+    background-color: #1f78c5;
+
+    border-color: #1f78c5;
+}
+
+
+/* Contact information */
+
+.guardian-contact-information {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+.contact-line {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: #202830;
+
+    font-size: 14px;
+}
+
+/* Guardian contact icons */
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+
+    color: #6c757d;
+
+    font-size: 16px;
+    line-height: 1;
+}
+
+.contact-icon i {
+    line-height: 1;
+}
+
+
+/* Linked senior detail icons */
+
+.linked-detail strong {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.linked-detail-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+
+    color: #6c757d;
+
+    font-size: 15px;
+    line-height: 1;
+}
+
+
+/* Guardian preferences */
+
+.guardian-preferences {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+
+    margin-top: 20px;
+}
+
+.preference-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.preference-label {
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.preference-value {
+    min-height: 43px;
+    padding: 11px 15px;
+
+    color: #202830;
+    background-color: #fafbfc;
+
+    border: 1px solid #d8dde2;
+    border-radius: 5px;
+
+    font-size: 14px;
+}
+
+
+/* Linked senior */
+
+.linked-senior-section {
+    margin-top: 30px;
+    padding-top: 25px;
+
+    border-top: 1px solid #d8dde2;
+}
+
+.linked-senior-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+}
+
+.linked-senior-heading h3 {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+/* Linked senior layout */
+
+.linked-senior-content {
+    display: grid;
+    grid-template-columns:
+        165px minmax(420px, 1.25fr) minmax(330px, 1fr);
+
+    column-gap: 32px;
+
+    align-items: start;
+    margin-top: 10px;
+}
+
+
+/* Linked senior avatar */
+
+.linked-senior-avatar {
+    width: 165px;
+    height: 165px;
+
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.linked-senior-avatar img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+
+/* Linked senior main information */
+
+.linked-senior-main {
+    min-width: 0;
+}
+
+.linked-senior-main h2 {
+    margin: 3px 0 4px;
+
+    color: #111111;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.linked-senior-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    margin-top: 17px;
+}
+
+
+/* Linked senior secondary information */
+
+.linked-senior-secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    /* Align with the senior's contact details. */
+    margin-top: 62px;
+}
+
+
+/* Linked senior detail rows */
+
+.linked-detail {
+    display: grid;
+    grid-template-columns: 125px minmax(0, 1fr);
+    gap: 12px;
+
+    color: #202830;
+
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.linked-detail strong {
+    color: #111111;
+    font-weight: 700;
+}
+
+.linked-detail span {
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+.no-linked-senior {
+    padding: 30px 0;
+
+    color: #68737d;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .guardian-profile-card {
+        padding: 26px 28px;
+    }
+
+    .guardian-profile-section {
+        grid-template-columns: 130px minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .profile-avatar-large {
+        width: 130px;
+        height: 130px;
+    }
+
+    .guardian-preferences {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .linked-senior-content {
+        grid-template-columns: 130px minmax(0, 1fr);
+        column-gap: 28px;
+    }
+
+    .linked-senior-avatar {
+        width: 130px;
+        height: 130px;
+    }
+
+    .linked-senior-main {
+        grid-column: 2;
+    }
+
+    .linked-senior-secondary {
+        grid-column: 2;
+        margin-top: 20px;
+    }
+
+    .linked-detail {
+        grid-template-columns: 110px minmax(0, 1fr);
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .profile-page-header h1 {
+        font-size: 32px;
+    }
+
+    .profile-page-header p {
+        font-size: 16px;
+    }
+
+    .guardian-profile-card {
+        padding: 24px 20px;
+    }
+
+    .guardian-profile-section {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-avatar-large {
+        width: 125px;
+        height: 125px;
+        margin: 0 auto;
+    }
+
+    .profile-name-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .guardian-preferences {
+        grid-template-columns: 1fr;
+    }
+
+    .linked-senior-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .linked-senior-content {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .linked-senior-avatar {
+        width: 125px;
+        height: 125px;
+        margin: 0 auto;
+    }
+
+    .linked-senior-main,
+    .linked-senior-secondary {
+        grid-column: auto;
+    }
+
+    .linked-senior-secondary {
+        margin-top: 0;
+    }
+
+    .linked-detail {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .profile-page-header {
+        margin-bottom: 20px;
+    }
+
+    .profile-page-header h1 {
+        font-size: 28px;
+    }
+
+    .profile-page-header p {
+        font-size: 14px;
+    }
+
+    .guardian-profile-card {
+        padding: 20px 18px;
+    }
+
+    .guardian-profile-section {
+        gap: 20px;
+    }
+
+    .profile-avatar-large {
+        width: 110px;
+        height: 110px;
+    }
+
+    .profile-name-row {
+        gap: 14px;
+    }
+
+    .profile-name-row h2 {
+        font-size: 22px;
+    }
+
+    .profile-edit-button,
+    .view-senior-button {
+        width: 100%;
+    }
+
+    .guardian-contact-information {
+        gap: 10px;
+    }
+
+    .contact-line {
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13px;
+    }
+
+    .guardian-preferences {
+        gap: 12px;
+        margin-top: 18px;
+    }
+
+    .linked-senior-section {
+        margin-top: 24px;
+        padding-top: 22px;
+    }
+
+    .linked-senior-content {
+        row-gap: 18px;
+    }
+
+    .linked-senior-avatar {
+        width: 110px;
+        height: 110px;
+    }
+
+    .linked-senior-main h2 {
+        font-size: 21px;
+    }
+
+    .linked-senior-details,
+    .linked-senior-secondary {
+        gap: 12px;
+    }
+
+    .no-linked-senior {
+        padding: 24px 0;
+    }
+}

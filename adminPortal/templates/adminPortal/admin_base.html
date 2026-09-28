@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+            CircleCareSG | Admin Portal
+        {% endblock %}
+    </title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Admin portal styling -->
+    <link
+        rel="stylesheet"
+        href="{% static 'adminPortal/css/admin_base.css' %}?v=1"
+    >
+
+    {% block extra_css %}
+    {% endblock %}
+</head>
+
+
+<body>
+
+    <!-- Admin header -->
+    <header class="admin-header">
+
+        <!-- Logo -->
+        <div class="admin-header-logo">
+            <a href="{% url 'admin_dashboard' %}">
+                <img
+                    src="{% static 'logo.png' %}"
+                    alt="CircleCareSG logo"
+                >
+            </a>
+        </div>
+
+
+        <!-- Admin profile -->
+        <div class="admin-header-profile">
+
+            <div class="admin-profile-avatar">
+
+                {% if app_user.profile_picture %}
+                    <img
+                        src="{{ app_user.profile_picture.url }}"
+                        alt="{{ app_user.full_name }} profile picture"
+                        class="admin-header-profile-picture"
+                    >
+                {% else %}
+                    <img
+                        src="{% static 'empty_user_icon.png' %}"
+                        alt="Default administrator profile"
+                        class="admin-header-profile-placeholder"
+                    >
+                {% endif %}
+
+            </div>
+
+            <span class="admin-profile-name">
+                {{ app_user.full_name }}
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- Admin portal layout -->
+    <div class="admin-portal-layout">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+
+            {% with current_url=request.resolver_match.url_name %}
+
+                <nav class="admin-navigation">
+
+                    <!-- Dashboard -->
+                    <a
+                        href="{% url 'admin_dashboard' %}"
+                        class="admin-nav-link{% if current_url == 'admin_dashboard' %} active{% endif %}"
+                    >
+                        Dashboard
+                    </a>
+
+
+                    <!-- Seniors -->
+                    <a
+                        href="{% url 'admin_seniors' %}"
+                        class="admin-nav-link{% if current_url == 'admin_seniors' %} active{% endif %}"
+                    >
+                        Seniors
+                    </a>
+
+
+                    <!-- Volunteers -->
+                    <a
+                        href="{% url 'admin_volunteers' %}"
+                        class="admin-nav-link{% if current_url == 'admin_volunteers' %} active{% endif %}"
+                    >
+                        Volunteers
+                    </a>
+
+
+                    <!-- Alerts -->
+                    <a
+                        href="{% url 'admin_alerts' %}"
+                        class="admin-nav-link{% if current_url == 'admin_alerts' %} active{% endif %}"
+                    >
+                        Alerts
+                    </a>
+
+
+                    <!-- Visits and schedule -->
+                    <a
+                        href="{% url 'admin_visits_schedule' %}"
+                        class="admin-nav-link{% if current_url in 'admin_visits_schedule admin_schedule_visit admin_visit_detail admin_edit_visit' %} active{% endif %}"
+                    >
+                        Visits &amp; Schedule
+                    </a>
+
+
+                    <!-- Reports -->
+                    <a
+                        href="{% url 'admin_reports' %}"
+                        class="admin-nav-link{% if current_url == 'admin_reports' %} active{% endif %}"
+                    >
+                        Reports
+                    </a>
+
+
+                    <!-- Support requests -->
+                    <a
+                        href="{% url 'admin_support_requests' %}"
+                        class="admin-nav-link{% if current_url == 'admin_support_requests' %} active{% endif %}"
+                    >
+                        Support Requests
+                    </a>
+
+
+                    <div class="admin-nav-divider"></div>
+
+
+                    <!-- Profile -->
+                    <a
+                        href="{% url 'admin_profile' %}"
+                        class="admin-nav-link{% if current_url in 'admin_profile admin_edit_profile' %} active{% endif %}"
+                    >
+                        My Profile
+                    </a>
+
+
+                    <div class="admin-nav-divider"></div>
+
+
+                    <!-- Logout -->
+                    <a
+                        href="{% url 'logout' %}"
+                        class="admin-nav-link admin-logout-link"
+                    >
+                        Log Out
+                    </a>
+
+                </nav>
+
+            {% endwith %}
+
+        </aside>
+
+
+        <!-- Main content -->
+        <main class="admin-main-content">
+
+            <!-- Django messages -->
+            {% if messages %}
+
+                <div class="admin-message-container">
+
+                    {% for message in messages %}
+
+                        <div
+                            class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %} alert-dismissible fade show"
+                            role="alert"
+                        >
+                            {{ message }}
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+
+    <!-- Bootstrap -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

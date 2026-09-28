@@ -1,0 +1,368 @@
+{% extends "guardianPortal/guardian_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Edit Senior Profile
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'guardianPortal/css/edit_senior.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="edit-senior-page">
+
+    <!-- Back link -->
+    <a
+        href="{% url 'guardian_my_senior' %}"
+        class="edit-senior-back-link"
+    >
+        ‹ &nbsp; Back to My Senior
+    </a>
+
+    <!-- Page heading -->
+    <div class="edit-senior-heading">
+        <h1>Edit Senior Profile</h1>
+        <p>
+            Update {{ linked_senior.app_user.full_name }}'s
+            profile and care information.
+        </p>
+    </div>
+
+    <form method="POST" class="edit-senior-form">
+        {% csrf_token %}
+
+        <!-- Form errors -->
+        {% if form.non_field_errors %}
+            <div class="edit-senior-error">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Basic information -->
+        <article class="edit-senior-card">
+
+            <div class="edit-card-heading">
+                <h2>Basic Information</h2>
+                <p>
+                    Update the senior's personal and contact details.
+                </p>
+            </div>
+
+            <div class="edit-senior-grid">
+
+                <div class="edit-field">
+                    <label for="{{ form.full_name.id_for_label }}">
+                        {{ form.full_name.label }}
+                    </label>
+
+                    {{ form.full_name }}
+
+                    {% for error in form.full_name.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field">
+                    <label for="{{ form.date_of_birth.id_for_label }}">
+                        {{ form.date_of_birth.label }}
+                    </label>
+
+                    {{ form.date_of_birth }}
+
+                    {% for error in form.date_of_birth.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field edit-field-full">
+                    <label for="{{ form.mobile_number.id_for_label }}">
+                        {{ form.mobile_number.label }}
+                    </label>
+
+                    {{ form.mobile_number }}
+
+                    {% for error in form.mobile_number.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Address and preferences -->
+        <article class="edit-senior-card">
+
+            <div class="edit-card-heading">
+                <h2>Address &amp; Preferences</h2>
+                <p>
+                    Update the senior's address and preferred language.
+                </p>
+            </div>
+
+            <div class="edit-senior-grid">
+
+                <div class="edit-field edit-field-full">
+                    <label for="{{ form.address.id_for_label }}">
+                        {{ form.address.label }}
+                    </label>
+
+                    {{ form.address }}
+
+                    {% for error in form.address.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field">
+                    <label for="{{ form.unit_number.id_for_label }}">
+                        {{ form.unit_number.label }}
+                    </label>
+
+                    {{ form.unit_number }}
+
+                    {% for error in form.unit_number.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field">
+                    <label for="{{ form.postal_code.id_for_label }}">
+                        {{ form.postal_code.label }}
+                    </label>
+
+                    {{ form.postal_code }}
+
+                    {% for error in form.postal_code.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field edit-field-full">
+                    <label for="{{ form.preferred_language.id_for_label }}">
+                        {{ form.preferred_language.label }}
+                    </label>
+
+                    {{ form.preferred_language }}
+
+                    {% for error in form.preferred_language.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Health information -->
+        <article class="edit-senior-card">
+
+            <div class="edit-card-heading">
+                <h2>Health Information</h2>
+                <p>
+                    Keep important health information up to date.
+                </p>
+            </div>
+
+            <div class="edit-senior-grid">
+
+                <div class="edit-field">
+                    <label for="{{ form.allergies.id_for_label }}">
+                        {{ form.allergies.label }}
+                    </label>
+
+                    {{ form.allergies }}
+
+                    {% for error in form.allergies.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field">
+                    <label for="{{ form.medical_conditions.id_for_label }}">
+                        {{ form.medical_conditions.label }}
+                    </label>
+
+                    {{ form.medical_conditions }}
+
+                    {% for error in form.medical_conditions.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field edit-field-full">
+                    <label for="{{ form.religion.id_for_label }}">
+                        {{ form.religion.label }}
+                    </label>
+
+                    {{ form.religion }}
+
+                    {% for error in form.religion.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Support needs -->
+        <article class="edit-senior-card">
+
+            <div class="edit-card-heading">
+                <h2>Support Needs</h2>
+                <p>
+                    Select the types of assistance currently required.
+                </p>
+            </div>
+
+            <div class="support-options-grid">
+
+                <label class="support-option">
+                    {{ form.regular_check_ins }}
+                    <span>Regular Check-Ins</span>
+                </label>
+
+                <label class="support-option">
+                    {{ form.mobility_assistance }}
+                    <span>Mobility Assistance</span>
+                </label>
+
+                <label class="support-option">
+                    {{ form.meal_assistance }}
+                    <span>Meal Assistance</span>
+                </label>
+
+                <label class="support-option">
+                    {{ form.emotional_support }}
+                    <span>Emotional Support</span>
+                </label>
+
+                <label class="support-option">
+                    {{ form.medical_assistance }}
+                    <span>Medical Assistance</span>
+                </label>
+
+            </div>
+
+            <div class="edit-field other-support-field">
+                <label for="{{ form.other_support.id_for_label }}">
+                    {{ form.other_support.label }}
+                </label>
+
+                {{ form.other_support }}
+
+                {% for error in form.other_support.errors %}
+                    <span class="field-error">
+                        {{ error }}
+                    </span>
+                {% endfor %}
+            </div>
+
+        </article>
+
+        <!-- Emergency contact -->
+        <article class="edit-senior-card">
+
+            <div class="edit-card-heading">
+                <h2>Emergency Contact</h2>
+                <p>
+                    Update the senior's primary emergency contact.
+                </p>
+            </div>
+
+            <div class="edit-senior-grid">
+
+                <div class="edit-field edit-field-full">
+                    <label for="{{ form.emergency_contact_name.id_for_label }}">
+                        {{ form.emergency_contact_name.label }}
+                    </label>
+
+                    {{ form.emergency_contact_name }}
+
+                    {% for error in form.emergency_contact_name.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field">
+                    <label for="{{ form.emergency_contact_relationship.id_for_label }}">
+                        {{ form.emergency_contact_relationship.label }}
+                    </label>
+
+                    {{ form.emergency_contact_relationship }}
+
+                    {% for error in form.emergency_contact_relationship.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+                <div class="edit-field">
+                    <label for="{{ form.emergency_contact_mobile.id_for_label }}">
+                        {{ form.emergency_contact_mobile.label }}
+                    </label>
+
+                    {{ form.emergency_contact_mobile }}
+
+                    {% for error in form.emergency_contact_mobile.errors %}
+                        <span class="field-error">
+                            {{ error }}
+                        </span>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Actions -->
+        <div class="edit-senior-actions">
+
+            <a
+                href="{% url 'guardian_my_senior' %}"
+                class="edit-senior-cancel-button"
+            >
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="edit-senior-save-button"
+            >
+                Save Changes
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}

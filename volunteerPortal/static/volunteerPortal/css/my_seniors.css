@@ -1,0 +1,605 @@
+/* My Seniors page */
+
+.my-seniors-page {
+    width: 100%;
+}
+
+
+/* Page heading */
+
+.my-seniors-heading {
+    margin-bottom: 14px;
+}
+
+.my-seniors-heading h1 {
+    margin: 0 0 5px;
+
+    color: #111111;
+
+    font-size: 31px;
+    font-weight: 700;
+}
+
+.my-seniors-heading p {
+    margin: 0;
+
+    color: #333333;
+
+    font-size: 14px;
+}
+
+
+/* Search */
+
+.my-seniors-toolbar {
+    width: 100%;
+
+    margin-bottom: 24px;
+}
+
+.my-seniors-search {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
+    overflow: hidden;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 6px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.my-seniors-search:focus-within {
+    border-color: #369cff;
+
+    box-shadow: 0 0 0 2px rgba(54, 156, 255, 0.1);
+}
+
+.my-seniors-search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 48px;
+
+    color: #7b858d;
+
+    font-size: 20px;
+}
+
+.my-seniors-search input {
+    flex: 1;
+
+    min-width: 0;
+    height: 100%;
+
+    padding: 0 14px 0 0;
+
+    color: #111111;
+    background-color: transparent;
+
+    border: none;
+    outline: none;
+
+    font-size: 14px;
+}
+
+.my-seniors-search input::placeholder {
+    color: #a4aab0;
+}
+
+.my-seniors-search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    height: 100%;
+
+    padding: 0 28px;
+
+    color: #ffffff;
+    background-color: #369cff;
+
+    border: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.my-seniors-search-button:hover {
+    background-color: #268fe9;
+}
+
+.my-seniors-search-button:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: -4px;
+}
+
+
+/* Senior list */
+
+.assigned-seniors-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.assigned-senior-card {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr) 280px;
+    align-items: center;
+
+    min-height: 135px;
+
+    padding: 22px 24px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 4px;
+}
+
+.assigned-senior-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 76px;
+    height: 76px;
+
+    overflow: hidden;
+
+    background-color: #dddddd;
+
+    border-radius: 50%;
+}
+
+.assigned-senior-avatar img {
+    width: 100%;
+    height: 100%;
+}
+
+.assigned-senior-profile-picture {
+    object-fit: cover;
+}
+
+.assigned-senior-profile-placeholder {
+    object-fit: contain;
+}
+
+
+/* Senior details */
+
+.assigned-senior-details {
+    min-width: 0;
+}
+
+.assigned-senior-details h2 {
+    margin: 0 0 4px;
+
+    color: #111111;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.senior-meta {
+    margin: 0 0 8px;
+
+    color: #222222;
+
+    font-size: 11px;
+}
+
+.senior-id {
+    font-weight: 500;
+}
+
+.senior-address,
+.senior-preference {
+    margin: 0 0 4px;
+
+    color: #222222;
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.senior-preference {
+    margin-bottom: 0;
+}
+
+
+/* Senior actions */
+
+.assigned-senior-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    align-self: stretch;
+}
+
+.senior-wellbeing-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 110px;
+
+    padding: 5px 9px;
+
+    border-radius: 4px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.wellbeing-good {
+    color: #23812d;
+    background-color: #edf8ec;
+}
+
+.wellbeing-attention {
+    color: #b05c00;
+    background-color: #fff5e8;
+}
+
+.wellbeing-urgent {
+    color: #c92525;
+    background-color: #fff1f1;
+}
+
+.wellbeing-unknown {
+    color: #666666;
+    background-color: #f0f0f0;
+}
+
+.assigned-senior-button-row {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+}
+
+.view-senior-button,
+.schedule-visit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 108px;
+    height: 33px;
+
+    padding: 0 12px;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.view-senior-button {
+    color: #369cff;
+    background-color: #ffffff;
+
+    border: 1px solid #369cff;
+}
+
+.view-senior-button:hover {
+    color: #369cff;
+    background-color: #f4f9ff;
+}
+
+.schedule-visit-button {
+    color: #ffffff;
+    background-color: #369cff;
+
+    border: 1px solid #369cff;
+}
+
+.schedule-visit-button:hover {
+    color: #ffffff;
+    background-color: #268fe9;
+
+    border-color: #268fe9;
+}
+
+
+/* Pagination */
+
+.my-seniors-pagination {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 26px;
+}
+
+.pagination-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 43px;
+    height: 43px;
+
+    color: #111111;
+    background-color: #ffffff;
+
+    border: 1px solid #d9dde2;
+    border-radius: 4px;
+
+    font-size: 13px;
+
+    text-decoration: none;
+}
+
+.pagination-button:hover {
+    color: #369cff;
+
+    border-color: #369cff;
+}
+
+.pagination-button.active {
+    color: #ffffff;
+    background-color: #369cff;
+
+    border-color: #369cff;
+}
+
+.pagination-button.active:hover {
+    color: #ffffff;
+}
+
+
+/* Empty and search states */
+
+.no-assigned-seniors-card {
+    padding: 55px 25px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #d8dde2;
+    border-radius: 4px;
+
+    text-align: center;
+}
+
+.no-assigned-seniors-icon img {
+    width: 78px;
+    height: 78px;
+
+    margin-bottom: 16px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.no-assigned-seniors-card h2 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.no-assigned-seniors-card p {
+    max-width: 480px;
+
+    margin: 0 auto;
+
+    color: #666666;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.clear-search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 110px;
+    height: 36px;
+
+    margin-top: 18px;
+    padding: 0 16px;
+
+    color: #369cff;
+    background-color: #ffffff;
+
+    border: 1px solid #369cff;
+    border-radius: 4px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.clear-search-button:hover {
+    color: #369cff;
+    background-color: #f4f9ff;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .assigned-senior-card {
+        grid-template-columns: 78px minmax(0, 1fr);
+    }
+
+    .assigned-senior-avatar {
+        width: 64px;
+        height: 64px;
+    }
+
+    .assigned-senior-actions {
+        grid-column: 1 / -1;
+
+        flex-direction: row;
+        align-items: center;
+
+        margin-top: 14px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .my-seniors-heading h1 {
+        font-size: 30px;
+    }
+
+    .assigned-senior-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 14px;
+    }
+
+    .assigned-senior-actions {
+        width: 100%;
+
+        align-items: stretch;
+        flex-direction: column;
+
+        gap: 12px;
+        margin-top: 0;
+    }
+
+    .senior-wellbeing-status {
+        align-self: flex-start;
+    }
+
+    .assigned-senior-button-row {
+        width: 100%;
+    }
+
+    .view-senior-button,
+    .schedule-visit-button {
+        flex: 1;
+    }
+
+    .my-seniors-pagination {
+        justify-content: center;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .my-seniors-heading {
+        margin-bottom: 12px;
+    }
+
+    .my-seniors-heading h1 {
+        font-size: 28px;
+    }
+
+    .my-seniors-heading p {
+        font-size: 13px;
+    }
+
+    .my-seniors-toolbar {
+        margin-bottom: 18px;
+    }
+
+    .my-seniors-search {
+        height: 48px;
+    }
+
+    .my-seniors-search-icon {
+        width: 42px;
+
+        font-size: 18px;
+    }
+
+    .my-seniors-search input {
+        font-size: 13px;
+    }
+
+    .my-seniors-search-button {
+        padding: 0 16px;
+    }
+
+    .assigned-seniors-list {
+        gap: 10px;
+    }
+
+    .assigned-senior-card {
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .assigned-senior-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .assigned-senior-details h2 {
+        font-size: 18px;
+    }
+
+    .assigned-senior-button-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .view-senior-button,
+    .schedule-visit-button {
+        width: 100%;
+    }
+
+    .my-seniors-pagination {
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 20px;
+    }
+
+    .pagination-button {
+        width: 38px;
+        height: 38px;
+    }
+
+    .no-assigned-seniors-card {
+        padding: 40px 18px;
+    }
+}

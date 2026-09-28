@@ -1,0 +1,253 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Edit Volunteer
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/edit_volunteer.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="edit-volunteer-page">
+
+    <!-- Back link -->
+    <a
+        href="{% url 'admin_volunteer_detail' volunteer_profile.pk %}"
+        class="edit-volunteer-back-link"
+    >
+        ‹ &nbsp; Back to Volunteer Profile
+    </a>
+
+    <!-- Page heading -->
+    <div class="edit-volunteer-heading">
+        <h1>Edit Volunteer Profile</h1>
+        <p>Update volunteer information and account details.</p>
+    </div>
+
+    <!-- Edit form -->
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Account information -->
+        <article class="edit-volunteer-card">
+            <h2>Account Information</h2>
+
+            <div class="edit-volunteer-grid">
+
+                <div class="edit-form-group">
+                    <label for="{{ account_form.full_name.id_for_label }}">
+                        Full Name
+                    </label>
+
+                    {{ account_form.full_name }}
+
+                    {% if account_form.full_name.errors %}
+                        <div class="form-error">
+                            {{ account_form.full_name.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="edit-form-group">
+                    <label for="{{ account_form.email.id_for_label }}">
+                        Email Address
+                    </label>
+
+                    {{ account_form.email }}
+
+                    {% if account_form.email.errors %}
+                        <div class="form-error">
+                            {{ account_form.email.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="edit-form-group">
+                    <label for="{{ account_form.mobile_number.id_for_label }}">
+                        Mobile Number
+                    </label>
+
+                    {{ account_form.mobile_number }}
+
+                    {% if account_form.mobile_number.errors %}
+                        <div class="form-error">
+                            {{ account_form.mobile_number.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="edit-form-group">
+                    <label for="{{ account_form.date_of_birth.id_for_label }}">
+                        Date of Birth
+                    </label>
+
+                    {{ account_form.date_of_birth }}
+
+                    {% if account_form.date_of_birth.errors %}
+                        <div class="form-error">
+                            {{ account_form.date_of_birth.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Personal information -->
+        <article class="edit-volunteer-card">
+            <h2>Personal Information</h2>
+
+            <div class="edit-volunteer-grid">
+
+                <div class="edit-form-group full-width">
+                    <label for="{{ profile_form.address.id_for_label }}">
+                        Address
+                    </label>
+
+                    {{ profile_form.address }}
+                </div>
+
+                <div class="edit-form-group">
+                    <label for="{{ profile_form.postal_code.id_for_label }}">
+                        Postal Code
+                    </label>
+
+                    {{ profile_form.postal_code }}
+                </div>
+
+                <div class="edit-form-group">
+                    <label for="{{ profile_form.unit_number.id_for_label }}">
+                        Unit Number
+                    </label>
+
+                    {{ profile_form.unit_number }}
+                </div>
+
+                <div class="edit-form-group">
+                    <label for="{{ profile_form.preferred_language.id_for_label }}">
+                        Preferred Language
+                    </label>
+
+                    {{ profile_form.preferred_language }}
+                </div>
+
+                <div class="edit-form-group checkbox-field">
+                    {{ profile_form.transport_available }}
+
+                    <label for="{{ profile_form.transport_available.id_for_label }}">
+                        Transport Available
+                    </label>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Support interests -->
+        <article class="edit-volunteer-card">
+            <h2>Support Interests</h2>
+
+            <div class="support-checkbox-grid">
+
+                <div class="checkbox-field">
+                    {{ profile_form.regular_check_ins }}
+                    <label for="{{ profile_form.regular_check_ins.id_for_label }}">
+                        Regular Check-ins
+                    </label>
+                </div>
+
+                <div class="checkbox-field">
+                    {{ profile_form.mobility_assistance }}
+                    <label for="{{ profile_form.mobility_assistance.id_for_label }}">
+                        Mobility Assistance
+                    </label>
+                </div>
+
+                <div class="checkbox-field">
+                    {{ profile_form.meal_assistance }}
+                    <label for="{{ profile_form.meal_assistance.id_for_label }}">
+                        Meal Assistance
+                    </label>
+                </div>
+
+                <div class="checkbox-field">
+                    {{ profile_form.emotional_support }}
+                    <label for="{{ profile_form.emotional_support.id_for_label }}">
+                        Emotional Support
+                    </label>
+                </div>
+
+                <div class="checkbox-field">
+                    {{ profile_form.medical_assistance }}
+                    <label for="{{ profile_form.medical_assistance.id_for_label }}">
+                        Medical Assistance
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="edit-form-group other-support-field">
+                <label for="{{ profile_form.other_support.id_for_label }}">
+                    Other Support
+                </label>
+
+                {{ profile_form.other_support }}
+            </div>
+        </article>
+
+        <!-- Volunteer information -->
+        <article class="edit-volunteer-card">
+            <h2>Volunteer Information</h2>
+
+            <div class="edit-form-group">
+                <label for="{{ profile_form.about_me.id_for_label }}">
+                    About Me
+                </label>
+
+                {{ profile_form.about_me }}
+            </div>
+
+            <div class="edit-form-group">
+                <label for="{{ profile_form.skills_interests.id_for_label }}">
+                    Skills &amp; Interests
+                </label>
+
+                {{ profile_form.skills_interests }}
+            </div>
+
+            <div class="edit-form-group">
+                <label for="{{ profile_form.additional_notes.id_for_label }}">
+                    Additional Notes
+                </label>
+
+                {{ profile_form.additional_notes }}
+            </div>
+        </article>
+
+        <!-- Actions -->
+        <div class="edit-volunteer-actions">
+            <a
+                href="{% url 'admin_volunteer_detail' volunteer_profile.pk %}"
+                class="cancel-edit-button"
+            >
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="save-volunteer-button"
+            >
+                Save Changes
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}

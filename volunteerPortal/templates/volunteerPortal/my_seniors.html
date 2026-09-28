@@ -1,0 +1,249 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | My Seniors
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/my_seniors.css' %}?v=4"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="my-seniors-page">
+
+    <!-- Page heading -->
+    <div class="my-seniors-heading">
+        <h1>My Seniors</h1>
+
+        <p>
+            View and manage your assigned seniors.
+        </p>
+    </div>
+
+
+    <!-- Search -->
+    <form
+        method="GET"
+        action="{% url 'volunteer_my_seniors' %}"
+        class="my-seniors-toolbar"
+    >
+        <div class="my-seniors-search">
+
+            <span class="my-seniors-search-icon">
+                ⌕
+            </span>
+
+            <input
+                type="text"
+                name="search"
+                value="{{ search_query }}"
+                placeholder="Search by name or assigned senior number"
+                autocomplete="off"
+            >
+
+            <button
+                type="submit"
+                class="my-seniors-search-button"
+            >
+                Search
+            </button>
+
+        </div>
+    </form>
+
+
+    <!-- Assigned seniors -->
+    {% if assignments %}
+
+        <div class="assigned-seniors-list">
+
+            {% for assignment in assignments %}
+
+                <article class="assigned-senior-card">
+
+                    <div class="assigned-senior-avatar">
+
+                        {% if assignment.senior.app_user.profile_picture %}
+                            <img
+                                src="{{ assignment.senior.app_user.profile_picture.url }}"
+                                alt="{{ assignment.senior.app_user.full_name }} profile picture"
+                                class="assigned-senior-profile-picture"
+                            >
+                        {% else %}
+                            <img
+                                src="{% static 'empty_user_icon.png' %}"
+                                alt="Default senior profile"
+                                class="assigned-senior-profile-placeholder"
+                            >
+                        {% endif %}
+
+                    </div>
+
+
+                    <div class="assigned-senior-details">
+
+                        <h2>
+                            {{ assignment.senior.app_user.full_name }}
+                        </h2>
+
+                        <p class="senior-meta">
+                            <span class="senior-id">
+                                SEN-{{ assignment.senior.pk|stringformat:"04d" }}
+                            </span>
+                        </p>
+
+                        <p class="senior-address">
+                            {% if assignment.senior.unit_number %}
+                                {{ assignment.senior.unit_number }},
+                            {% endif %}
+
+                            {{ assignment.senior.address }}
+
+                            {% if assignment.senior.postal_code %}
+                                {{ assignment.senior.postal_code }}
+                            {% endif %}
+                        </p>
+
+                        <p class="senior-preference">
+                            Preferred Check-In:
+                            {{ assignment.senior.get_preferred_language_display }}
+                        </p>
+
+                    </div>
+
+
+                    <div class="assigned-senior-actions">
+
+                        <span
+                            class="senior-wellbeing-status wellbeing-good"
+                        >
+                            Wellbeing Good
+                        </span>
+
+                        <div class="assigned-senior-button-row">
+
+                            <a
+                                href="{% url 'volunteer_senior_detail' assignment.senior.pk %}"
+                                class="view-senior-button"
+                            >
+                                View Profile
+                            </a>
+
+                            <a
+                                href="{% url 'volunteer_schedule_visit' assignment.senior.pk %}"
+                                class="schedule-visit-button"
+                            >
+                                Schedule Visit
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- Pagination -->
+        {% if assignments.paginator.num_pages > 1 %}
+
+            <div class="my-seniors-pagination">
+
+                {% if assignments.has_previous %}
+                    <a
+                        href="?page={{ assignments.previous_page_number }}{% if search_query %}&search={{ search_query|urlencode }}{% endif %}"
+                        class="pagination-button pagination-arrow"
+                    >
+                        ‹
+                    </a>
+                {% endif %}
+
+
+                {% for page_number in assignments.paginator.page_range %}
+
+                    {% if page_number == assignments.number %}
+                        <span class="pagination-button active">
+                            {{ page_number }}
+                        </span>
+                    {% else %}
+                        <a
+                            href="?page={{ page_number }}{% if search_query %}&search={{ search_query|urlencode }}{% endif %}"
+                            class="pagination-button"
+                        >
+                            {{ page_number }}
+                        </a>
+                    {% endif %}
+
+                {% endfor %}
+
+
+                {% if assignments.has_next %}
+                    <a
+                        href="?page={{ assignments.next_page_number }}{% if search_query %}&search={{ search_query|urlencode }}{% endif %}"
+                        class="pagination-button pagination-arrow"
+                    >
+                        ›
+                    </a>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+
+    {% else %}
+
+        <!-- Empty state -->
+        <article class="no-assigned-seniors-card">
+
+            <div class="no-assigned-seniors-icon">
+                <img
+                    src="{% static 'empty_user_icon.png' %}"
+                    alt=""
+                >
+            </div>
+
+            {% if search_query %}
+
+                <h2>No Seniors Found</h2>
+
+                <p>
+                    No assigned seniors matched
+                    "<strong>{{ search_query }}</strong>".
+                    Try searching by another name or senior number.
+                </p>
+
+                <a
+                    href="{% url 'volunteer_my_seniors' %}"
+                    class="clear-search-button"
+                >
+                    Clear Search
+                </a>
+
+            {% else %}
+
+                <h2>No Seniors Assigned Yet</h2>
+
+                <p>
+                    You currently have no seniors assigned to you.
+                    Once an administrator assigns a senior to you,
+                    their information will automatically appear here.
+                </p>
+
+            {% endif %}
+
+        </article>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

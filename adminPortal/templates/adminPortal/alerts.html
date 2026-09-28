@@ -1,0 +1,139 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+Alerts | CircleCareSG
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/alerts.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<div class="alerts-page">
+
+    <!-- Page header -->
+    <div class="alerts-header">
+        <div>
+            <h1>Alerts</h1>
+            <p>Monitor wellbeing concerns reported by seniors.</p>
+        </div>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="alert-summary-grid">
+
+        <div class="alert-summary-card">
+            <span class="summary-label">Total Alerts</span>
+            <strong>{{ total_alerts }}</strong>
+        </div>
+
+        <div class="alert-summary-card high-card">
+            <span class="summary-label">High Priority</span>
+            <strong>{{ high_priority_count }}</strong>
+        </div>
+
+        <div class="alert-summary-card medium-card">
+            <span class="summary-label">Medium Priority</span>
+            <strong>{{ medium_priority_count }}</strong>
+        </div>
+
+    </div>
+
+    <!-- Alert list -->
+    <div class="alerts-panel">
+
+        <div class="alerts-panel-header">
+            <div>
+                <h2>Wellbeing Alerts</h2>
+                <p>Recent wellbeing submissions requiring attention.</p>
+            </div>
+        </div>
+
+        {% if alerts %}
+            <div class="alerts-list">
+
+                {% for alert in alerts %}
+                    <div class="alert-row">
+
+                        <!-- Priority -->
+                        <div class="alert-priority">
+                            {% if alert.priority == "high" %}
+                                <span class="priority-badge priority-high">
+                                    High
+                                </span>
+                            {% else %}
+                                <span class="priority-badge priority-medium">
+                                    Medium
+                                </span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Alert information -->
+                        <div class="alert-information">
+
+                            <div class="alert-title-row">
+                                <h3>{{ alert.senior_name }}</h3>
+
+                                <span class="feeling-label">
+                                    {{ alert.feeling }}
+                                </span>
+                            </div>
+
+                            <p class="alert-description">
+                                {% if alert.notes %}
+                                    {{ alert.notes }}
+                                {% else %}
+                                    No additional notes were provided.
+                                {% endif %}
+                            </p>
+
+                            <span class="alert-date">
+                                Submitted
+                                {{ alert.submitted_at|date:"d M Y, g:i A" }}
+                            </span>
+
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="alert-action">
+                            <a
+                                href="{% url 'admin_senior_detail' alert.senior.pk %}"
+                                class="view-senior-button"
+                            >
+                                View Senior
+                            </a>
+
+                            <a
+                                href="{% url 'admin_alert_detail' alert.submission.pk %}"
+                                class="view-form-button"
+                            >
+                                View Form
+                            </a>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+            <div class="alerts-empty-state">
+                <h3>No wellbeing alerts</h3>
+
+                <p>
+                    There are currently no senior wellbeing
+                    submissions requiring attention.
+                </p>
+            </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

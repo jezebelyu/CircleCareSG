@@ -1,0 +1,297 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Edit Senior Profile
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/edit_senior.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-edit-senior-page">
+
+    <!-- Back link -->
+    <a
+        href="{% url 'admin_senior_detail' senior_profile.pk %}"
+        class="edit-senior-back-link"
+    >
+        ‹ &nbsp; Back to Senior Profile
+    </a>
+
+    <!-- Page heading -->
+    <div class="edit-senior-heading">
+        <div>
+            <h1>Edit Senior Profile</h1>
+            <p>Update and manage the senior's personal information.</p>
+        </div>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Main profile -->
+        <article class="edit-senior-main-card">
+
+            <div class="edit-senior-avatar">
+                <img
+                    src="{% static 'empty_user_icon.png' %}"
+                    alt="Senior profile"
+                >
+            </div>
+
+            <div class="edit-senior-main-info">
+
+                <div class="edit-main-name">
+                    <label for="{{ account_form.full_name.id_for_label }}">
+                        Full Name
+                    </label>
+
+                    {{ account_form.full_name }}
+
+                    {% if account_form.full_name.errors %}
+                        {{ account_form.full_name.errors }}
+                    {% endif %}
+                </div>
+
+                <p class="edit-senior-role">
+                    Senior Member
+                </p>
+
+                <div class="edit-senior-main-grid">
+
+                    <div class="edit-field-group">
+                        <label for="{{ account_form.date_of_birth.id_for_label }}">
+                            Date of Birth
+                        </label>
+
+                        {{ account_form.date_of_birth }}
+
+                        {% if account_form.date_of_birth.errors %}
+                            {{ account_form.date_of_birth.errors }}
+                        {% endif %}
+                    </div>
+
+                    <div class="edit-field-group">
+                        <label>Member Since</label>
+
+                        <input
+                            type="text"
+                            value="{{ senior_app_user.created_at|date:'d M Y' }}"
+                            readonly
+                            class="readonly-field"
+                        >
+                    </div>
+
+                    <div class="edit-field-group">
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            value="{{ senior_app_user.user.email }}"
+                            readonly
+                            class="readonly-field"
+                        >
+                    </div>
+
+                    <div class="edit-field-group">
+                        <label for="{{ account_form.mobile_number.id_for_label }}">
+                            Contact Number
+                        </label>
+
+                        {{ account_form.mobile_number }}
+
+                        {% if account_form.mobile_number.errors %}
+                            {{ account_form.mobile_number.errors }}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+        </article>
+
+        <!-- Personal and emergency information -->
+        <div class="edit-senior-bottom-grid">
+
+            <!-- Personal information -->
+            <article class="edit-senior-card">
+                <h2>Personal Information</h2>
+
+                <div class="edit-information-row">
+                    <label for="{{ profile_form.address.id_for_label }}">
+                        Address
+                    </label>
+
+                    <div>
+                        {{ profile_form.address }}
+
+                        {% if profile_form.address.errors %}
+                            {{ profile_form.address.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ profile_form.unit_number.id_for_label }}">
+                        Unit / Floor
+                    </label>
+
+                    <div>
+                        {{ profile_form.unit_number }}
+
+                        {% if profile_form.unit_number.errors %}
+                            {{ profile_form.unit_number.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ profile_form.postal_code.id_for_label }}">
+                        Postal Code
+                    </label>
+
+                    <div>
+                        {{ profile_form.postal_code }}
+
+                        {% if profile_form.postal_code.errors %}
+                            {{ profile_form.postal_code.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ profile_form.preferred_language.id_for_label }}">
+                        Preferred Language
+                    </label>
+
+                    <div>
+                        {{ profile_form.preferred_language }}
+
+                        {% if profile_form.preferred_language.errors %}
+                            {{ profile_form.preferred_language.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ profile_form.religion.id_for_label }}">
+                        Religion
+                    </label>
+
+                    <div>
+                        {{ profile_form.religion }}
+
+                        {% if profile_form.religion.errors %}
+                            {{ profile_form.religion.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ profile_form.medical_conditions.id_for_label }}">
+                        Medical Conditions
+                    </label>
+
+                    <div>
+                        {{ profile_form.medical_conditions }}
+
+                        {% if profile_form.medical_conditions.errors %}
+                            {{ profile_form.medical_conditions.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ profile_form.allergies.id_for_label }}">
+                        Allergies
+                    </label>
+
+                    <div>
+                        {{ profile_form.allergies }}
+
+                        {% if profile_form.allergies.errors %}
+                            {{ profile_form.allergies.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+            </article>
+
+            <!-- Emergency contact -->
+            <article class="edit-senior-card">
+                <h2>Emergency Contact</h2>
+
+                <div class="edit-information-row">
+                    <label for="{{ emergency_form.full_name.id_for_label }}">
+                        Contact Name
+                    </label>
+
+                    <div>
+                        {{ emergency_form.full_name }}
+
+                        {% if emergency_form.full_name.errors %}
+                            {{ emergency_form.full_name.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ emergency_form.mobile_number.id_for_label }}">
+                        Phone Number
+                    </label>
+
+                    <div>
+                        {{ emergency_form.mobile_number }}
+
+                        {% if emergency_form.mobile_number.errors %}
+                            {{ emergency_form.mobile_number.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="edit-information-row">
+                    <label for="{{ emergency_form.relationship.id_for_label }}">
+                        Relationship
+                    </label>
+
+                    <div>
+                        {{ emergency_form.relationship }}
+
+                        {% if emergency_form.relationship.errors %}
+                            {{ emergency_form.relationship.errors }}
+                        {% endif %}
+                    </div>
+                </div>
+
+            </article>
+
+        </div>
+
+        <!-- Actions -->
+        <div class="edit-senior-actions">
+            <a
+                href="{% url 'admin_senior_detail' senior_profile.pk %}"
+                class="edit-senior-cancel-button"
+            >
+                Cancel
+            </a>
+
+            <button
+                type="submit"
+                class="edit-senior-save-button"
+            >
+                Save Changes
+            </button>
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}

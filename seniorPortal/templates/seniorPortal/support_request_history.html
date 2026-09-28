@@ -1,0 +1,128 @@
+{% extends "seniorPortal/senior_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Support Requests
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'seniorPortal/css/support_request.css' %}?v=20"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="support-request-page">
+
+    <div class="support-request-heading">
+        <div>
+            <h1>Support Request</h1>
+
+            <p>
+                View your submitted support requests and their current status.
+            </p>
+        </div>
+
+        <a
+            href="{% url 'support_request_select' %}"
+            class="btn add-support-button"
+        >
+            Add New Request
+        </a>
+    </div>
+
+    <article class="support-history-card">
+
+        <h2>Recent Support Requests</h2>
+
+        {% if support_requests %}
+
+            <div class="support-request-list">
+
+                {% for support_request in support_requests %}
+
+                    <div class="support-request-record">
+
+                        <div class="support-request-summary">
+                            <h3>
+                                {% for label in support_request.get_support_type_labels %}
+                                    {{ label }}{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                            </h3>
+
+                            <p>
+                                Submitted on
+                                {{ support_request.submitted_at|date:"j F Y" }}
+                                by {{ app_user.full_name }}
+                            </p>
+
+                            <p>
+                                Requested for:
+                                {{ support_request.requested_date|date:"j F Y" }},
+                                {{ support_request.requested_time|time:"g:i A" }}
+                            </p>
+
+                            {% if support_request.other_support_details %}
+                                <p>
+                                    Other assistance:
+                                    {{ support_request.other_support_details }}
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        <div class="support-request-notes">
+                            <strong>Notes</strong>
+
+                            <p>
+                                {% if support_request.additional_notes %}
+                                    {{ support_request.additional_notes }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <div
+                            class="support-status
+                            status-{{ support_request.status }}"
+                        >
+                            {{ support_request.get_status_display }}
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="support-empty-state">
+                <div class="support-empty-icon">
+                    🤝
+                </div>
+
+                <h3>No Support Requests Yet</h3>
+
+                <p>
+                    Your submitted support requests and their status will
+                    appear here.
+                </p>
+
+                <a
+                    href="{% url 'support_request_select' %}"
+                    class="btn add-first-support-button"
+                >
+                    Add Your First Request
+                </a>
+            </div>
+
+        {% endif %}
+
+    </article>
+
+</section>
+
+{% endblock %}

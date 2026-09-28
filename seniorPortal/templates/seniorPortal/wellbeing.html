@@ -1,0 +1,245 @@
+{% extends "seniorPortal/senior_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | How Are You Feeling?
+{% endblock %}
+
+{% block extra_css %}
+<!-- Bootstrap Icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+>
+
+<!-- Page styling -->
+<link
+    rel="stylesheet"
+    href="{% static 'seniorPortal/css/wellbeing.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="wellbeing-page">
+
+    <div class="wellbeing-page-heading">
+        <h1>How Are You Feeling?</h1>
+
+        <p>
+            Let us know how you are feeling today. This helps us
+            understand how to support you better.
+        </p>
+    </div>
+
+
+    <form
+        method="post"
+        class="wellbeing-form"
+        novalidate
+    >
+        {% csrf_token %}
+
+        <!-- Form errors -->
+        {% if form.non_field_errors %}
+            <div class="wellbeing-form-alert">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+        <article class="wellbeing-card">
+
+            <h2>How are you feeling today?</h2>
+
+            <!-- Feeling errors -->
+            {% if form.feeling.errors %}
+                <div class="wellbeing-field-error">
+                    {% for error in form.feeling.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            <!-- Feeling options -->
+            <div class="feeling-options">
+
+                <label class="feeling-option feeling-great">
+                    <input
+                        type="radio"
+                        name="feeling"
+                        value="great"
+                        {% if form.feeling.value == "great" %}
+                            checked
+                        {% endif %}
+                    >
+
+                    <span class="feeling-card">
+                        <span class="feeling-icon">😄</span>
+                        <strong>Great</strong>
+                        <small>I feel very good</small>
+                    </span>
+                </label>
+
+
+                <label class="feeling-option feeling-good">
+                    <input
+                        type="radio"
+                        name="feeling"
+                        value="good"
+                        {% if form.feeling.value == "good" %}
+                            checked
+                        {% endif %}
+                    >
+
+                    <span class="feeling-card">
+                        <span class="feeling-icon">🙂</span>
+                        <strong>Good</strong>
+                        <small>I feel good</small>
+                    </span>
+                </label>
+
+
+                <label class="feeling-option feeling-okay">
+                    <input
+                        type="radio"
+                        name="feeling"
+                        value="okay"
+                        {% if form.feeling.value == "okay" %}
+                            checked
+                        {% endif %}
+                    >
+
+                    <span class="feeling-card">
+                        <span class="feeling-icon">😐</span>
+                        <strong>Okay</strong>
+                        <small>I am okay</small>
+                    </span>
+                </label>
+
+
+                <label class="feeling-option feeling-not-good">
+                    <input
+                        type="radio"
+                        name="feeling"
+                        value="not_good"
+                        {% if form.feeling.value == "not_good" %}
+                            checked
+                        {% endif %}
+                    >
+
+                    <span class="feeling-card">
+                        <span class="feeling-icon">😟</span>
+                        <strong>Not Good</strong>
+                        <small>I am not feeling well</small>
+                    </span>
+                </label>
+
+
+                <label class="feeling-option feeling-need-support">
+                    <input
+                        type="radio"
+                        name="feeling"
+                        value="need_support"
+                        {% if form.feeling.value == "need_support" %}
+                            checked
+                        {% endif %}
+                    >
+
+                    <span class="feeling-card">
+                        <span class="feeling-icon">🆘</span>
+                        <strong>Need Support</strong>
+                        <small>I need some help</small>
+                    </span>
+                </label>
+
+            </div>
+
+
+            <!-- Additional notes -->
+            <div class="wellbeing-notes-field">
+
+                <label for="{{ form.notes.id_for_label }}">
+                    <strong>Additional Notes (Optional)</strong>
+
+                    <span>
+                        You can tell us more about how you are feeling.
+                    </span>
+                </label>
+
+                {{ form.notes }}
+
+                {% if form.notes.errors %}
+                    <div class="wellbeing-field-error">
+                        {% for error in form.notes.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            </div>
+
+
+            <!-- Form actions -->
+            <div class="wellbeing-actions">
+
+                <a
+                    href="{% url 'senior_dashboard' %}"
+                    class="btn wellbeing-back-button"
+                >
+                    Back to Dashboard
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn wellbeing-submit-button"
+                >
+                    Send My Check-In
+                </button>
+
+            </div>
+
+        </article>
+    </form>
+
+
+    <!-- Contact information -->
+    <aside class="wellbeing-contact-panel">
+
+        <div>
+            <h3>Need to talk to someone?</h3>
+            <p>Our care team is here for you.</p>
+        </div>
+
+        <div>
+            <h3 class="contact-heading">
+                <i
+                    class="bi bi-telephone-fill"
+                    aria-hidden="true"
+                ></i>
+                Call Us
+            </h3>
+
+            <p>+65 9123 4567</p>
+        </div>
+
+        <div>
+            <h3 class="contact-heading">
+                <i
+                    class="bi bi-envelope-fill"
+                    aria-hidden="true"
+                ></i>
+                Email Us
+            </h3>
+
+            <p>enquire@circlecaresg.org</p>
+        </div>
+
+    </aside>
+
+</section>
+
+{% endblock %}

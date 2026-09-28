@@ -1,0 +1,336 @@
+/* Guardian edit profile */
+
+
+/* Editable fields */
+
+.edit-profile-field {
+    width: 100%;
+}
+
+.edit-profile-field label {
+    display: block;
+    margin-bottom: 6px;
+
+    color: #111111;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* Form controls */
+
+.guardian-profile-card .form-control,
+.guardian-profile-card .form-select {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 13px;
+
+    color: #202830;
+    background-color: #fafbfc;
+
+    border: 1px solid #d8dde2;
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    box-shadow: none;
+}
+
+.guardian-profile-card .form-control:focus,
+.guardian-profile-card .form-select:focus {
+    background-color: #ffffff;
+
+    border-color: #4198ef;
+
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(65, 152, 239, 0.12);
+}
+
+
+/* Name field */
+
+.edit-name-section {
+    width: 330px;
+}
+
+.edit-name-field .form-control {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.edit-name-section .profile-role {
+    margin-top: 6px;
+}
+
+
+/* Contact information */
+
+.guardian-edit-contact-information {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+
+    max-width: 700px;
+    margin-top: 18px;
+}
+
+.edit-contact-row {
+    display: grid;
+    grid-template-columns: 25px minmax(0, 1fr);
+    align-items: end;
+    gap: 10px;
+}
+
+.edit-contact-row .contact-icon {
+    margin-bottom: 11px;
+}
+
+
+/* Preferences */
+
+.guardian-profile-card .preference-item .form-control,
+.guardian-profile-card .preference-item .form-select {
+    min-height: 43px;
+}
+
+
+/* Action buttons */
+
+.edit-profile-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cancel-edit-button,
+.save-profile-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+    padding: 8px 18px;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.cancel-edit-button {
+    color: #4c5964;
+    background-color: #ffffff;
+
+    border: 1px solid #cbd2d8;
+}
+
+.cancel-edit-button:hover {
+    color: #111111;
+    background-color: #f3f5f7;
+}
+
+.save-profile-button {
+    color: #ffffff;
+    background-color: #4198ef;
+
+    border: 1px solid #4198ef;
+}
+
+.save-profile-button:hover {
+    color: #ffffff;
+    background-color: #2789e5;
+
+    border-color: #2789e5;
+}
+
+
+/* Validation */
+
+.field-error {
+    margin-top: 5px;
+
+    color: #cf3344;
+
+    font-size: 12px;
+}
+
+.field-error ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+/* Profile picture */
+
+.guardian-edit-picture-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    gap: 12px;
+}
+
+.profile-avatar-large {
+    width: 120px;
+    height: 120px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+}
+
+.profile-avatar-large img {
+    width: 100%;
+    height: 100%;
+}
+
+.guardian-profile-picture {
+    object-fit: cover;
+}
+
+.guardian-profile-placeholder {
+    object-fit: contain;
+}
+
+.guardian-picture-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 7px;
+
+    max-width: 170px;
+}
+
+.guardian-picture-upload label {
+    color: #4198ef;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+.guardian-picture-upload input[type="file"] {
+    width: 100%;
+
+    color: #555555;
+
+    font-size: 11px;
+}
+
+.guardian-picture-upload input[type="file"]::file-selector-button {
+    margin-right: 7px;
+    padding: 6px 9px;
+
+    color: #ffffff;
+    background-color: #4198ef;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.guardian-picture-upload input[type="file"]::file-selector-button:hover {
+    background-color: #2789e5;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .guardian-edit-contact-information {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-name-section {
+        width: 100%;
+        max-width: 330px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .guardian-edit-picture-section {
+        width: 100%;
+    }
+
+    .edit-profile-top-actions {
+        width: 100%;
+    }
+
+    .cancel-edit-button,
+    .save-profile-button {
+        flex: 1;
+    }
+
+    .edit-name-section {
+        max-width: none;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .guardian-edit-contact-information {
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .edit-contact-row {
+        grid-template-columns: 22px minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .guardian-edit-picture-section {
+        gap: 10px;
+    }
+
+    .profile-avatar-large {
+        width: 100px;
+        height: 100px;
+    }
+
+    .guardian-picture-upload {
+        width: 100%;
+        max-width: none;
+    }
+
+    .guardian-picture-upload input[type="file"] {
+        max-width: 100%;
+    }
+
+    .edit-profile-top-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .cancel-edit-button,
+    .save-profile-button {
+        width: 100%;
+        flex: none;
+    }
+}

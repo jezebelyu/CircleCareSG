@@ -1,0 +1,278 @@
+{% extends "guardianPortal/guardian_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Alerts
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'guardianPortal/css/alerts.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="guardian-alerts-page">
+
+    <!-- Page header -->
+    <div class="alerts-page-header">
+        <h1>Alerts</h1>
+        <p>
+            View alerts related to your senior's wellbeing and care.
+        </p>
+    </div>
+
+    <!-- Summary cards -->
+    <div class="alert-summary-grid">
+
+        <article class="alert-summary-card high-summary">
+            <div class="summary-icon high-icon">
+                !
+            </div>
+
+            <div>
+                <div class="summary-number">
+                    {{ high_priority_count }}
+                </div>
+
+                <div class="summary-title high-text">
+                    High Priority
+                </div>
+
+                <div class="summary-description">
+                    Needs immediate attention
+                </div>
+            </div>
+        </article>
+
+        <article class="alert-summary-card medium-summary">
+            <div class="summary-icon medium-icon">
+                !
+            </div>
+
+            <div>
+                <div class="summary-number">
+                    {{ medium_priority_count }}
+                </div>
+
+                <div class="summary-title medium-text">
+                    Medium Priority
+                </div>
+
+                <div class="summary-description">
+                    Requires follow-up
+                </div>
+            </div>
+        </article>
+
+        <article class="alert-summary-card resolved-summary">
+            <div class="summary-icon resolved-icon">
+                ✓
+            </div>
+
+            <div>
+                <div class="summary-number">
+                    {{ resolved_count }}
+                </div>
+
+                <div class="summary-title resolved-text">
+                    Resolved
+                </div>
+
+                <div class="summary-description">
+                    No further action needed
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Alert list -->
+    <section class="alerts-list-card">
+
+        <!-- Filter tabs -->
+        <div class="alerts-tabs">
+
+            <button
+                type="button"
+                class="alert-tab active"
+                data-filter="all"
+            >
+                All Alerts
+            </button>
+
+            <button
+                type="button"
+                class="alert-tab"
+                data-filter="high"
+            >
+                High Priority ({{ high_priority_count }})
+            </button>
+
+            <button
+                type="button"
+                class="alert-tab"
+                data-filter="medium"
+            >
+                Medium Priority ({{ medium_priority_count }})
+            </button>
+
+            <button
+                type="button"
+                class="alert-tab"
+                data-filter="resolved"
+            >
+                Resolved ({{ resolved_count }})
+            </button>
+
+        </div>
+
+        <!-- Alerts -->
+        <div class="alerts-list">
+
+            {% for alert in alerts %}
+
+                <article
+                    class="guardian-alert-row"
+                    data-priority="{{ alert.priority }}"
+                >
+
+                    <div
+                        class="alert-row-icon
+                        {% if alert.priority == 'high' %}
+                            high-row-icon
+                        {% elif alert.priority == 'medium' %}
+                            medium-row-icon
+                        {% else %}
+                            resolved-row-icon
+                        {% endif %}"
+                    >
+                        {% if alert.priority == "high" %}
+                            !
+                        {% elif alert.priority == "medium" %}
+                            !
+                        {% else %}
+                            ✓
+                        {% endif %}
+                    </div>
+
+                    <!-- Alert information -->
+                    <div class="alert-main-information">
+
+                        <span
+                            class="priority-badge
+                            {% if alert.priority == 'high' %}
+                                high-badge
+                            {% elif alert.priority == 'medium' %}
+                                medium-badge
+                            {% else %}
+                                resolved-badge
+                            {% endif %}"
+                        >
+                            {% if alert.priority == "high" %}
+                                HIGH
+                            {% elif alert.priority == "medium" %}
+                                MEDIUM
+                            {% else %}
+                                Resolved
+                            {% endif %}
+                        </span>
+
+                        <h2>
+                            {{ alert.type }}
+                        </h2>
+
+                        <p class="alert-summary">
+                            {{ alert.summary }}
+                        </p>
+
+                        <p class="alert-date">
+                            {{ alert.date|date:"d M Y, g:i A" }}
+                        </p>
+
+                    </div>
+
+                    <!-- Status -->
+                    <div
+                        class="alert-status-box
+                        {% if alert.priority == 'high' %}
+                            high-status
+                        {% elif alert.priority == 'medium' %}
+                            medium-status
+                        {% else %}
+                            resolved-status
+                        {% endif %}"
+                    >
+                        <span>
+                            Status:
+                            <strong>
+                                {{ alert.status|title }}
+                            </strong>
+                        </span>
+
+                        <strong>
+                            {{ alert.action_text }}
+                        </strong>
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <div class="alerts-empty-state">
+
+                    <div class="alerts-empty-icon">
+                        ✓
+                    </div>
+
+                    <h2>No Alerts</h2>
+
+                    <p>
+                        There are currently no alerts for your linked senior.
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    const alertTabs = document.querySelectorAll(".alert-tab");
+    const alertRows = document.querySelectorAll(".guardian-alert-row");
+
+    alertTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const selectedFilter = tab.dataset.filter;
+
+            alertTabs.forEach((button) => {
+                button.classList.remove("active");
+            });
+
+            tab.classList.add("active");
+
+            alertRows.forEach((row) => {
+                if (
+                    selectedFilter === "all" ||
+                    row.dataset.priority === selectedFilter
+                ) {
+                    row.style.display = "grid";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

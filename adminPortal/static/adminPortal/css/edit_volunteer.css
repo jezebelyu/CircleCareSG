@@ -1,0 +1,276 @@
+/* Edit volunteer page */
+.edit-volunteer-page {
+    width: 100%;
+    max-width: none;
+}
+
+/* Back link */
+.edit-volunteer-back-link {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: #389bf3;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.edit-volunteer-back-link:hover {
+    color: #187fd8;
+}
+
+/* Page heading */
+.edit-volunteer-heading {
+    margin-bottom: 22px;
+}
+
+.edit-volunteer-heading h1 {
+    margin: 0 0 7px;
+    color: #111111;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.edit-volunteer-heading p {
+    margin: 0;
+    color: #333333;
+    font-size: 15px;
+}
+
+/* Form cards */
+.edit-volunteer-card {
+    margin-bottom: 22px;
+    padding: 26px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(24, 39, 56, 0.12);
+}
+
+.edit-volunteer-card h2 {
+    margin: 0 0 24px;
+    color: #111111;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Form fields */
+.edit-volunteer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.edit-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.edit-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.edit-form-group label {
+    color: #222222;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.edit-form-group input,
+.edit-form-group select,
+.edit-form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    color: #222222;
+    background-color: #ffffff;
+    border: 1px solid #d0d6dc;
+    border-radius: 5px;
+    font-size: 13px;
+    outline: none;
+}
+
+.edit-form-group textarea {
+    resize: vertical;
+}
+
+.edit-form-group input:focus,
+.edit-form-group select:focus,
+.edit-form-group textarea:focus {
+    border-color: #389bf3;
+}
+
+/* Support checkboxes */
+.support-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.checkbox-field input {
+    width: auto;
+}
+
+.checkbox-field label {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.other-support-field {
+    max-width: 450px;
+}
+
+/* Form errors */
+.form-error {
+    color: #b42318;
+    font-size: 11px;
+}
+
+.form-error ul {
+    margin: 0;
+    padding-left: 16px;
+}
+
+/* Form actions */
+.edit-volunteer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.cancel-edit-button,
+.save-volunteer-button {
+    min-width: 130px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.cancel-edit-button {
+    color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #cfd5da;
+}
+
+.save-volunteer-button {
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+    cursor: pointer;
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .edit-volunteer-card {
+        padding: 24px;
+    }
+
+    .edit-volunteer-grid {
+        gap: 18px;
+    }
+
+    .support-checkbox-grid {
+        gap: 12px 15px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .edit-volunteer-heading h1 {
+        font-size: 30px;
+    }
+
+    .edit-volunteer-grid,
+    .support-checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-form-group.full-width {
+        grid-column: auto;
+    }
+
+    .other-support-field {
+        max-width: none;
+    }
+
+    .edit-volunteer-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .cancel-edit-button,
+    .save-volunteer-button {
+        width: 100%;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .edit-volunteer-back-link {
+        margin-bottom: 18px;
+        font-size: 13px;
+    }
+
+    .edit-volunteer-heading {
+        margin-bottom: 18px;
+    }
+
+    .edit-volunteer-heading h1 {
+        font-size: 28px;
+    }
+
+    .edit-volunteer-heading p {
+        font-size: 14px;
+    }
+
+    .edit-volunteer-card {
+        margin-bottom: 18px;
+        padding: 20px 18px;
+    }
+
+    .edit-volunteer-card h2 {
+        margin-bottom: 20px;
+    }
+
+    .edit-volunteer-grid {
+        gap: 14px;
+    }
+
+    .edit-form-group {
+        margin-bottom: 14px;
+    }
+
+    .support-checkbox-grid {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .edit-volunteer-actions {
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+}

@@ -1,0 +1,211 @@
+{% extends "mainWebsite/base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | How It Works
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/how_it_works.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="how-hero">
+    <div class="how-hero-row">
+
+        <div class="how-hero-content">
+            <div class="how-hero-text">
+
+                <h1>How It Works</h1>
+
+                <p class="how-hero-tagline">
+                    Simple. Safe. Reliable.
+                </p>
+
+                <p class="how-hero-description">
+                    CircleCareSG connects seniors, volunteers, guardians
+                    and administrators to provide a seamless care and
+                    support system.
+                </p>
+
+            </div>
+        </div>
+
+        <div class="how-hero-image-column">
+            <img
+                src="{% static 'image8.jpg' %}"
+                alt="Senior receiving community support"
+                class="how-hero-image"
+            >
+        </div>
+
+    </div>
+</section>
+
+
+<!-- How it works -->
+<section class="how-process-section">
+    <div class="container">
+        <div class="row g-5">
+
+            <!-- Steps -->
+            <div class="col-lg-6">
+                <h2>How It Works - Step by Step</h2>
+
+                <div class="process-list">
+
+                    <div class="process-item">
+                        <div class="process-marker">
+                            <span class="timeline-dot"></span>
+
+                            <div class="process-icon">
+                                <i class="bi bi-person-plus"></i>
+                            </div>
+                        </div>
+
+                        <div class="process-content">
+                            <h3>Register and Complete Profile</h3>
+                            <p>
+                                Create an account as one of the roles provided
+                                and provide some basic information so we can
+                                understand your needs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-item">
+                        <div class="process-marker">
+                            <span class="timeline-dot"></span>
+
+                            <div class="process-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                        </div>
+
+                        <div class="process-content">
+                            <h3>Get Matched</h3>
+                            <p>
+                                We match seniors with suitable volunteers
+                                for community support.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-item">
+                        <div class="process-marker">
+                            <span class="timeline-dot"></span>
+
+                            <div class="process-icon">
+                                <i class="bi bi-heart-pulse"></i>
+                            </div>
+                        </div>
+
+                        <div class="process-content">
+                            <h3>Regular Welfare Checks</h3>
+                            <p>
+                                Volunteers support seniors through scheduled
+                                visits and welfare-related activities.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-item">
+                        <div class="process-marker">
+                            <span class="timeline-dot"></span>
+
+                            <div class="process-icon">
+                                <i class="bi bi-bell"></i>
+                            </div>
+                        </div>
+
+                        <div class="process-content">
+                            <h3>Receive Notifications or Alerts</h3>
+                            <p>
+                                Guardians and volunteers can review relevant
+                                updates and alerts through their portals.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-item">
+                        <div class="process-marker">
+                            <span class="timeline-dot"></span>
+
+                            <div class="process-icon">
+                                <i class="bi bi-hand-thumbs-up"></i>
+                            </div>
+                        </div>
+
+                        <div class="process-content">
+                            <h3>Continuous Community Support</h3>
+                            <p>
+                                We are here to support, care and grow together.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Community roles -->
+            <div class="col-lg-6 roles-column">
+                <h2>Our Community Roles</h2>
+
+                <div class="role-card">
+                    <div class="role-icon senior-role-icon">
+                        <i class="bi bi-person-heart"></i>
+                    </div>
+
+                    <div>
+                        <h3>Senior</h3>
+
+                        <ul>
+                            <li>Complete wellbeing check-ins</li>
+                            <li>View assigned volunteers</li>
+                            <li>Request support when needed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-icon volunteer-role-icon">
+                        <i class="bi bi-person-check"></i>
+                    </div>
+
+                    <div>
+                        <h3>Volunteer</h3>
+
+                        <ul>
+                            <li>Manage availability</li>
+                            <li>Review scheduled visits</li>
+                            <li>Submit visit reports</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="role-card">
+                    <div class="role-icon guardian-role-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <div>
+                        <h3>Guardian</h3>
+
+                        <ul>
+                            <li>Monitor linked Senior information</li>
+                            <li>Review alerts</li>
+                            <li>Stay connected</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

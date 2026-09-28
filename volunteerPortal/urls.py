@@ -1,0 +1,87 @@
+from django.urls import path
+
+from . import views
+
+
+urlpatterns = [
+    path(
+        "dashboard/",
+        views.volunteer_dashboard,
+        name="volunteer_dashboard",
+    ),
+    path(
+        "my-seniors/",
+        views.my_seniors,
+        name="volunteer_my_seniors",
+    ),
+    path(
+        "my-seniors/<int:senior_id>/",
+        views.volunteer_senior_detail,
+        name="volunteer_senior_detail",
+    ),
+    path(
+        "my-seniors/<int:senior_id>/schedule-visit/",
+        views.volunteer_schedule_visit,
+        name="volunteer_schedule_visit",
+    ),
+    path(
+        "availability/",
+        views.volunteer_availability,
+        name="volunteer_availability",
+    ),
+    path(
+        "schedule/",
+        views.volunteer_schedule,
+        name="volunteer_schedule",
+    ),
+    path(
+        "schedule/visit/<int:visit_id>/",
+        views.volunteer_visit_detail,
+        name="volunteer_visit_detail",
+    ),
+    path(
+        "check-in-reports/",
+        views.volunteer_check_in_reports,
+        name="volunteer_check_in_reports",
+    ),
+    path(
+        "visit/<int:visit_id>/report/",
+        views.submit_visit_report,
+        name="submit_visit_report",
+    ),
+    path(
+        "report/<int:report_id>/",
+        views.volunteer_view_report,
+        name="volunteer_view_report",
+    ),
+    path(
+        "alerts/",
+        views.volunteer_alerts,
+        name="volunteer_alerts",
+    ),
+    path(
+        "alerts/<int:submission_id>/",
+        views.volunteer_alert_detail,
+        name="volunteer_alert_detail",
+    ),
+    path(
+        "profile/",
+        views.volunteer_profile,
+        name="volunteer_profile",
+    ),
+    path(
+        "profile/edit/",
+        views.edit_volunteer_profile,
+        name="edit_volunteer_profile",
+    ),
+    path(
+        "profile/documents/<str:document_type>/",
+        views.upload_volunteer_document,
+        name="upload_volunteer_document",
+    ),
+    path(
+        "profile/documents/<str:document_type>/delete/",
+        views.delete_volunteer_document,
+        name="delete_volunteer_document",
+    ),
+]

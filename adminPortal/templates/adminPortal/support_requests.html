@@ -1,0 +1,171 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Support Requests
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/support_requests.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-support-requests-page">
+
+    <!-- Page heading -->
+    <div class="support-requests-heading">
+        <div>
+            <h1>Support Requests</h1>
+            <p>Review and manage support requests submitted by seniors.</p>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="support-summary-grid">
+
+        <div class="support-summary-card">
+            <span>Total Requests</span>
+            <strong>{{ total_requests }}</strong>
+        </div>
+
+        <div class="support-summary-card">
+            <span>Pending</span>
+            <strong>{{ pending_requests }}</strong>
+        </div>
+
+        <div class="support-summary-card">
+            <span>Under Review</span>
+            <strong>{{ reviewing_requests }}</strong>
+        </div>
+
+        <div class="support-summary-card">
+            <span>Active</span>
+            <strong>{{ active_requests }}</strong>
+        </div>
+
+    </div>
+
+    <!-- Request list -->
+    <section class="support-requests-table-section">
+
+        <div class="support-table-heading-row">
+            <h2>Submitted Requests</h2>
+
+            <form method="get" class="support-filter-form">
+                <label for="status">
+                    Filter by Status
+                </label>
+
+                <select name="status" id="status">
+                    <option value="">
+                        All Statuses
+                    </option>
+
+                    {% for value, label in status_choices %}
+                        <option
+                            value="{{ value }}"
+                            {% if status_filter == value %}selected{% endif %}
+                        >
+                            {{ label }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">
+                    Apply
+                </button>
+
+                {% if status_filter %}
+                    <a href="{% url 'admin_support_requests' %}">
+                        Clear
+                    </a>
+                {% endif %}
+            </form>
+        </div>
+
+        {% if support_requests %}
+            <div class="support-table-wrapper">
+                <table class="support-table">
+                    <thead>
+                        <tr>
+                            <th>Senior</th>
+                            <th>Support Type</th>
+                            <th>Requested Date</th>
+                            <th>Requested Time</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for support_request in support_requests %}
+                            <tr>
+
+                                <!-- Senior -->
+                                <td>
+                                    <strong>
+                                        {{ support_request.senior.app_user.full_name }}
+                                    </strong>
+                                </td>
+
+                                <!-- Support type -->
+                                <td>
+                                    {% for label in support_request.get_support_type_labels %}
+                                        {{ label }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
+
+                                <!-- Requested date -->
+                                <td>
+                                    {{ support_request.requested_date|date:"d M Y" }}
+                                </td>
+
+                                <!-- Requested time -->
+                                <td>
+                                    {{ support_request.requested_time|time:"g:i A" }}
+                                </td>
+
+                                <!-- Status -->
+                                <td>
+                                    <span class="support-status-badge status-{{ support_request.status }}">
+                                        {{ support_request.get_status_display }}
+                                    </span>
+                                </td>
+
+                                <!-- Submitted date -->
+                                <td>
+                                    {{ support_request.submitted_at|date:"d M Y" }}
+                                </td>
+
+                                <!-- Action -->
+                                <td>
+                                    <a
+                                        href="{% url 'admin_support_request_detail' support_request.pk %}"
+                                        class="support-view-button"
+                                    >
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% else %}
+            <div class="support-empty-state">
+                <p>No support requests found.</p>
+            </div>
+        {% endif %}
+
+    </section>
+
+</section>
+
+{% endblock %}

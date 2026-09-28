@@ -1,0 +1,590 @@
+/* Admin volunteers page */
+.admin-volunteers-page {
+    width: 100%;
+    max-width: 1150px;
+}
+
+/* Page heading */
+.volunteers-page-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 18px;
+}
+
+.volunteers-page-heading h1 {
+    margin: 0 0 7px;
+    color: #111111;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.volunteers-page-heading p {
+    margin: 0;
+    color: #222222;
+    font-size: 16px;
+}
+
+/* Add volunteer button */
+.add-volunteer-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    height: 42px;
+    padding: 0 18px;
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.add-volunteer-button:hover {
+    color: #ffffff;
+    background-color: #278de9;
+    border-color: #278de9;
+}
+
+/* Summary cards */
+.volunteers-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.volunteer-summary-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 100px;
+    padding: 20px 24px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 6px;
+}
+
+/* Summary card icons */
+
+.volunteer-summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 68px;
+    height: 68px;
+
+    border-radius: 50%;
+}
+
+.volunteer-summary-icon i {
+    color: #ffffff;
+
+    font-size: 30px;
+    line-height: 1;
+}
+
+
+/* Add volunteer button */
+
+.add-volunteer-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-volunteer-button i {
+    font-size: 17px;
+}
+
+
+/* Search icon */
+
+.volunteer-search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #6f7a83;
+
+    font-size: 18px;
+    line-height: 1;
+}
+
+
+/* Empty state */
+
+.volunteer-empty-state {
+    padding: 35px 20px;
+
+    text-align: center;
+}
+
+.volunteer-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px;
+
+    color: #6f7a83;
+    background-color: #eef1f4;
+
+    border-radius: 50%;
+}
+
+.volunteer-empty-icon i {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.volunteer-empty-state h3 {
+    margin-bottom: 8px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.volunteer-empty-state p {
+    margin: 0;
+
+    color: #6f7a83;
+}
+
+.summary-blue {
+    background-color: #389bf3;
+}
+
+.summary-green {
+    background-color: #178b30;
+}
+
+.summary-purple {
+    background-color: #6628c9;
+}
+
+.summary-orange {
+    background-color: #ff7b12;
+}
+
+.volunteer-summary-card div:last-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.volunteer-summary-card strong {
+    margin-bottom: 4px;
+    color: #111111;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.volunteer-summary-card span {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Volunteer list */
+.volunteers-list-card {
+    padding: 26px 22px 15px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.14);
+}
+
+/* Search */
+.volunteer-search-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.volunteer-search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 42px;
+    flex: 1;
+    padding: 0 14px;
+    background-color: #ffffff;
+    border: 1px solid #d7dde3;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.volunteer-search-icon {
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+.volunteer-search-box input {
+    width: 100%;
+    padding: 0;
+    color: #111111;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.volunteer-search-box input::placeholder {
+    color: #a3abb4;
+}
+
+.volunteer-search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 42px;
+    flex: 0 0 100px;
+    padding: 0;
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.volunteer-search-button:hover {
+    color: #ffffff;
+    background-color: #278de9;
+    border-color: #278de9;
+}
+
+/* Volunteer table */
+.volunteer-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.volunteer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.volunteer-table thead th {
+    padding: 12px 7px;
+    color: #111111;
+    border-bottom: 1px solid #d8dde2;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.volunteer-table tbody td {
+    padding: 18px 7px;
+    color: #111111;
+    border-bottom: 1px solid #dfe4e8;
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+.volunteer-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.volunteer-id {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Volunteer name */
+.volunteer-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 155px;
+}
+
+.volunteer-list-avatar {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.volunteer-list-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.volunteer-name-cell strong {
+    font-size: 11px;
+}
+
+/* Contact */
+.volunteer-contact-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 150px;
+}
+
+.volunteer-contact-cell strong {
+    color: #111111;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.volunteer-contact-cell span {
+    color: #555f68;
+    font-size: 10px;
+}
+
+/* Skills */
+.volunteer-skills {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    min-width: 115px;
+}
+
+.volunteer-skill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 105px;
+    padding: 5px 9px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.skill-blue {
+    color: #175da9;
+    background-color: #dcecff;
+}
+
+.skill-purple {
+    color: #6628c9;
+    background-color: #f1e9ff;
+}
+
+.skill-orange {
+    color: #d86a00;
+    background-color: #fff1d8;
+}
+
+.skill-red {
+    color: #c83b3b;
+    background-color: #ffe3df;
+}
+
+.skill-green {
+    color: #16802d;
+    background-color: #e5f6e8;
+}
+
+.skill-grey {
+    color: #59636d;
+    background-color: #eef1f3;
+}
+
+.no-skills {
+    color: #8a929a;
+    font-size: 11px;
+}
+
+/* Status */
+.volunteer-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.volunteer-status.active {
+    color: #16802d;
+    background-color: #eef8ee;
+}
+
+.volunteer-status.inactive {
+    color: #ff7b12;
+    background-color: #fff4e7;
+}
+
+/* View button */
+.volunteer-view-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 42px;
+    padding: 0;
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.volunteer-view-button:hover {
+    color: #ffffff;
+    background-color: #278de9;
+    border-color: #278de9;
+}
+
+/* Align view button with search button */
+.volunteer-table th:last-child,
+.volunteer-table td:last-child {
+    width: 100px;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
+}
+
+.volunteer-table td:last-child {
+    white-space: nowrap;
+}
+
+/* Empty state */
+.empty-volunteer-row {
+    padding: 60px 20px !important;
+    color: #68727c !important;
+    text-align: center;
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .volunteers-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .volunteer-summary-card {
+        padding: 18px 20px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .volunteers-page-heading {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .volunteers-page-heading h1 {
+        font-size: 31px;
+    }
+
+    .add-volunteer-button {
+        width: 100%;
+    }
+
+    .volunteers-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .volunteer-search-form {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .volunteer-search-button {
+        width: 100%;
+        flex-basis: 42px;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .volunteers-page-heading {
+        margin-bottom: 16px;
+    }
+
+    .volunteers-page-heading h1 {
+        font-size: 28px;
+    }
+
+    .volunteers-page-heading p {
+        font-size: 14px;
+    }
+
+    .volunteers-summary-grid {
+        gap: 14px;
+        margin-bottom: 18px;
+    }
+
+    .volunteer-summary-card {
+        min-height: 90px;
+        padding: 16px 18px;
+    }
+
+    .volunteer-summary-icon {
+        width: 58px;
+        height: 58px;
+    }
+
+    .volunteer-summary-icon i {
+        font-size: 26px;
+    }
+
+    .volunteers-list-card {
+        padding: 20px 16px 12px;
+    }
+
+    .volunteer-search-form {
+        gap: 10px;
+        margin-bottom: 18px;
+    }
+
+    .volunteer-table {
+        min-width: 850px;
+    }
+
+    .empty-volunteer-row {
+        padding: 45px 18px !important;
+    }
+
+    .volunteer-empty-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .volunteer-empty-icon i {
+        font-size: 25px;
+    }
+}

@@ -1,0 +1,218 @@
+{% extends "guardianPortal/guardian_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | View Volunteer Report
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'guardianPortal/css/view_report.css' %}?v=1"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="guardian-view-report-page">
+
+    <!-- Back to reports -->
+    <a
+        href="{% url 'guardian_check_in_reports' %}"
+        class="report-back-link"
+    >
+        ‹ &nbsp; Back to Check-In Reports
+    </a>
+
+    <!-- Page heading -->
+    <div class="view-report-heading">
+        <h1>Volunteer Visit Report</h1>
+        <p>
+            Review the submitted check-in report for
+            {{ linked_senior.app_user.full_name }}.
+        </p>
+    </div>
+
+    <!-- Visit information -->
+    <article class="report-card">
+        <div class="report-card-heading">
+            <h2>Visit Information</h2>
+            <span class="report-completed-badge">
+                Completed
+            </span>
+        </div>
+
+        <div class="report-information-grid">
+            <div class="report-information-item">
+                <span>Senior</span>
+                <strong>
+                    {{ visit.assignment.senior.app_user.full_name }}
+                </strong>
+            </div>
+
+            <div class="report-information-item">
+                <span>Volunteer</span>
+                <strong>
+                    {{ visit.assignment.volunteer.app_user.full_name }}
+                </strong>
+            </div>
+
+            <div class="report-information-item">
+                <span>Visit Date</span>
+                <strong>
+                    {{ visit.visit_date|date:"d M Y" }}
+                </strong>
+            </div>
+
+            <div class="report-information-item">
+                <span>Time</span>
+                <strong>
+                    {{ visit.start_time|time:"g:i A" }}
+                    -
+                    {{ visit.end_time|time:"g:i A" }}
+                </strong>
+            </div>
+
+            <div class="report-information-item">
+                <span>Visit Type</span>
+                <strong>
+                    {{ visit.get_visit_type_display }}
+                </strong>
+            </div>
+
+            <div class="report-information-item">
+                <span>Purpose</span>
+                <strong>
+                    {{ visit.get_visit_purpose_display }}
+                </strong>
+            </div>
+        </div>
+    </article>
+
+    <!-- Senior wellbeing -->
+    <article class="report-card">
+        <div class="report-card-heading">
+            <h2>Senior Wellbeing</h2>
+        </div>
+
+        <div class="wellbeing-display">
+            {% if report.wellbeing_status == "good" %}
+                <span class="wellbeing-badge wellbeing-good">
+                    Good
+                </span>
+
+            {% elif report.wellbeing_status == "okay" %}
+                <span class="wellbeing-badge wellbeing-okay">
+                    Okay
+                </span>
+
+            {% elif report.wellbeing_status == "concern" %}
+                <span class="wellbeing-badge wellbeing-concern">
+                    Concern
+                </span>
+
+            {% else %}
+                <span class="wellbeing-badge">
+                    {{ report.get_wellbeing_status_display }}
+                </span>
+            {% endif %}
+        </div>
+    </article>
+
+    <!-- Report details -->
+    <article class="report-card">
+        <div class="report-card-heading">
+            <h2>Report Details</h2>
+        </div>
+
+        <div class="report-detail-section">
+            <h3>Assistance Provided</h3>
+            <p>
+                {{ report.assistance_provided }}
+            </p>
+        </div>
+
+        <div class="report-detail-section">
+            <h3>Observations</h3>
+            <p>
+                {% if report.observations %}
+                    {{ report.observations }}
+                {% else %}
+                    <span class="report-muted">
+                        No observations recorded.
+                    </span>
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="report-detail-section">
+            <h3>Concerns</h3>
+            <p>
+                {% if report.concerns %}
+                    {{ report.concerns }}
+                {% else %}
+                    <span class="report-muted">
+                        No concerns recorded.
+                    </span>
+                {% endif %}
+            </p>
+        </div>
+    </article>
+
+    <!-- Follow-up -->
+    <article class="report-card">
+        <div class="report-card-heading">
+            <h2>Follow-Up</h2>
+
+            {% if report.follow_up_required %}
+                <span class="follow-up-badge follow-up-required">
+                    Required
+                </span>
+            {% else %}
+                <span class="follow-up-badge follow-up-not-required">
+                    Not Required
+                </span>
+            {% endif %}
+        </div>
+
+        <div class="report-detail-section">
+            <h3>Follow-Up Notes</h3>
+            <p>
+                {% if report.follow_up_notes %}
+                    {{ report.follow_up_notes }}
+                {% else %}
+                    <span class="report-muted">
+                        No follow-up notes recorded.
+                    </span>
+                {% endif %}
+            </p>
+        </div>
+    </article>
+
+    <!-- Report submission -->
+    <div class="report-submission-information">
+        <span>
+            Report submitted by
+            <strong>
+                {{ visit.assignment.volunteer.app_user.full_name }}
+            </strong>
+            on
+            <strong>
+                {{ report.submitted_at|date:"d M Y, g:i A" }}
+            </strong>
+        </span>
+    </div>
+
+    <!-- Bottom action -->
+    <div class="report-bottom-actions">
+        <a
+            href="{% url 'guardian_check_in_reports' %}"
+            class="back-to-reports-button"
+        >
+            Back to Check-In Reports
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}

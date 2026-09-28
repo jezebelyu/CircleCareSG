@@ -1,0 +1,270 @@
+{% extends "mainWebsite/base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Care Services
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/care_services.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Care Services hero -->
+<section class="care-hero">
+    <div class="care-hero-row">
+
+        <div class="care-hero-content">
+            <div class="care-hero-text">
+
+                <h1>Care Services</h1>
+
+                <p>
+                    Supporting seniors through a variety of compassionate
+                    community care services.
+                </p>
+
+                <a
+                    href="{% url 'how_it_works' %}"
+                    class="btn btn-primary care-hero-button"
+                >
+                    Learn How It Works
+                </a>
+
+            </div>
+        </div>
+
+        <div class="care-hero-image-column">
+            <img
+                src="{% static 'image7.jpg' %}"
+                alt="Senior receiving support"
+                class="care-hero-image"
+            >
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Care Services list -->
+<section class="care-services-section">
+    <div class="container">
+
+        <h2 class="care-section-heading">
+            Care Services
+        </h2>
+
+        <!-- Welfare Check-Ins -->
+        <article class="care-service-card">
+            <div class="row g-0 align-items-stretch">
+
+                <div class="col-lg-5">
+                    <img
+                        src="{% static 'image2.jpg' %}"
+                        alt="Volunteer carrying out a welfare check-in"
+                        class="care-service-image"
+                    >
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="care-service-content">
+
+                        <div class="care-service-title-row">
+                            <div class="care-service-icon care-icon-blue">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+
+                            <h3>Welfare Check-Ins</h3>
+                        </div>
+
+                        <p>
+                            Regular phone and physical check-ins performed by
+                            trained volunteers.
+                        </p>
+
+                        <ul class="care-service-features">
+                            <li>Scheduled visits</li>
+                            <li>Safety checks</li>
+                            <li>Wellness monitoring</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </article>
+
+
+        <!-- Volunteer Support -->
+        <article class="care-service-card">
+            <div class="row g-0 align-items-stretch">
+
+                <div class="col-lg-7 order-2 order-lg-1">
+                    <div class="care-service-content">
+
+                        <div class="care-service-title-row">
+                            <div class="care-service-icon care-icon-green">
+                                <i class="bi bi-people"></i>
+                            </div>
+
+                            <h3>Volunteer Support</h3>
+                        </div>
+
+                        <p>
+                            Meaningful companionship and community engagement
+                            that helps seniors remain socially connected.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5 order-1 order-lg-2">
+                    <img
+                        src="{% static 'image3.jpg' %}"
+                        alt="Volunteer spending time with seniors"
+                        class="care-service-image"
+                    >
+                </div>
+
+            </div>
+        </article>
+
+
+        <!-- Meal Assistance -->
+        <article class="care-service-card">
+            <div class="row g-0 align-items-stretch">
+
+                <div class="col-lg-5">
+                    <img
+                        src="{% static 'image4.jpg' %}"
+                        alt="Senior receiving meal assistance"
+                        class="care-service-image"
+                    >
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="care-service-content">
+
+                        <div class="care-service-title-row">
+                            <div class="care-service-icon care-icon-orange">
+                                <i class="bi bi-basket2"></i>
+                            </div>
+
+                            <h3>Meal Assistance</h3>
+                        </div>
+
+                        <p>
+                            Helping seniors access meal support programmes and
+                            food assistance services within the community.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </article>
+
+
+        <!-- Guardian Support -->
+        <article class="care-service-card">
+            <div class="row g-0 align-items-stretch">
+
+                <div class="col-lg-7 order-2 order-lg-1">
+                    <div class="care-service-content">
+
+                        <div class="care-service-title-row">
+                            <div class="care-service-icon care-icon-purple">
+                                <i class="bi bi-house-heart"></i>
+                            </div>
+
+                            <h3>Guardian Support</h3>
+                        </div>
+
+                        <p>
+                            Keeping families and guardians informed through
+                            welfare updates and monitoring.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-5 order-1 order-lg-2">
+                    <img
+                        src="{% static 'image5.jpg' %}"
+                        alt="Family and guardian support for seniors"
+                        class="care-service-image"
+                    >
+                </div>
+
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- Why our services matter -->
+<section class="care-impact-section">
+    <div class="container">
+
+        <h2 class="care-impact-heading">
+            Why Our Services Matter
+        </h2>
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-sm-6 col-lg-3">
+                <article class="care-impact-card">
+                    <div class="care-impact-icon impact-icon-pink">
+                        <i class="bi bi-heart-fill"></i>
+                    </div>
+
+                    <h3>500+</h3>
+
+                    <p>Volunteer Visits</p>
+                </article>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <article class="care-impact-card">
+                    <div class="care-impact-icon impact-icon-blue">
+                        <i class="bi bi-house-fill"></i>
+                    </div>
+
+                    <h3>100+</h3>
+
+                    <p>Active Seniors</p>
+                </article>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <article class="care-impact-card">
+                    <div class="care-impact-icon impact-icon-cyan">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+
+                    <h3>300+</h3>
+
+                    <p>Community Members</p>
+                </article>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <article class="care-impact-card">
+                    <div class="care-impact-icon impact-icon-light-blue">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <h3>Daily</h3>
+
+                    <p>Wellness Check-Ins</p>
+                </article>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

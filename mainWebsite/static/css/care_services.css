@@ -1,0 +1,548 @@
+/* Care services hero */
+
+.care-hero {
+    width: 100%;
+    overflow: hidden;
+
+    background-color: #e3f1ff;
+}
+
+.care-hero-row {
+    position: relative;
+
+    display: flex;
+    align-items: stretch;
+
+    min-height: 350px;
+}
+
+.care-hero-content {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    flex: 0 0 55%;
+
+    min-height: 350px;
+
+    background-color: #e3f1ff;
+}
+
+.care-hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    padding: 60px 80px;
+}
+
+.care-hero-text h1 {
+    margin-bottom: 24px;
+
+    color: #101010;
+
+    font-size: clamp(40px, 4vw, 54px);
+    font-weight: 700;
+}
+
+.care-hero-text p {
+    max-width: 500px;
+    margin-bottom: 20px;
+
+    color: #15191d;
+
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.care-hero-button {
+    align-self: flex-start;
+
+    padding: 11px 22px;
+
+    font-weight: 700;
+}
+
+.care-hero-image-column {
+    position: relative;
+    z-index: 2;
+
+    flex: 0 0 55%;
+
+    min-width: 0;
+    min-height: 350px;
+    margin-left: -10%;
+
+    overflow: hidden;
+
+    border-radius: 190px 0 0 190px;
+}
+
+.care-hero-image {
+    display: block;
+
+    width: 100%;
+    height: 350px;
+
+    object-fit: cover;
+    object-position: 70% center;
+}
+
+
+/* Care Services list */
+
+.care-services-section {
+    padding: 40px 0 65px;
+
+    background-color: #f8fafc;
+}
+
+.care-section-heading {
+    margin: 0 0 35px;
+
+    color: #111111;
+
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.care-service-card {
+    max-width: 1080px;
+    margin: 0 auto 28px;
+    overflow: hidden;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e0e5e9;
+    border-radius: 8px;
+
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.13);
+}
+
+.care-service-card:last-child {
+    margin-bottom: 0;
+}
+
+.care-service-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+
+    object-fit: cover;
+}
+
+.care-service-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 220px;
+    padding: 35px 42px;
+}
+
+.care-service-title-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-bottom: 18px;
+}
+
+.care-service-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.care-icon-blue {
+    color: #328de9;
+    background-color: #dceeff;
+}
+
+.care-icon-green {
+    color: #4ba947;
+    background-color: #e3f4df;
+}
+
+.care-icon-orange {
+    color: #ec8f28;
+    background-color: #fff0dd;
+}
+
+.care-icon-purple {
+    color: #7958cf;
+    background-color: #eee8ff;
+}
+
+.care-service-content h3 {
+    margin: 0;
+
+    color: #111111;
+
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.care-service-content p {
+    max-width: 520px;
+    margin: 0;
+
+    color: #39434c;
+
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.care-service-features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 35px;
+
+    margin: 22px 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.care-service-features li {
+    position: relative;
+
+    padding-left: 20px;
+
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.care-service-features li::before {
+    position: absolute;
+    top: 7px;
+    left: 0;
+
+    width: 7px;
+    height: 7px;
+
+    content: "";
+
+    background-color: #111111;
+
+    border-radius: 50%;
+}
+
+
+/* Why our services matter */
+
+.care-impact-section {
+    padding: 55px 0 65px;
+
+    background-color: #daf1ff;
+}
+
+.care-impact-heading {
+    margin: 0 0 38px;
+
+    color: #111111;
+
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.care-impact-card {
+    height: 100%;
+    padding: 30px 20px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e0e5e9;
+    border-radius: 10px;
+
+    text-align: center;
+
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.13);
+}
+
+.care-impact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+.impact-icon-pink {
+    color: #f07987;
+    background-color: #ffe3e7;
+}
+
+.impact-icon-blue {
+    color: #389bf3;
+    background-color: #e3f2ff;
+}
+
+.impact-icon-cyan {
+    color: #3ca3ce;
+    background-color: #e1f5fb;
+}
+
+.impact-icon-light-blue {
+    color: #4a9ddc;
+    background-color: #e6f4ff;
+}
+
+.care-impact-card h3 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.care-impact-card p {
+    margin: 0;
+
+    color: #39434c;
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .care-hero-row {
+        display: block;
+    }
+
+    .care-hero-content,
+    .care-hero-image-column {
+        width: 100%;
+        min-height: auto;
+        margin-left: 0;
+    }
+
+    .care-hero-content {
+        min-height: auto;
+    }
+
+    .care-hero-text {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 55px 30px;
+
+        text-align: center;
+    }
+
+    .care-hero-text p {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .care-hero-button {
+        align-self: center;
+    }
+
+    .care-hero-image-column {
+        border-radius: 70px 70px 0 0;
+    }
+
+    .care-hero-image {
+        width: 100%;
+        height: 380px;
+
+        object-position: center;
+    }
+
+    .care-service-image {
+        min-height: 280px;
+    }
+
+    .care-service-content {
+        min-height: auto;
+        padding: 35px;
+    }
+
+    .care-service-features {
+        gap: 12px 25px;
+    }
+
+    .care-impact-card {
+        padding: 26px 18px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .care-hero-text {
+        padding: 50px 26px;
+    }
+
+    .care-hero-text h1 {
+        font-size: 38px;
+    }
+
+    .care-hero-text p {
+        font-size: 16px;
+    }
+
+    .care-hero-image {
+        height: 330px;
+    }
+
+    .care-services-section {
+        padding: 35px 0 50px;
+    }
+
+    .care-section-heading {
+        margin-bottom: 30px;
+    }
+
+    .care-service-card {
+        margin-bottom: 22px;
+    }
+
+    .care-service-image {
+        min-height: 230px;
+    }
+
+    .care-service-content {
+        padding: 28px 24px;
+    }
+
+    .care-service-features {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .care-impact-section {
+        padding: 45px 0 55px;
+    }
+
+    .care-impact-heading {
+        margin-bottom: 30px;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .care-hero-text {
+        padding: 42px 20px;
+    }
+
+    .care-hero-text h1 {
+        font-size: 34px;
+    }
+
+    .care-hero-text p {
+        font-size: 14px;
+    }
+
+    .care-hero-image-column {
+        border-radius: 45px 45px 0 0;
+    }
+
+    .care-hero-image {
+        height: 290px;
+    }
+
+    .care-hero-button {
+        width: 100%;
+    }
+
+    .care-services-section {
+        padding: 30px 0 45px;
+    }
+
+    .care-section-heading,
+    .care-impact-heading {
+        font-size: 26px;
+    }
+
+    .care-service-content {
+        padding: 24px 20px;
+    }
+
+    .care-service-title-row {
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+
+    .care-service-icon {
+        width: 46px;
+        height: 46px;
+
+        font-size: 19px;
+    }
+
+    .care-service-content h3 {
+        font-size: 19px;
+    }
+
+    .care-service-content p {
+        font-size: 14px;
+    }
+
+    .care-service-features {
+        margin-top: 18px;
+    }
+
+    .care-service-features li {
+        font-size: 13px;
+    }
+
+    .care-impact-section {
+        padding: 40px 0 50px;
+    }
+
+    .care-impact-card {
+        padding: 24px 18px;
+    }
+
+    .care-impact-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+
+        font-size: 23px;
+    }
+
+    .care-impact-card h3 {
+        font-size: 21px;
+    }
+
+    .care-impact-card p {
+        font-size: 13px;
+    }
+}

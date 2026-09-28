@@ -1,0 +1,475 @@
+/* Senior dashboard */
+
+.senior-dashboard {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+
+/* Welcome card */
+
+.senior-welcome-card {
+    display: grid;
+    grid-template-columns: 255px minmax(0, 1fr);
+    min-height: 245px;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 9px;
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+}
+
+.senior-welcome-image {
+    min-width: 0;
+}
+
+.senior-welcome-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 245px;
+    object-fit: cover;
+}
+
+.senior-welcome-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 36px;
+}
+
+.senior-welcome-content h1 {
+    margin: 0 0 15px;
+    color: #111111;
+    font-size: clamp(30px, 3vw, 40px);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.senior-welcome-content p {
+    max-width: 430px;
+    margin: 0;
+    color: #171b1f;
+    font-size: 18px;
+    line-height: 1.25;
+}
+
+
+/* Dashboard cards */
+
+.senior-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 28px;
+    margin-top: 32px;
+}
+
+.senior-dashboard-card {
+    min-height: 350px;
+    padding: 32px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 6px rgba(25, 39, 52, 0.18);
+}
+
+.senior-dashboard-card h2 {
+    margin: 0 0 24px;
+    color: #111111;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+/* Upcoming visit */
+
+.upcoming-visit-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.upcoming-visit-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+}
+
+.volunteer-avatar {
+    display: flex;
+    flex: 0 0 86px;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    height: 86px;
+    color: #6b756f;
+    background-color: #edf7ed;
+    border-radius: 50%;
+    font-size: 42px;
+}
+
+.visit-information h3 {
+    margin: 10px 0 16px;
+    color: #111111;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.visit-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: #171b1f;
+    font-size: 14px;
+}
+
+.visit-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    font-size: 19px;
+}
+
+.visit-thank-you {
+    margin-top: auto;
+    padding: 15px 18px;
+    color: #208928;
+    background-color: #f2faee;
+    border-radius: 9px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* Upcoming visit empty state */
+
+.upcoming-visit-empty-state {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    text-align: center;
+}
+
+.upcoming-visit-empty-state h3 {
+    margin: 0 0 8px;
+    color: #111111;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.upcoming-visit-empty-state p {
+    margin: 0;
+    color: #59636d;
+    font-size: 13px;
+}
+
+
+/* Support request */
+
+.support-request-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.support-request-card h2 {
+    margin-bottom: 5px;
+}
+
+.support-request-introduction {
+    margin: 0;
+    color: #272d32;
+    font-size: 14px;
+}
+
+.support-request-empty-state {
+    margin: auto 0;
+    text-align: center;
+}
+
+.support-request-empty-state h3 {
+    margin: 0 0 9px;
+    color: #111111;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.support-request-empty-state p {
+    margin: 0;
+    color: #39434c;
+    font-size: 13px;
+}
+
+.request-support-button {
+    width: 100%;
+    padding: 14px 20px;
+    color: #ffffff;
+    background-color: #4198ef;
+    border: 1px solid #4198ef;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.request-support-button:hover,
+.request-support-button:focus {
+    color: #ffffff;
+    background-color: #2789e5;
+    border-color: #2789e5;
+}
+
+
+/* Support request details */
+
+.support-request-dashboard-details {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin: 20px 0;
+}
+
+.support-request-dashboard-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eceff1;
+}
+
+.support-request-dashboard-row:last-child {
+    border-bottom: none;
+}
+
+.support-dashboard-label {
+    color: #747d87;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.support-request-dashboard-row strong {
+    color: #202830;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: right;
+}
+
+
+/* Support request status */
+
+.support-dashboard-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.status-pending {
+    color: #946200;
+    background-color: #fff4d8;
+}
+
+.status-reviewing {
+    color: #1764c0;
+    background-color: #e8f2ff;
+}
+
+.status-approved {
+    color: #28705f;
+    background-color: #edf7f3;
+}
+
+.status-ongoing {
+    color: #6f45c2;
+    background-color: #f1eaff;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .senior-welcome-card {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+
+    .senior-welcome-content {
+        padding: 28px;
+    }
+
+    .senior-dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .senior-dashboard-card {
+        min-height: 320px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .senior-welcome-card {
+        grid-template-columns: 1fr;
+    }
+
+    .senior-welcome-image img {
+        height: 230px;
+        min-height: 230px;
+    }
+
+    .senior-welcome-content {
+        padding: 28px 24px;
+
+        text-align: center;
+    }
+
+    .senior-welcome-content h1 {
+        font-size: 30px;
+    }
+
+    .senior-welcome-content p {
+        margin-right: auto;
+        margin-left: auto;
+
+        font-size: 16px;
+    }
+
+    .senior-dashboard-card {
+        min-height: auto;
+        padding: 25px 22px;
+    }
+
+    .upcoming-visit-content {
+        align-items: center;
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .visit-detail {
+        justify-content: center;
+    }
+
+    .visit-thank-you {
+        margin-top: 25px;
+    }
+
+    .support-request-empty-state {
+        margin: 45px 0;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .senior-welcome-image img {
+        height: 200px;
+        min-height: 200px;
+    }
+
+    .senior-welcome-content {
+        padding: 24px 18px;
+    }
+
+    .senior-welcome-content h1 {
+        margin-bottom: 12px;
+
+        font-size: 28px;
+    }
+
+    .senior-welcome-content p {
+        font-size: 14px;
+    }
+
+    .senior-dashboard-grid {
+        gap: 16px;
+        margin-top: 22px;
+    }
+
+    .senior-dashboard-card {
+        padding: 20px 18px;
+    }
+
+    .senior-dashboard-card h2 {
+        margin-bottom: 20px;
+
+        font-size: 21px;
+    }
+
+    .upcoming-visit-content {
+        gap: 16px;
+    }
+
+    .volunteer-avatar {
+        width: 72px;
+        height: 72px;
+        flex-basis: 72px;
+
+        font-size: 34px;
+    }
+
+    .visit-information h3 {
+        margin-top: 5px;
+
+        font-size: 17px;
+    }
+
+    .visit-detail {
+        gap: 9px;
+        margin-bottom: 12px;
+
+        font-size: 13px;
+    }
+
+    .visit-thank-you {
+        padding: 13px 14px;
+
+        font-size: 14px;
+    }
+
+    .support-request-introduction {
+        font-size: 13px;
+    }
+
+    .support-request-empty-state {
+        margin: 35px 0;
+    }
+
+    .support-request-dashboard-details {
+        gap: 10px;
+        margin: 18px 0;
+    }
+
+    .support-request-dashboard-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .support-request-dashboard-row strong {
+        text-align: left;
+    }
+
+    .request-support-button {
+        padding: 12px 16px;
+
+        font-size: 14px;
+    }
+}

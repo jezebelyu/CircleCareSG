@@ -1,0 +1,374 @@
+{% extends "guardianPortal/guardian_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Check-In Reports
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'guardianPortal/css/check_in_reports.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="guardian-reports-page">
+
+    <!-- Page header -->
+    <div class="reports-page-header">
+        <h1>Check-In Reports</h1>
+        <p>
+            View and track your senior's check-in history and reports.
+        </p>
+    </div>
+
+    <!-- Report filters -->
+    <div class="report-filter-tabs">
+
+        <button
+            type="button"
+            class="report-filter-button active"
+            data-filter="all"
+        >
+            All Reports
+        </button>
+
+        <button
+            type="button"
+            class="report-filter-button"
+            data-filter="volunteer"
+        >
+            Volunteer Reports
+        </button>
+
+        <button
+            type="button"
+            class="report-filter-button"
+            data-filter="phone"
+        >
+            Phone Check-Ins
+        </button>
+
+        <button
+            type="button"
+            class="report-filter-button"
+            data-filter="wellbeing"
+        >
+            Wellbeing Submissions
+        </button>
+
+    </div>
+
+    <!-- Summary cards -->
+    <div class="report-summary-grid">
+
+        <article class="report-summary-card completed-card">
+            <div class="summary-icon">
+                ✓
+            </div>
+
+            <div>
+                <strong class="summary-number">
+                    {{ completed_check_ins_count }}
+                </strong>
+
+                <p>Completed Check-Ins</p>
+                <span>Recorded</span>
+            </div>
+        </article>
+
+        <article class="report-summary-card phone-card">
+            <div class="summary-icon">
+                ☎
+            </div>
+
+            <div>
+                <strong class="summary-number">
+                    {{ phone_check_ins|length }}
+                </strong>
+
+                <p>Phone Check-Ins</p>
+                <span>Recorded</span>
+            </div>
+        </article>
+
+        <article class="report-summary-card volunteer-card">
+            <div class="summary-icon">
+                ♡
+            </div>
+
+            <div>
+                <strong class="summary-number">
+                    {{ volunteer_reports|length }}
+                </strong>
+
+                <p>Volunteer Reports</p>
+                <span>Recorded</span>
+            </div>
+        </article>
+
+        <article class="report-summary-card wellbeing-card">
+            <div class="summary-icon">
+                ♥
+            </div>
+
+            <div>
+                <strong class="summary-number">
+                    {{ wellbeing_submissions|length }}
+                </strong>
+
+                <p>Wellbeing Submissions</p>
+                <span>Recorded</span>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Recent reports -->
+    <section class="recent-reports-card">
+
+        <h2>Recent Reports</h2>
+
+        <!-- Volunteer reports -->
+        {% for report in volunteer_reports %}
+
+            <article
+                class="report-row"
+                data-report-type="volunteer"
+            >
+
+                <div class="report-row-icon volunteer-icon">
+                    ✓
+                </div>
+
+                <div class="report-date">
+                    <strong>
+                        {{ report.visit.visit_date|date:"d M Y" }}
+                    </strong>
+
+                    <span>
+                        {{ report.submitted_at|date:"g:i A" }}
+                    </span>
+                </div>
+
+                <div class="report-type">
+                    <span class="type-badge volunteer-badge">
+                        Volunteer Visit
+                    </span>
+                </div>
+
+                <div class="report-by">
+                    <strong>
+                        {{ report.visit.assignment.volunteer.app_user.full_name }}
+                    </strong>
+
+                    <span>Volunteer</span>
+                </div>
+
+                <div class="report-summary">
+                    {% if report.observations %}
+                        {{ report.observations|truncatechars:90 }}
+                    {% else %}
+                        Visit report submitted.
+                    {% endif %}
+                </div>
+
+                <div class="report-status">
+                    <span class="completed-badge">
+                        Completed
+                    </span>
+                </div>
+
+                <div class="report-action">
+                    <a
+                        href="{% url 'guardian_view_volunteer_report' report.id %}"
+                        class="view-report-button"
+                    >
+                        <span>View Report</span>
+                    </a>
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+        <!-- Phone check-ins -->
+        {% for visit in phone_check_ins %}
+
+            <article
+                class="report-row"
+                data-report-type="phone"
+            >
+
+                <div class="report-row-icon phone-icon">
+                    ☎
+                </div>
+
+                <div class="report-date">
+                    <strong>
+                        {{ visit.visit_date|date:"d M Y" }}
+                    </strong>
+
+                    <span>
+                        {{ visit.start_time|time:"g:i A" }}
+                    </span>
+                </div>
+
+                <div class="report-type">
+                    <span class="type-badge phone-badge">
+                        Phone Check-In
+                    </span>
+                </div>
+
+                <div class="report-by">
+                    <strong>
+                        {{ visit.assignment.volunteer.app_user.full_name }}
+                    </strong>
+
+                    <span>Volunteer</span>
+                </div>
+
+                <div class="report-summary">
+                    {% if visit.notes %}
+                        {{ visit.notes|truncatechars:90 }}
+                    {% else %}
+                        Phone check-in completed.
+                    {% endif %}
+                </div>
+
+                <div class="report-status">
+                    <span class="completed-badge">
+                        Completed
+                    </span>
+                </div>
+
+                <div class="report-action">
+                    <a
+                        href="{% url 'guardian_view_phone_check_in' visit.id %}"
+                        class="view-report-button"
+                    >
+                        <span>View Report</span>
+                    </a>
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+        <!-- Wellbeing submissions -->
+        {% for wellbeing in wellbeing_submissions %}
+
+            <article
+                class="report-row"
+                data-report-type="wellbeing"
+            >
+
+                <div class="report-row-icon wellbeing-icon">
+                    ♥
+                </div>
+
+                <div class="report-date">
+                    <strong>
+                        {{ wellbeing.submitted_at|date:"d M Y" }}
+                    </strong>
+
+                    <span>
+                        {{ wellbeing.submitted_at|date:"g:i A" }}
+                    </span>
+                </div>
+
+                <div class="report-type">
+                    <span class="type-badge wellbeing-badge">
+                        Wellbeing Submission
+                    </span>
+                </div>
+
+                <div class="report-by">
+                    <strong>
+                        {{ linked_senior.app_user.full_name }}
+                    </strong>
+
+                    <span>Senior</span>
+                </div>
+
+                <div class="report-summary">
+                    Feeling:
+                    <strong>
+                        {{ wellbeing.get_feeling_display }}
+                    </strong>
+
+                    {% if wellbeing.notes %}
+                        —
+                        {{ wellbeing.notes|truncatechars:65 }}
+                    {% endif %}
+                </div>
+
+                <div class="report-status">
+                    <span class="completed-badge">
+                        Completed
+                    </span>
+                </div>
+
+                <div class="report-action">
+                    <a
+                        href="{% url 'guardian_view_wellbeing_submission' wellbeing.id %}"
+                        class="view-report-button"
+                    >
+                        <span>View Report</span>
+                    </a>
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+        <!-- Empty state -->
+        {% if not volunteer_reports and not phone_check_ins and not wellbeing_submissions %}
+            <div class="reports-empty-state">
+                <h3>No Check-In Reports Yet</h3>
+
+                <p>
+                    There are currently no check-in records
+                    for your linked senior.
+                </p>
+            </div>
+        {% endif %}
+
+    </section>
+
+</section>
+
+<!-- Report filtering -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".report-filter-button");
+        const reports = document.querySelectorAll(".report-row");
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const filter = button.dataset.filter;
+
+                buttons.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                reports.forEach(function (report) {
+                    if (
+                        filter === "all" ||
+                        report.dataset.reportType === filter
+                    ) {
+                        report.style.display = "";
+                    } else {
+                        report.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+{% endblock %}

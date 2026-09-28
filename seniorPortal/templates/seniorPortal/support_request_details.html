@@ -1,0 +1,110 @@
+{% extends "seniorPortal/senior_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Support Request Details
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'seniorPortal/css/support_request.css' %}?v=20"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="support-request-page">
+
+    <div class="support-request-heading">
+        <div>
+            <h1>Support Request</h1>
+
+            <p>
+                Confirm your selected support and provide the request details.
+            </p>
+        </div>
+    </div>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+
+        <article class="support-details-card">
+
+            <h2>Chosen Support</h2>
+
+            <div class="selected-support-tags">
+                {% for label in selected_support_labels %}
+                    <span>{{ label }}</span>
+                {% endfor %}
+            </div>
+
+            {% if "other" in selected_support_types %}
+                <div class="support-form-group">
+                    <label for="{{ form.other_support_details.id_for_label }}">
+                        Please specify other assistance
+                        <span>*</span>
+                    </label>
+
+                    {{ form.other_support_details }}
+                    {{ form.other_support_details.errors }}
+                </div>
+            {% endif %}
+
+            <div class="support-form-grid">
+
+                <div class="support-form-group">
+                    <label for="{{ form.requested_date.id_for_label }}">
+                        Request Date
+                        <span>*</span>
+                    </label>
+
+                    {{ form.requested_date }}
+                    {{ form.requested_date.errors }}
+                </div>
+
+                <div class="support-form-group">
+                    <label for="{{ form.requested_time.id_for_label }}">
+                        Request Time
+                        <span>*</span>
+                    </label>
+
+                    {{ form.requested_time }}
+                    {{ form.requested_time.errors }}
+                </div>
+
+            </div>
+
+            <div class="support-form-group">
+                <label for="{{ form.additional_notes.id_for_label }}">
+                    Additional Notes
+                </label>
+
+                {{ form.additional_notes }}
+                {{ form.additional_notes.errors }}
+            </div>
+
+            <div class="support-form-actions">
+                <a
+                    href="{% url 'support_request_select' %}"
+                    class="btn support-back-button"
+                >
+                    Back
+                </a>
+
+                <button
+                    type="submit"
+                    class="btn support-submit-button"
+                >
+                    Submit Request
+                </button>
+            </div>
+
+        </article>
+    </form>
+
+    {% include "seniorPortal/support_process.html" %}
+
+</section>
+
+{% endblock %}

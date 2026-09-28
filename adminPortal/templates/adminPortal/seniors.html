@@ -1,0 +1,300 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | All Seniors
+{% endblock %}
+
+{% block extra_css %}
+<!-- Bootstrap Icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+>
+
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/seniors.css' %}?v=2"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-seniors-page">
+
+    <!-- Page heading -->
+    <div class="seniors-page-heading">
+        <div>
+            <h1>All Seniors</h1>
+            <p>Manage and view all registered seniors.</p>
+        </div>
+
+        <a
+            href="{% url 'admin_add_senior' %}"
+            class="add-senior-button"
+        >
+            <i class="bi bi-person-plus-fill"></i>
+            Add Senior
+        </a>
+    </div>
+
+
+    <!-- Summary cards -->
+    <div class="seniors-summary-grid">
+
+        <!-- Total seniors -->
+        <article class="senior-summary-card">
+            <div class="senior-summary-icon summary-blue">
+                <i class="bi bi-people-fill"></i>
+            </div>
+
+            <div>
+                <strong>{{ total_seniors }}</strong>
+                <span>Total Seniors</span>
+            </div>
+        </article>
+
+        <!-- Active seniors -->
+        <article class="senior-summary-card">
+            <div class="senior-summary-icon summary-green">
+                <i class="bi bi-person-check-fill"></i>
+            </div>
+
+            <div>
+                <strong>{{ active_seniors }}</strong>
+                <span>Active</span>
+            </div>
+        </article>
+
+        <!-- Inactive seniors -->
+        <article class="senior-summary-card">
+            <div class="senior-summary-icon summary-purple">
+                <i class="bi bi-person-dash-fill"></i>
+            </div>
+
+            <div>
+                <strong>{{ inactive_seniors }}</strong>
+                <span>Inactive</span>
+            </div>
+        </article>
+
+        <!-- Upcoming visits -->
+        <article class="senior-summary-card">
+            <div class="senior-summary-icon summary-orange">
+                <i class="bi bi-calendar-check-fill"></i>
+            </div>
+
+            <div>
+                <strong>{{ upcoming_visits }}</strong>
+                <span>Upcoming Visits</span>
+            </div>
+        </article>
+
+    </div>
+
+
+    <!-- Seniors list -->
+    <article class="seniors-list-card">
+
+        <!-- Search -->
+        <form method="get" class="senior-search-form">
+
+            <div class="senior-search-box">
+                <span class="senior-search-icon">
+                    <i class="bi bi-search"></i>
+                </span>
+
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search_query }}"
+                    placeholder="Search by senior name"
+                >
+            </div>
+
+            <button
+                type="submit"
+                class="senior-search-button"
+            >
+                Search
+            </button>
+
+        </form>
+
+
+        <!-- Seniors table -->
+        <div class="senior-table-wrapper">
+
+            <table class="senior-table">
+
+                <thead>
+                    <tr>
+                        <th>Senior ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Email / Contact</th>
+                        <th>Status</th>
+                        <th>Last Visit</th>
+                        <th>Next Visit</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% if senior_rows %}
+
+                        {% for senior in senior_rows %}
+
+                            <tr>
+
+                                <!-- Senior ID -->
+                                <td class="senior-id">
+                                    {{ senior.senior_id }}
+                                </td>
+
+
+                                <!-- Name -->
+                                <td>
+                                    <div class="senior-name-cell">
+
+                                        <div class="senior-list-avatar">
+
+                                            {% if senior.profile.app_user.profile_picture %}
+
+                                                <img
+                                                    src="{{ senior.profile.app_user.profile_picture.url }}"
+                                                    alt="{{ senior.profile.app_user.full_name }} profile picture"
+                                                    class="senior-list-profile-picture"
+                                                >
+
+                                            {% else %}
+
+                                                <img
+                                                    src="{% static 'empty_user_icon.png' %}"
+                                                    alt="Default senior profile"
+                                                    class="senior-list-profile-placeholder"
+                                                >
+
+                                            {% endif %}
+
+                                        </div>
+
+                                        <strong>
+                                            {{ senior.profile.app_user.full_name }}
+                                        </strong>
+
+                                    </div>
+                                </td>
+
+
+                                <!-- Age -->
+                                <td>
+                                    {{ senior.age }}
+                                </td>
+
+
+                                <!-- Email and contact -->
+                                <td>
+                                    <div class="senior-contact-cell">
+
+                                        {% if senior.profile.app_user.user.email %}
+                                            <strong>
+                                                {{ senior.profile.app_user.user.email }}
+                                            </strong>
+                                        {% else %}
+                                            <strong>No email</strong>
+                                        {% endif %}
+
+                                        <span>
+                                            {{ senior.profile.app_user.mobile_number }}
+                                        </span>
+
+                                    </div>
+                                </td>
+
+
+                                <!-- Status -->
+                                <td>
+                                    <span
+                                        class="senior-status {% if senior.status == 'active' %}status-active{% else %}status-inactive{% endif %}"
+                                    >
+                                        {% if senior.status == "active" %}
+                                            Active
+                                        {% else %}
+                                            Inactive
+                                        {% endif %}
+                                    </span>
+                                </td>
+
+
+                                <!-- Last visit -->
+                                <td>
+                                    {% if senior.last_visit %}
+                                        {{ senior.last_visit }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+
+
+                                <!-- Next visit -->
+                                <td>
+                                    {% if senior.next_visit %}
+                                        {{ senior.next_visit }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+
+
+                                <!-- Action -->
+                                <td>
+                                    <a
+                                        href="{% url 'admin_senior_detail' senior.profile.pk %}"
+                                        class="senior-view-button"
+                                    >
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <tr>
+                            <td
+                                colspan="8"
+                                class="senior-empty-row"
+                            >
+                                <div class="senior-empty-state">
+
+                                    <div class="senior-empty-icon">
+                                        <i class="bi bi-person-x"></i>
+                                    </div>
+
+                                    <h3>No Seniors Found</h3>
+
+                                    <p>
+                                        Registered seniors will appear here.
+                                    </p>
+
+                                </div>
+                            </td>
+                        </tr>
+
+                    {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </article>
+
+</section>
+
+{% endblock %}

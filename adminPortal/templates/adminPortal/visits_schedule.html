@@ -1,0 +1,355 @@
+{% extends "adminPortal/admin_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Visits & Schedules
+{% endblock %}
+
+{% block extra_css %}
+<!-- Bootstrap Icons -->
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+>
+
+<link
+    rel="stylesheet"
+    href="{% static 'adminPortal/css/visits_schedule.css' %}?v=5"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="visits-page">
+
+    <!-- Page heading -->
+    <div class="visits-heading-row">
+
+        <div class="visits-heading-text">
+            <h1>Visits & Schedules</h1>
+            <p>Manage and review all senior visits.</p>
+        </div>
+
+        <a
+            href="{% url 'admin_schedule_visit' %}"
+            class="add-visit-button"
+        >
+            Schedule Visit
+        </a>
+
+    </div>
+
+
+    <!-- Summary cards -->
+    <div class="visit-summary-grid">
+
+        <!-- Total visits -->
+        <article class="visit-summary-card">
+
+            <span class="visit-summary-icon summary-total">
+                <i class="bi bi-calendar3"></i>
+            </span>
+
+            <div class="visit-summary-content">
+                <strong>{{ total_visits }}</strong>
+                <span>Total Visits</span>
+            </div>
+
+        </article>
+
+
+        <!-- Completed visits -->
+        <article class="visit-summary-card">
+
+            <span class="visit-summary-icon summary-completed">
+                <i class="bi bi-calendar-check-fill"></i>
+            </span>
+
+            <div class="visit-summary-content">
+                <strong>{{ completed_visits }}</strong>
+                <span>Completed</span>
+            </div>
+
+        </article>
+
+
+        <!-- Upcoming visits -->
+        <article class="visit-summary-card">
+
+            <span class="visit-summary-icon summary-upcoming">
+                <i class="bi bi-calendar-event-fill"></i>
+            </span>
+
+            <div class="visit-summary-content">
+                <strong>{{ upcoming_count }}</strong>
+                <span>Upcoming</span>
+            </div>
+
+        </article>
+
+
+        <!-- Cancelled / missed visits -->
+        <article class="visit-summary-card">
+
+            <span class="visit-summary-icon summary-cancelled">
+                <i class="bi bi-calendar-x-fill"></i>
+            </span>
+
+            <div class="visit-summary-content">
+                <strong>{{ cancelled_missed_count }}</strong>
+                <span>Cancelled / Missed</span>
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <!-- Visits table -->
+    <section class="visit-table-card">
+
+        <!-- Search -->
+        <form method="GET" class="visit-search-form">
+
+            <div class="visit-search">
+
+                <span class="visit-search-icon">
+                    <i class="bi bi-search"></i>
+                </span>
+
+                <input
+                    type="text"
+                    name="search"
+                    value="{{ search_query }}"
+                    placeholder="Search by senior or volunteer name"
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="visit-search-button"
+            >
+                Search
+            </button>
+
+        </form>
+
+
+        {% if visit_rows %}
+
+            <!-- Visits table -->
+            <div class="visit-table-wrapper">
+
+                <table class="visit-table">
+
+                    <thead>
+                        <tr>
+                            <th>Visit ID</th>
+                            <th>Senior</th>
+                            <th>Volunteer</th>
+                            <th>Date & Time</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for row in visit_rows %}
+                            {% with visit=row.visit %}
+
+                                <tr>
+
+                                    <!-- Visit ID -->
+                                    <td class="visit-id-cell">
+                                        VIS-{{ visit.pk|stringformat:"04d" }}
+                                    </td>
+
+
+                                    <!-- Senior -->
+                                    <td>
+
+                                        <div class="person-cell">
+
+                                            <div class="person-avatar">
+
+                                                {% if visit.assignment.senior.app_user.profile_picture %}
+
+                                                    <img
+                                                        src="{{ visit.assignment.senior.app_user.profile_picture.url }}"
+                                                        alt="{{ visit.assignment.senior.app_user.full_name }} profile picture"
+                                                    >
+
+                                                {% else %}
+
+                                                    <img
+                                                        src="{% static 'empty_user_icon.png' %}"
+                                                        alt="Default senior profile"
+                                                    >
+
+                                                {% endif %}
+
+                                            </div>
+
+                                            <div>
+
+                                                <strong>
+                                                    {{ visit.assignment.senior.app_user.full_name }}
+                                                </strong>
+
+                                                <span>
+                                                    SEN-{{ visit.assignment.senior.pk|stringformat:"04d" }}
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Volunteer -->
+                                    <td>
+
+                                        <div class="person-cell">
+
+                                            <div class="person-avatar">
+
+                                                {% if visit.assignment.volunteer.app_user.profile_picture %}
+
+                                                    <img
+                                                        src="{{ visit.assignment.volunteer.app_user.profile_picture.url }}"
+                                                        alt="{{ visit.assignment.volunteer.app_user.full_name }} profile picture"
+                                                    >
+
+                                                {% else %}
+
+                                                    <img
+                                                        src="{% static 'empty_user_icon.png' %}"
+                                                        alt="Default volunteer profile"
+                                                    >
+
+                                                {% endif %}
+
+                                            </div>
+
+                                            <div>
+
+                                                <strong>
+                                                    {{ visit.assignment.volunteer.app_user.full_name }}
+                                                </strong>
+
+                                                <span>
+                                                    VOL-{{ visit.assignment.volunteer.pk|stringformat:"04d" }}
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Date and time -->
+                                    <td>
+
+                                        <div class="visit-date-time">
+
+                                            <strong>
+                                                {{ visit.visit_date|date:"d M Y" }}
+                                            </strong>
+
+                                            <span>
+                                                {{ visit.start_time|time:"g:i A" }}
+
+                                                {% if visit.end_time %}
+                                                    -
+                                                    {{ visit.end_time|time:"g:i A" }}
+                                                {% endif %}
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Type -->
+                                    <td>
+
+                                        <span class="visit-type-badge visit-type-{{ visit.visit_type }}">
+                                            {{ visit.get_visit_type_display }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- Status -->
+                                    <td>
+
+                                        <span class="visit-status-badge status-{{ row.display_status_class }}">
+                                            {{ row.display_status }}
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- Actions -->
+                                    <td>
+
+                                        <div class="visit-action-buttons">
+
+                                            <a
+                                                href="{% url 'admin_visit_detail' visit.id %}"
+                                                class="visit-action-button visit-view-button"
+                                            >
+                                                View
+                                            </a>
+
+                                            <a
+                                                href="{% url 'admin_edit_visit' visit.pk %}"
+                                                class="visit-action-button"
+                                            >
+                                                Edit
+                                            </a>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            {% endwith %}
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        {% else %}
+
+            <!-- Empty state -->
+            <div class="no-visits">
+
+                <div class="no-visits-icon">
+                    <i class="bi bi-calendar-x"></i>
+                </div>
+
+                <h3>No Visits Found</h3>
+
+                <p>
+                    There are no visits to display.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</section>
+
+{% endblock %}

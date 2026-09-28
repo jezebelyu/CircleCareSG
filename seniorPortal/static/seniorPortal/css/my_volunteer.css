@@ -1,0 +1,565 @@
+/* My Volunteer page */
+
+.my-volunteer-page {
+    width: 100%;
+}
+
+
+/* Page heading */
+
+.volunteer-page-heading {
+    margin-bottom: 28px;
+}
+
+.volunteer-page-heading h1 {
+    margin: 0 0 8px;
+    color: #111111;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.volunteer-page-heading p {
+    margin: 0;
+    color: #39434c;
+    font-size: 17px;
+}
+
+
+/* Assigned volunteer */
+
+.assigned-volunteer-card {
+    display: grid;
+    grid-template-columns:
+        180px minmax(0, 1fr) minmax(260px, 0.7fr);
+    align-items: center;
+    gap: 38px;
+    min-height: 260px;
+    padding: 35px 45px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.16);
+}
+
+.assigned-volunteer-avatar {
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.assigned-volunteer-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.volunteer-label {
+    margin: 0 0 4px;
+    color: #56616b;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.assigned-volunteer-details h2 {
+    margin: 0 0 22px;
+    color: #111111;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.volunteer-detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 17px;
+}
+
+/* Volunteer icons */
+
+.volunteer-detail-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    flex-shrink: 0;
+
+    color: #389bf3;
+
+    font-size: 18px;
+}
+
+.volunteer-detail-icon i {
+    line-height: 1;
+}
+
+/* Volunteer information icons */
+
+.volunteer-information-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volunteer-information-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    flex-shrink: 0;
+
+    color: #6c757d;
+
+    font-size: 17px;
+    line-height: 1;
+}
+
+/* Support message icon */
+
+.volunteer-support-icon i {
+    line-height: 1;
+}
+
+.volunteer-detail-row strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 13px;
+}
+
+.volunteer-detail-row p {
+    margin: 0;
+    color: #39434c;
+    font-size: 14px;
+}
+
+
+/* Support message */
+
+.volunteer-support-message {
+    padding: 30px;
+    text-align: center;
+    background-color: #f5fbf3;
+    border-radius: 7px;
+}
+
+.volunteer-support-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 14px;
+    color: #ffffff;
+    background-color: #25933b;
+    border-radius: 50%;
+    font-size: 28px;
+}
+
+.volunteer-support-message h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.volunteer-support-message p {
+    margin: 0;
+    color: #39434c;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* Information cards */
+
+.volunteer-information-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+}
+
+.volunteer-information-card {
+    min-height: 290px;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.16);
+}
+
+.volunteer-information-card h2 {
+    margin: 0 0 28px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.volunteer-information-row {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 25px;
+    margin-bottom: 24px;
+}
+
+.volunteer-information-row strong {
+    font-size: 14px;
+}
+
+.volunteer-information-row span {
+    color: #39434c;
+    font-size: 14px;
+}
+
+
+/* Support areas */
+
+.volunteer-support-areas {
+    margin-top: 20px;
+}
+
+.volunteer-support-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.volunteer-support-tag {
+    padding: 7px 12px;
+    color: #287fc8;
+    background-color: #eef7ff;
+    border: 1px solid #cfe7fb;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* Upcoming visit */
+
+.upcoming-visit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+    background-color: #f8fbfd;
+    border: 1px solid #dbe4ea;
+    border-radius: 7px;
+}
+
+.upcoming-visit-row {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+.upcoming-visit-row strong {
+    color: #111111;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.upcoming-visit-row span {
+    color: #39434c;
+    font-size: 14px;
+}
+
+.upcoming-visit-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin-top: 4px;
+    padding: 6px 13px;
+    color: #176532;
+    background-color: #e3f5e9;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* Empty upcoming visit */
+
+.volunteer-empty-visit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 250px;
+
+    text-align: center;
+}
+
+.volunteer-empty-visit-icon {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #6c757d;
+
+    font-size: 28px;
+    line-height: 1;
+}
+
+.volunteer-empty-visit p {
+    margin: 0;
+
+    color: #5f6973;
+}
+
+/* No volunteer */
+
+.no-volunteer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    padding: 55px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 7px;
+    box-shadow: 0 3px 7px rgba(24, 39, 56, 0.16);
+}
+
+.no-volunteer-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 24px;
+}
+
+.no-volunteer-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.no-volunteer-card h2 {
+    margin: 0 0 12px;
+    color: #111111;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.no-volunteer-card>p {
+    max-width: 560px;
+    margin: 0 0 30px;
+    color: #56616b;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.no-volunteer-notice {
+    max-width: 600px;
+    padding: 20px 28px;
+    background-color: #eef7ff;
+    border-radius: 7px;
+}
+
+.no-volunteer-notice strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #2577bf;
+    font-size: 14px;
+}
+
+.no-volunteer-notice p {
+    margin: 0;
+    color: #39434c;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .assigned-volunteer-card {
+        grid-template-columns: 150px minmax(0, 1fr);
+        gap: 28px;
+        padding: 30px;
+    }
+
+    .assigned-volunteer-avatar {
+        width: 145px;
+        height: 145px;
+    }
+
+    .volunteer-support-message {
+        grid-column: 1 / -1;
+    }
+
+    .volunteer-information-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .volunteer-information-card {
+        min-height: auto;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .volunteer-page-heading h1 {
+        font-size: 32px;
+    }
+
+    .assigned-volunteer-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 28px 22px;
+
+        text-align: center;
+    }
+
+    .assigned-volunteer-avatar {
+        margin: 0 auto;
+    }
+
+    .volunteer-detail-row {
+        justify-content: center;
+    }
+
+    .volunteer-support-message {
+        grid-column: auto;
+    }
+
+    .volunteer-information-card {
+        padding: 24px 20px;
+    }
+
+    .volunteer-information-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .upcoming-visit-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .no-volunteer-card {
+        min-height: 400px;
+        padding: 35px 22px;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .volunteer-page-heading {
+        margin-bottom: 20px;
+    }
+
+    .volunteer-page-heading h1 {
+        font-size: 28px;
+    }
+
+    .volunteer-page-heading p {
+        font-size: 14px;
+    }
+
+    .assigned-volunteer-card {
+        gap: 20px;
+        margin-bottom: 22px;
+        padding: 22px 18px;
+    }
+
+    .assigned-volunteer-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .assigned-volunteer-details h2 {
+        margin-bottom: 18px;
+
+        font-size: 22px;
+    }
+
+    .volunteer-detail-row {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .volunteer-detail-row p {
+        font-size: 13px;
+    }
+
+    .volunteer-support-message {
+        padding: 22px 18px;
+    }
+
+    .volunteer-support-icon {
+        width: 58px;
+        height: 58px;
+
+        font-size: 24px;
+    }
+
+    .volunteer-information-grid {
+        gap: 16px;
+    }
+
+    .volunteer-information-card {
+        padding: 20px 18px;
+    }
+
+    .volunteer-information-card h2 {
+        margin-bottom: 22px;
+
+        font-size: 19px;
+    }
+
+    .volunteer-information-row {
+        margin-bottom: 18px;
+    }
+
+    .volunteer-support-tags {
+        gap: 6px;
+    }
+
+    .upcoming-visit-card {
+        padding: 16px;
+    }
+
+    .no-volunteer-card {
+        min-height: 350px;
+        padding: 30px 18px;
+    }
+
+    .no-volunteer-icon {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 20px;
+    }
+
+    .no-volunteer-card h2 {
+        font-size: 20px;
+    }
+
+    .no-volunteer-card>p {
+        margin-bottom: 24px;
+
+        font-size: 14px;
+    }
+
+    .no-volunteer-notice {
+        padding: 18px;
+    }
+}

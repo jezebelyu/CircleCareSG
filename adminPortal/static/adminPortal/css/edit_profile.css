@@ -1,0 +1,198 @@
+/* Edit profile */
+.admin-edit-card {
+    padding: 30px;
+}
+
+.admin-edit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 28px;
+}
+
+.admin-edit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-edit-field label {
+    color: #111111;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.admin-edit-field input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    color: #111111;
+    background-color: #ffffff;
+    border: 1px solid #d8dde2;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+.admin-edit-field input:focus {
+    border-color: #389bf3;
+    box-shadow: 0 0 0 3px rgba(56, 155, 243, 0.10);
+}
+
+/* Read-only fields */
+.admin-edit-field .admin-readonly-field {
+    color: #66717a;
+    background-color: #f5f7f8;
+    cursor: not-allowed;
+}
+
+/* Form errors */
+.admin-field-error {
+    color: #d63232;
+    font-size: 11px;
+}
+
+.admin-form-error {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+    color: #a52834;
+    background-color: #fdecee;
+    border: 1px solid #f4c7cc;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.admin-form-error p {
+    margin: 0;
+}
+
+/* Form actions */
+.admin-edit-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.admin-cancel-button,
+.admin-save-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 145px;
+    height: 42px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-cancel-button {
+    color: #555f68;
+    background-color: #ffffff;
+    border: 1px solid #cfd5da;
+}
+
+.admin-cancel-button:hover {
+    color: #111111;
+    background-color: #f5f7f8;
+}
+
+.admin-save-button {
+    color: #ffffff;
+    background-color: #389bf3;
+    border: 1px solid #389bf3;
+}
+
+.admin-save-button:hover {
+    background-color: #278de9;
+    border-color: #278de9;
+}
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .admin-edit-card {
+        padding: 26px;
+    }
+
+    .admin-edit-grid {
+        gap: 22px 24px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .admin-profile-heading h1 {
+        font-size: 30px;
+    }
+
+    .admin-overview-main {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .admin-contact-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .admin-overview-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-information-grid,
+    .admin-edit-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-information-grid {
+        row-gap: 22px;
+    }
+
+    .admin-edit-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .admin-cancel-button,
+    .admin-save-button {
+        width: 100%;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .admin-profile-heading h1 {
+        font-size: 27px;
+    }
+
+    .admin-edit-card {
+        padding: 20px 18px;
+    }
+
+    .admin-edit-grid {
+        gap: 18px;
+    }
+
+    .admin-edit-actions {
+        gap: 10px;
+        margin-top: 24px;
+    }
+}

@@ -1,0 +1,235 @@
+{% extends "seniorPortal/senior_base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Check-In History
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'seniorPortal/css/check_in_history.css' %}?v=3"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="check-in-history-page">
+
+    <!-- Page heading -->
+    <div class="check-in-page-heading">
+        <h1>Check-In History</h1>
+
+        <p>
+            View your recent check-ins and visits.
+        </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="check-in-filter-bar">
+        <div class="check-in-filter-options">
+
+            <button
+                type="button"
+                class="check-in-filter-button active"
+                data-filter="all"
+            >
+                All
+            </button>
+
+            <button
+                type="button"
+                class="check-in-filter-button volunteer-filter"
+                data-filter="volunteer"
+            >
+                Volunteer Visits
+            </button>
+
+            <button
+                type="button"
+                class="check-in-filter-button phone-filter"
+                data-filter="phone"
+            >
+                Phone Check-Ins
+            </button>
+
+            <button
+                type="button"
+                class="check-in-filter-button wellbeing-filter"
+                data-filter="wellbeing"
+            >
+                Wellbeing Submissions
+            </button>
+
+        </div>
+    </div>
+
+    <!-- History -->
+    <article class="check-in-history-card">
+
+        <h2>Recent Check-Ins</h2>
+
+        {% if wellbeing_submissions %}
+
+            <div class="check-in-record-list">
+
+                {% for submission in wellbeing_submissions %}
+
+                    <div
+                        class="check-in-record"
+                        data-record-type="wellbeing"
+                    >
+
+                        <div class="check-in-record-icon">
+                            <span class="wellbeing-history-icon">
+                                {% if submission.feeling == "great" %}
+                                    😄
+                                {% elif submission.feeling == "good" %}
+                                    🙂
+                                {% elif submission.feeling == "okay" %}
+                                    😐
+                                {% elif submission.feeling == "not_good" %}
+                                    😟
+                                {% elif submission.feeling == "need_support" %}
+                                    🆘
+                                {% else %}
+                                    😊
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        <div class="check-in-record-main">
+                            <h3>
+                                Wellbeing Submission
+                            </h3>
+
+                            <p>
+                                Feeling:
+                                <strong>
+                                    {{ submission.get_feeling_display }}
+                                </strong>
+                            </p>
+
+                            <div class="check-in-record-date-time">
+                                <span>
+                                    {{ submission.submitted_at|date:"j F Y" }}
+                                </span>
+
+                                <span>
+                                    {{ submission.submitted_at|time:"g:i A" }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="check-in-record-note">
+                            {% if submission.notes %}
+                                <p>
+                                    {{ submission.notes }}
+                                </p>
+                            {% else %}
+                                <p>
+                                    No additional notes submitted.
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        <div class="check-in-record-status">
+                            <span>
+                                Completed
+                            </span>
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- Appears when a filter has no matching records -->
+            <div
+                class="check-in-filter-empty-state"
+                id="filterEmptyState"
+                hidden
+            >
+                <div class="check-in-empty-icon">
+                    📋
+                </div>
+
+                <h3>No Matching Records</h3>
+
+                <p>
+                    There are no check-in records for this category yet.
+                </p>
+            </div>
+
+        {% else %}
+
+            <div class="check-in-empty-state">
+                <div class="check-in-empty-icon">
+                    📋
+                </div>
+
+                <h3>No Check-In History Yet</h3>
+
+                <p>
+                    Your completed visits, phone check-ins and wellbeing
+                    submissions will appear here.
+                </p>
+            </div>
+
+        {% endif %}
+
+    </article>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(
+            ".check-in-filter-button"
+        );
+        const records = document.querySelectorAll(
+            ".check-in-record"
+        );
+        const filterEmptyState = document.getElementById(
+            "filterEmptyState"
+        );
+
+        filterButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const selectedFilter = button.dataset.filter;
+                let visibleRecordCount = 0;
+
+                filterButtons.forEach(function (item) {
+                    item.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+                records.forEach(function (record) {
+                    const recordType = record.dataset.recordType;
+                    const shouldShow =
+                        selectedFilter === "all" ||
+                        recordType === selectedFilter;
+
+                    if (shouldShow) {
+                        record.hidden = false;
+                        visibleRecordCount += 1;
+                    } else {
+                        record.hidden = true;
+                    }
+                });
+
+                if (filterEmptyState) {
+                    filterEmptyState.hidden = visibleRecordCount !== 0;
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

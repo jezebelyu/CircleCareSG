@@ -1,0 +1,434 @@
+/* Availability page */
+
+.availability-page {
+    width: 100%;
+    max-width: 1100px;
+}
+
+
+/* Page heading */
+
+.availability-heading {
+    margin-bottom: 34px;
+}
+
+.availability-heading h1 {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.availability-heading p {
+    margin: 0;
+
+    color: #222222;
+
+    font-size: 17px;
+}
+
+
+/* Toolbar */
+
+.availability-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 20px;
+}
+
+.availability-toolbar-left {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+.availability-today-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 92px;
+    height: 38px;
+
+    color: #111111;
+    background-color: #ffffff;
+
+    border: 1px solid #d7dde3;
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.availability-today-button:hover {
+    color: #278de9;
+
+    border-color: #278de9;
+}
+
+
+/* Week navigation */
+
+.availability-week-navigation {
+    display: flex;
+    align-items: center;
+}
+
+.availability-nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 38px;
+
+    color: #111111;
+    background-color: #ffffff;
+
+    border: 1px solid #d7dde3;
+
+    font-size: 26px;
+    line-height: 1;
+
+    text-decoration: none;
+}
+
+.availability-nav-button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.availability-nav-button:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.availability-week-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 170px;
+    height: 38px;
+
+    color: #278de9;
+    background-color: #ffffff;
+
+    border-top: 1px solid #d7dde3;
+    border-bottom: 1px solid #d7dde3;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* Actions */
+
+.availability-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.availability-clear-button,
+.availability-save-button {
+    min-width: 120px;
+    height: 38px;
+
+    padding: 0 18px;
+
+    border-radius: 5px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.availability-clear-button {
+    color: #389bf3;
+    background-color: #ffffff;
+
+    border: 1px solid #389bf3;
+}
+
+.availability-clear-button:hover {
+    background-color: #eef7ff;
+}
+
+.availability-save-button {
+    color: #ffffff;
+    background-color: #389bf3;
+
+    border: 1px solid #389bf3;
+}
+
+.availability-save-button:hover {
+    background-color: #278de9;
+}
+
+
+/* Calendar table */
+
+.availability-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.availability-table {
+    width: 100%;
+
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.availability-table th,
+.availability-table td {
+    border-right: 1px solid #d9dee4;
+    border-bottom: 1px solid #d9dee4;
+}
+
+.availability-table th:last-child,
+.availability-table td:last-child {
+    border-right: 0;
+}
+
+
+/* Weekday headings */
+
+.availability-table thead th {
+    height: 68px;
+
+    padding: 9px 4px;
+
+    color: #111111;
+    background-color: transparent;
+
+    text-align: center;
+}
+
+.availability-day-heading strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.availability-day-heading span {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* Time column */
+
+.availability-time-column,
+.availability-time-label {
+    width: 150px;
+}
+
+.availability-time-label {
+    padding: 0 12px;
+
+    color: #111111;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+/* Availability slots */
+
+.availability-table tbody td {
+    height: 50px;
+
+    padding: 0;
+}
+
+.availability-cell {
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    color: transparent;
+    background-color: transparent;
+
+    border: 0;
+    border-radius: 3px;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.availability-cell:hover {
+    background-color: #eef7ff;
+}
+
+.availability-cell.selected {
+    color: #111111;
+    background-color: #75c77f;
+}
+
+.availability-cell.selected:hover {
+    background-color: #6bbb75;
+}
+
+
+/* ==================================================
+   TABLET
+   ================================================== */
+
+@media (max-width: 992px) {
+    .availability-page {
+        max-width: none;
+    }
+
+    .availability-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .availability-actions {
+        justify-content: flex-end;
+    }
+
+    .availability-table {
+        min-width: 850px;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+   ================================================== */
+
+@media (max-width: 768px) {
+    .availability-heading h1 {
+        font-size: 31px;
+    }
+
+    .availability-toolbar-left {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .availability-week-navigation {
+        width: 100%;
+    }
+
+    .availability-week-label {
+        flex: 1;
+
+        width: auto;
+    }
+
+    .availability-today-button {
+        width: 100%;
+    }
+
+    .availability-actions {
+        flex-direction: column;
+    }
+
+    .availability-clear-button,
+    .availability-save-button {
+        width: 100%;
+    }
+
+    .availability-time-column,
+    .availability-time-label {
+        width: 120px;
+    }
+
+    .availability-table {
+        min-width: 760px;
+    }
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+   ================================================== */
+
+@media (max-width: 576px) {
+    .availability-heading {
+        margin-bottom: 24px;
+    }
+
+    .availability-heading h1 {
+        font-size: 28px;
+    }
+
+    .availability-heading p {
+        font-size: 14px;
+    }
+
+    .availability-toolbar {
+        gap: 16px;
+        margin-bottom: 18px;
+    }
+
+    .availability-toolbar-left {
+        gap: 12px;
+    }
+
+    .availability-week-label {
+        font-size: 12px;
+    }
+
+    .availability-actions {
+        gap: 8px;
+    }
+
+    .availability-clear-button,
+    .availability-save-button {
+        min-width: 0;
+    }
+
+    .availability-table {
+        min-width: 700px;
+    }
+
+    .availability-time-column,
+    .availability-time-label {
+        width: 105px;
+    }
+
+    .availability-table thead th {
+        height: 60px;
+    }
+
+    .availability-table tbody td {
+        height: 46px;
+    }
+
+    .availability-day-heading strong {
+        font-size: 12px;
+    }
+
+    .availability-day-heading span {
+        font-size: 11px;
+    }
+}

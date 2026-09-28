@@ -1,0 +1,230 @@
+{% extends "volunteerPortal/volunteer_base.html" %}
+{% load static %}
+
+{% block title %}
+    CircleCareSG | My Schedule
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'volunteerPortal/css/schedule.css' %}?v=3"
+>
+{% endblock %}
+
+{% block content %}
+
+<section class="schedule-page">
+
+    <!-- Page heading -->
+    <div class="schedule-heading">
+        <h1>My Schedule</h1>
+
+        <p>
+            View your scheduled visits for the week.
+        </p>
+    </div>
+
+
+    <!-- Week navigation -->
+    <div class="schedule-toolbar">
+
+        <div class="schedule-toolbar-left">
+
+            <a
+                href="{% url 'volunteer_schedule' %}"
+                class="schedule-today-button"
+            >
+                Today
+            </a>
+
+            <div class="schedule-week-navigation">
+
+                <a
+                    href="?week={{ previous_week }}"
+                    class="schedule-nav-button"
+                >
+                    ‹
+                </a>
+
+                <div class="schedule-week-label">
+                    {{ week_start|date:"j M" }}
+                    -
+                    {{ week_end|date:"j M Y" }}
+                </div>
+
+                <a
+                    href="?week={{ next_week }}"
+                    class="schedule-nav-button"
+                >
+                    ›
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Week summary -->
+    <div class="schedule-summary">
+
+        <div class="schedule-summary-card">
+            <span class="schedule-summary-label">
+                Total Visits
+            </span>
+
+            <strong>
+                {{ weekly_visit_count }}
+            </strong>
+        </div>
+
+        <div class="schedule-summary-card">
+            <span class="schedule-summary-label">
+                Upcoming
+            </span>
+
+            <strong>
+                {{ upcoming_visit_count }}
+            </strong>
+        </div>
+
+        <div class="schedule-summary-card">
+            <span class="schedule-summary-label">
+                Completed
+            </span>
+
+            <strong>
+                {{ completed_visit_count }}
+            </strong>
+        </div>
+
+        <div class="schedule-summary-card">
+            <span class="schedule-summary-label">
+                Cancelled
+            </span>
+
+            <strong>
+                {{ cancelled_visit_count }}
+            </strong>
+        </div>
+
+    </div>
+
+
+    <!-- Weekly schedule -->
+    <div class="schedule-table-wrapper">
+
+        <table class="schedule-table">
+
+            <thead>
+                <tr>
+
+                    <th class="schedule-time-column"></th>
+
+                    {% for day in week_days %}
+                        <th>
+                            <strong>
+                                {{ day|date:"D" }}
+                            </strong>
+
+                            <span>
+                                {{ day|date:"j M" }}
+                            </span>
+                        </th>
+                    {% endfor %}
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                {% for row in schedule_rows %}
+                    <tr>
+
+                        <th class="schedule-time-label">
+                            {{ row.label }}
+                        </th>
+
+                        {% for cell in row.cells %}
+                            <td>
+
+                                {% if cell.visit %}
+                                    <a
+                                        href="{% url 'volunteer_visit_detail' cell.visit.pk %}"
+                                        class="
+                                            schedule-visit-card
+                                            schedule-visit-link
+                                            {% if cell.visit.status == 'scheduled' %}
+                                                visit-scheduled
+                                            {% elif cell.visit.status == 'completed' %}
+                                                visit-completed
+                                            {% elif cell.visit.status == 'cancelled' %}
+                                                visit-cancelled
+                                            {% endif %}
+                                        "
+                                    >
+
+                                        <strong class="schedule-visit-time">
+                                            {{ cell.visit.start_time|time:"g:i A" }}
+                                            -
+                                            {{ cell.visit.end_time|time:"g:i A" }}
+                                        </strong>
+
+                                        <span class="schedule-visit-senior">
+                                            {{ cell.visit.assignment.senior.app_user.full_name }}
+                                        </span>
+
+                                        <span class="schedule-visit-type">
+                                            {{ cell.visit.get_visit_type_display }}
+                                        </span>
+
+                                        <span class="schedule-visit-purpose">
+                                            {{ cell.visit.get_visit_purpose_display }}
+                                        </span>
+
+                                        <span
+                                            class="
+                                                schedule-visit-status
+                                                {% if cell.visit.status == 'scheduled' %}
+                                                    status-scheduled
+                                                {% elif cell.visit.status == 'completed' %}
+                                                    status-completed
+                                                {% elif cell.visit.status == 'cancelled' %}
+                                                    status-cancelled
+                                                {% endif %}
+                                            "
+                                        >
+                                            {{ cell.visit.get_status_display }}
+                                        </span>
+
+                                    </a>
+                                {% endif %}
+
+                            </td>
+                        {% endfor %}
+
+                    </tr>
+
+                {% empty %}
+                    <tr>
+                        <td
+                            colspan="8"
+                            class="schedule-empty"
+                        >
+                            No schedule available for this week.
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}

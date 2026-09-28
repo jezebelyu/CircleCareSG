@@ -1,0 +1,401 @@
+{% extends "mainWebsite/base.html" %}
+{% load static %}
+
+{% block title %}
+CircleCareSG | Additional Details
+{% endblock %}
+
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'css/about.css' %}?v=5"
+>
+<link
+    rel="stylesheet"
+    href="{% static 'accounts/css/register.css' %}?v=5"
+>
+{% endblock %}
+
+{% block content %}
+
+<!-- Registration hero -->
+<section class="about-hero">
+    <div class="row g-0 about-hero-row">
+
+        <div class="about-hero-content">
+            <div class="about-hero-text">
+                <h1>Tell Us More About You</h1>
+
+                <p class="about-introduction">
+                    You're almost there! Complete a few additional details
+                    so we can personalise your CircleCareSG experience.
+                </p>
+
+                <p>
+                    The information provided helps us better understand your
+                    support needs, communication preferences and emergency
+                    contact details, allowing us to provide appropriate
+                    assistance when required.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-hero-image-column">
+            <img
+                src="{% static 'image2.jpg' %}"
+                alt="Volunteer supporting a senior"
+                class="about-hero-image"
+            >
+        </div>
+
+    </div>
+</section>
+
+
+<section class="registration-page">
+    <div class="container registration-container">
+
+        <!-- Registration progress -->
+        <div class="registration-progress">
+
+            <div class="progress-step active">
+                <div class="progress-circle">✓</div>
+
+                <div class="progress-label">
+                    <strong>Basic Information</strong>
+                    <span>Personal details</span>
+                </div>
+            </div>
+
+            <div class="progress-line progress-line-completed"></div>
+
+            <div class="progress-step active">
+                <div class="progress-circle">2</div>
+
+                <div class="progress-label">
+                    <strong>Additional Details</strong>
+                    <span>Role-specific information</span>
+                </div>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-step">
+                <div class="progress-circle">3</div>
+
+                <div class="progress-label">
+                    <strong>Review &amp; Submit</strong>
+                    <span>Confirm your information</span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Registration form -->
+        <div class="registration-card">
+
+            <div class="registration-card-header">
+                <div class="registration-card-title-row">
+
+                    <div>
+                        <h2>Additional Details</h2>
+
+                        <p>
+                            Complete the information below for your
+                            {{ account_type|title }} account.
+                        </p>
+                    </div>
+
+                    <div class="registration-role-badge">
+                        {{ account_type|title }}
+                    </div>
+
+                </div>
+            </div>
+
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <!-- Form errors -->
+                {% if form.non_field_errors %}
+                    <div class="registration-alert">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+
+                <!-- Residential information -->
+                <div class="registration-form-section">
+
+                    <div class="registration-section-heading">
+                        <h3>Residential Information</h3>
+
+                        <p>
+                            Enter the address where support may be provided.
+                        </p>
+                    </div>
+
+
+                    <!-- Address -->
+                    <div class="registration-form-group">
+                        <label for="{{ form.address.id_for_label }}">
+                            Address
+                            <span class="required-mark">*</span>
+                        </label>
+
+                        {{ form.address }}
+
+                        {% if form.address.help_text %}
+                            <p class="registration-help-text">
+                                {{ form.address.help_text }}
+                            </p>
+                        {% endif %}
+
+                        {% if form.address.errors %}
+                            <div class="registration-field-error">
+                                {% for error in form.address.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Postal code and unit number -->
+                    <div class="row g-4">
+
+                        <div class="col-md-6">
+                            <div class="registration-form-group">
+                                <label for="{{ form.postal_code.id_for_label }}">
+                                    Postal Code
+                                    <span class="required-mark">*</span>
+                                </label>
+
+                                {{ form.postal_code }}
+
+                                {% if form.postal_code.errors %}
+                                    <div class="registration-field-error">
+                                        {% for error in form.postal_code.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="registration-form-group">
+                                <label for="{{ form.unit_number.id_for_label }}">
+                                    Unit / Floor Number
+                                </label>
+
+                                {{ form.unit_number }}
+
+                                {% if form.unit_number.errors %}
+                                    <div class="registration-field-error">
+                                        {% for error in form.unit_number.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Support preferences -->
+                <div class="registration-form-section">
+
+                    <div class="registration-section-heading">
+                        <h3>Support Preferences</h3>
+
+                        <p>
+                            Let us know your communication and support
+                            preferences.
+                        </p>
+                    </div>
+
+
+                    <!-- Preferred language -->
+                    <div class="registration-form-group">
+                        <label for="{{ form.preferred_language.id_for_label }}">
+                            Preferred Language
+                            <span class="required-mark">*</span>
+                        </label>
+
+                        {{ form.preferred_language }}
+
+                        {% if form.preferred_language.errors %}
+                            <div class="registration-field-error">
+                                {% for error in form.preferred_language.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Support needed -->
+                    <div class="registration-form-group">
+                        <label>Support Needed</label>
+
+                        <div class="registration-choice-list">
+                            <label>
+                                {{ form.regular_check_ins }}
+                                Regular Check-ins
+                            </label>
+
+                            <label>
+                                {{ form.mobility_assistance }}
+                                Mobility Assistance
+                            </label>
+
+                            <label>
+                                {{ form.meal_assistance }}
+                                Meal Assistance
+                            </label>
+
+                            <label>
+                                {{ form.emotional_support }}
+                                Emotional Support
+                            </label>
+
+                            <label>
+                                {{ form.medical_assistance }}
+                                Medical Assistance
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <!-- Other support -->
+                    <div class="registration-form-group">
+                        <label for="{{ form.other_support.id_for_label }}">
+                            Other Support
+                        </label>
+
+                        {{ form.other_support }}
+
+                        {% if form.other_support.errors %}
+                            <div class="registration-field-error">
+                                {% for error in form.other_support.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+
+                <!-- Emergency contact -->
+                <div class="registration-form-section">
+
+                    <div class="registration-section-heading">
+                        <h3>Emergency Contact</h3>
+
+                        <p>
+                            Provide the details of someone we can contact
+                            during an emergency.
+                        </p>
+                    </div>
+
+
+                    <!-- Contact name -->
+                    <div class="registration-form-group">
+                        <label for="{{ form.emergency_contact_name.id_for_label }}">
+                            Emergency Contact Name
+                            <span class="required-mark">*</span>
+                        </label>
+
+                        {{ form.emergency_contact_name }}
+
+                        {% if form.emergency_contact_name.errors %}
+                            <div class="registration-field-error">
+                                {% for error in form.emergency_contact_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <!-- Relationship and contact number -->
+                    <div class="row g-4">
+
+                        <div class="col-md-6">
+                            <div class="registration-form-group">
+                                <label for="{{ form.emergency_contact_relationship.id_for_label }}">
+                                    Relationship
+                                    <span class="required-mark">*</span>
+                                </label>
+
+                                {{ form.emergency_contact_relationship }}
+
+                                {% if form.emergency_contact_relationship.errors %}
+                                    <div class="registration-field-error">
+                                        {% for error in form.emergency_contact_relationship.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="registration-form-group">
+                                <label for="{{ form.emergency_contact_mobile.id_for_label }}">
+                                    Emergency Contact Number
+                                    <span class="required-mark">*</span>
+                                </label>
+
+                                {{ form.emergency_contact_mobile }}
+
+                                {% if form.emergency_contact_mobile.errors %}
+                                    <div class="registration-field-error">
+                                        {% for error in form.emergency_contact_mobile.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Form actions -->
+                <div class="registration-actions">
+                    <a
+                        href="{% url 'register' %}"
+                        class="btn registration-back-button"
+                    >
+                        Back
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn registration-next-button"
+                    >
+                        Next: Review and Submit
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
+
+
+{% block community_section %}
+{% endblock %}
