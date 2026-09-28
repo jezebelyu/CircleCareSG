@@ -1,0 +1,80 @@
+CircleCareSG Demo Accounts
+==========================
+
+The following accounts are provided for testing the different
+user roles and features within the CircleCareSG application.
+
+Please use these accounts only for demonstration and assessment.
+
+
+ADMINISTRATOR
+-------------
+
+Username / Email: admin.test@circlecaresg.com
+Password: AdminTest123!
+
+
+SENIOR ACCOUNTS
+---------------
+
+Senior 1
+Email: tanmeilin@gmail.com
+Password: SeniorTest123!
+
+Senior 2
+Email: jasonliu@gmail.com
+Password: SeniorTest123!
+
+Senior 3
+Email: vanessang@circlecaresg.com
+Password: SeniorTest123!
+
+Senior 4
+Email: marcelee@gmail.com
+Password: SeniorTest123!
+
+
+VOLUNTEER ACCOUNTS
+------------------
+
+Volunteer 1
+Email: volunteer.test@circlecaresg.com
+Password: Volunteer123!
+
+Volunteer 2
+Email: jasmineteo@circlecaresg.com
+Password: Volunteer123!
+
+Volunteer 3
+Email: olivialiu@circlecaresg.com
+Password: Volunteer123!
+
+
+GUARDIAN ACCOUNT
+----------------
+
+Email: guardian.test@circlecaresg.com
+Password: GuardianTest123!
+
+
+DATABASE ADMINISTRATION
+-----------------------
+
+Django Admin Username: ccsgAdminDev1
+Password: ccsgAdminDev1Pass123!
+
+
+NOTES
+-----
+
+- Senior and Volunteer accounts represent the publicly available
+  registration roles.
+
+- Guardian accounts are provisioned by an administrator after
+  verification and cannot be created through public registration.
+
+- Administrator accounts are not available through public
+  registration.
+
+- The database administration account is intended only for accessing
+  the Django administration interface during assessment or development.
