@@ -23,9 +23,3 @@ env/
 .pytest_cache/
 .coverage
 htmlcov/
-
-# Demo credentials
-DEMO_ACCOUNTS.txt
-
-# Local development database
-db.sqlite3
